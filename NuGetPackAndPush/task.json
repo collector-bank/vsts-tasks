@@ -1,0 +1,48 @@
+{
+  "id": "70f80653-c34c-4117-a14e-cdea9587ce22",
+  "name": "NuGetPackAndPush",
+  "friendlyName": "Nuget Pack and Push",
+  "description": "Packs your output as NuGet package and pushes it to the specified source.",
+  "category": "Package",
+  "author": "Nohm",
+  "version": {
+    "Major": 0,
+    "Minor": 2,
+    "Patch": 0
+  },
+  "minimumAgentVersion": "1.83.0",
+  "inputs": [
+    {
+      "name": "packtarget",
+      "type": "filePath",
+      "label": "Pack target",
+      "defaultValue": "",
+      "required": true,
+      "helpMarkDown": "Relative path to .csproj or .nuspec file to pack."
+    },
+    {
+      "name": "packagesource",
+      "type": "string",
+      "label": "Package Source",
+      "defaultValue": "",
+      "required": true,
+      "helpMarkDown": "The source we want to push the package to"
+    },
+    {
+      "name": "nugetapikey",
+      "type": "string",
+      "label": "NuGet Api key",
+      "defaultValue": "",
+      "required": true,
+      "helpMarkDown": "The nuget api key credentials"
+    }
+  ],
+  "instanceNameFormat": "Nuget Pack and Push $(packtarget)",
+  "execution": {
+    "PowerShell": {
+      "target": "$(currentDirectory)\\PackAndPush.ps1",
+      "argumentFormat": "",
+      "workingDirectory": "$(currentDirectory)"
+    }
+  }
+}

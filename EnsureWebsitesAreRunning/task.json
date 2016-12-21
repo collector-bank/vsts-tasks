@@ -1,0 +1,32 @@
+{
+  "id": "ce56a93e-b69d-4ab0-875c-b0238a128b22",
+  "name": "EnsureWebsitesAreRunning",  
+  "friendlyName": "Ensures Websites Are Running",
+  "description": "Checks that a specified number of websites return 200 OK when requested",
+  "category": "Utility",
+  "author": "Nohm",
+  "version": {
+    "Major": 0,
+    "Minor": 1,
+    "Patch": 2
+  },
+  "minimumAgentVersion": "1.83.0",
+  "inputs": [
+    {
+      "name": "weburls",
+      "type": "multiLine",
+      "label": "Web URLs",
+      "defaultValue": "",
+      "required": true,
+      "helpMarkDown": "The URLs to request and checked that they return http 200/OK"
+    }
+  ],
+  "instanceNameFormat": "Ensure websites are running",
+  "execution": {
+    "PowerShell": {
+      "target": "$(currentDirectory)\\EnsureWebsitesAreRunning.ps1",
+      "argumentFormat": "",
+      "workingDirectory": "$(currentDirectory)"
+    }
+  }
+}

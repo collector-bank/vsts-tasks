@@ -1,0 +1,40 @@
+{
+  "id": "f7ef0acd-7703-496e-bb8e-105fa4bdbf35",
+  "name": "ApplyNuspecVersionToAssemblies",  
+  "friendlyName": "Apply nuspec version to assemblies",
+  "description": "Applies the version found in a nuspec file to all assemblies in the source folder.",
+  "category": "Utility",
+  "author": "Adam Lith",
+  "version": {
+    "Major": 1,
+    "Minor": 0,
+    "Patch": 0
+  },
+  "minimumAgentVersion": "1.83.0",
+  "inputs": [
+    {
+        "name": "nuspecPath",
+        "type": "filePath",
+        "label": "nuspec file path",
+        "defaultValue": "",
+        "required": true,
+        "helpMarkDown": "The path to the nuspec file to use"
+    },
+    {
+        "name": "versionSuffix",
+        "type": "string",
+        "label": "Version suffix",
+        "defaultValue": "",
+        "required": false,
+        "helpMarkDown": "An optional suffix to set to a version number, for example '.$(Build.BuildNumber)'"
+    }
+  ],
+  "instanceNameFormat": "Apply nupec version",
+  "execution": {
+    "PowerShell": {
+      "target": "$(currentDirectory)\\ApplyNuspecVersionToAssemblies.ps1",
+      "argumentFormat": "",
+      "workingDirectory": "$(currentDirectory)"
+    }
+  }
+}

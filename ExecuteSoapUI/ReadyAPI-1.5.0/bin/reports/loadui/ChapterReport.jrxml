@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd"
+              name="report name" pageWidth="505" pageHeight="802" columnWidth="505" leftMargin="0" rightMargin="0"
+              topMargin="0" bottomMargin="10">
+    <property name="ireport.zoom" value="1.0"/>
+    <property name="ireport.x" value="0"/>
+    <property name="ireport.y" value="0"/>
+    <template>
+        <![CDATA[com.eviware.loadui.api.LoadUI.getWorkingDir().getAbsolutePath() + "/reports/loadui/styles.jrtx"]]></template>
+    <field name="title" class="java.lang.String"/>
+    <field name="date" class="java.util.Date"/>
+    <field name="description" class="java.lang.String"/>
+    <field name="values" class="net.sf.jasperreports.engine.JRDataSource"/>
+    <field name="sections" class="net.sf.jasperreports.engine.JRDataSource"/>
+    <field name="summarySection" class="net.sf.jasperreports.engine.JRDataSource"/>
+    <background>
+        <band splitType="Stretch"/>
+    </background>
+    <pageHeader>
+        <band height="50">
+            <staticText>
+                <reportElement style="Heading 1" x="0" y="0" width="120" height="28"/>
+                <textElement verticalAlignment="Bottom"/>
+                <text><![CDATA[Summary for]]></text>
+            </staticText>
+            <textField>
+                <reportElement style="Heading 1" x="130" y="0" width="370" height="28" forecolor="#666666"/>
+                <textElement verticalAlignment="Bottom"/>
+                <textFieldExpression class="java.lang.String"><![CDATA[$F{title}]]></textFieldExpression>
+            </textField>
+            <line>
+                <reportElement x="0" y="45" width="505" height="1"/>
+                <graphicElement>
+                    <pen lineWidth="3.0" lineStyle="Solid" lineColor="#CCCCCC"/>
+                </graphicElement>
+            </line>
+        </band>
+    </pageHeader>
+    <columnHeader>
+        <band splitType="Stretch"/>
+    </columnHeader>
+    <detail>
+        <band height="171" splitType="Stretch">
+            <line>
+                <reportElement x="0" y="0" width="505" height="1">
+                    <printWhenExpression>$F{description} != null</printWhenExpression>
+                </reportElement>
+                <graphicElement>
+                    <pen lineWidth="3.0" lineStyle="Solid" lineColor="#CCCCCC"/>
+                </graphicElement>
+            </line>
+            <staticText>
+                <reportElement positionType="Float" x="0" y="112" width="100" height="20">
+                    <printWhenExpression>$F{description} != null</printWhenExpression>
+                </reportElement>
+
+                <textElement>
+                    <font size="15"/>
+                </textElement>
+                <text><![CDATA[Description:]]></text>
+            </staticText>
+            <textField>
+                <reportElement positionType="Float" x="0" y="132" width="496" height="38">
+                    <printWhenExpression>$F{description} != null</printWhenExpression>
+                </reportElement>
+                <textElement>
+                    <font size="13"/>
+                </textElement>
+                <textFieldExpression class="java.lang.String"><![CDATA[$F{description}]]></textFieldExpression>
+            </textField>
+
+            <subreport>
+                <reportElement positionType="Float" x="0" y="1" width="496" height="37"
+                               isPrintWhenDetailOverflows="true"/>
+                <dataSourceExpression><![CDATA[$F{summarySection}]]></dataSourceExpression>
+                <subreportExpression class="java.lang.String">
+                    <![CDATA["subreport:SummarySectionReport"]]></subreportExpression>
+            </subreport>
+
+            <subreport>
+                <reportElement positionType="Float" x="0" y="38" width="496" height="37" isRemoveLineWhenBlank="true"/>
+                <dataSourceExpression><![CDATA[$F{values}]]></dataSourceExpression>
+                <subreportExpression class="java.lang.String"><![CDATA["subreport:ValuesReport"]]></subreportExpression>
+            </subreport>
+
+            <subreport>
+                <reportElement positionType="Float" x="0" y="75" width="496" height="37"
+                               isPrintWhenDetailOverflows="true"/>
+                <dataSourceExpression><![CDATA[$F{sections}]]></dataSourceExpression>
+                <subreportExpression class="java.lang.String">
+                    <![CDATA["subreport:SectionReport"]]></subreportExpression>
+            </subreport>
+        </band>
+    </detail>
+</jasperReport>

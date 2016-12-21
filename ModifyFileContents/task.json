@@ -1,0 +1,46 @@
+{
+  "id": "7B027ED9-72F2-4B09-9AC7-6BA68BECA4C0",
+  "name": "ModifyFileContents",
+  "friendlyName": "Modify file contents",
+  "description": "Used to modify file contents using regexp",
+  "category": "Utility",
+  "author": "Adam Lith",
+  "version": {
+    "Major": 1,
+    "Minor": 0,
+    "Patch": 1
+  },
+  "minimumAgentVersion": "1.83.0",
+  "inputs": [
+    {
+      "name": "filePaths",
+      "type": "multiLine",
+      "label": "File paths",
+      "defaultValue": "",
+      "required": true,
+      "helpMarkDown": "The files to modify"
+    },
+    {
+      "name": "pattern",
+      "type": "string",
+      "label": "Search Pattern",
+      "defaultValue": "",
+      "helpMarkDown": "The pattern to replace in the files"
+    },
+    {
+      "name": "replacement",
+      "type": "string",
+      "label": "Replacement value",
+      "defaultValue": "",
+      "helpMarkDown": "The value to insert wherever the pattern is found"
+    }
+  ],
+  "instanceNameFormat": "Modify file contents",
+  "execution": {
+    "PowerShell": {
+      "target": "$(currentDirectory)\\ModifyFileContents.ps1",
+      "argumentFormat": "",
+      "workingDirectory": "$(currentDirectory)"
+    }
+  }
+}

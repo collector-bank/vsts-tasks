@@ -1,0 +1,32 @@
+{
+  "id": "7E6D2E2B-EB75-4FA7-8CE6-9109594C9A6A",
+  "name": "CreateDatabase",  
+  "friendlyName": "Create a SQL server database",
+  "description": "Used to create an empty database",
+  "category": "Utility",
+  "author": "Adam Lith",
+  "version": {
+    "Major": 1,
+    "Minor": 0,
+    "Patch": 0
+  },
+  "minimumAgentVersion": "1.83.0",
+  "inputs": [
+    {
+        "name": "dbName",
+        "type": "string",
+        "label": "Database name",
+        "defaultValue": "",
+        "required": true,
+        "helpMarkDown": "The name of the database to create"
+    }
+  ],
+  "instanceNameFormat": "Create $(dbName) database",
+  "execution": {
+    "PowerShell": {
+      "target": "$(currentDirectory)\\CreateDatabase.ps1",
+      "argumentFormat": "",
+      "workingDirectory": "$(currentDirectory)"
+    }
+  }
+}

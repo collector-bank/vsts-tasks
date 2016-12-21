@@ -1,0 +1,48 @@
+{
+  "id": "17e9cfa3-eb2c-4e51-bb9d-50ae533ad77b",
+  "name": "ExecuteSoapUI",  
+  "friendlyName": "Execute SoapUI Tests",
+  "description": "Used to trigger a suite of SoapUI tests",
+  "category": "Test",
+  "author": "Lambda",
+  "version": {
+    "Major": 0,
+    "Minor": 16,
+    "Patch": 0
+  },
+  "minimumAgentVersion": "1.83.0",
+  "inputs": [
+    {
+        "name": "project_xml",
+        "type": "filePath",
+        "label": "Project XML",
+        "defaultValue": "",
+        "required": true,
+        "helpMarkDown": "The SoapUI project xml file"
+    },
+    {
+        "name": "soap_ui_licence_file",
+        "type": "filePath",
+        "label": "Soap UI license",
+        "defaultValue": "",
+        "required": true,
+        "helpMarkDown": "The SoapUI license file"
+    },
+    {
+        "name": "soap_ui_dat_file",
+        "type": "filePath",
+        "label": "Soap UI dat file",
+        "defaultValue": "",
+        "required": true,
+        "helpMarkDown": "The SoapUI license DAT file"
+    }
+  ],
+  "instanceNameFormat": "Execute SoapUI tests",
+  "execution": {
+    "PowerShell": {
+      "target": "$(currentDirectory)\\ExecuteSoapUI.ps1",
+      "argumentFormat": "",
+      "workingDirectory": "$(currentDirectory)"
+    }
+  }
+}

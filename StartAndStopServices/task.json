@@ -1,0 +1,53 @@
+{
+  "id": "011147f2-a49d-4f3c-a858-2978088c9056",
+  "name": "StartAndStopServices",  
+  "friendlyName": "Start and stop windows services",
+  "description": "Used to start and stop windows services on the build agent server",
+  "category": "Utility",
+  "author": "Nohm",
+  "version": {
+    "Major": 0,
+    "Minor": 1,
+    "Patch": 10
+  },
+  "minimumAgentVersion": "1.83.0",
+  "inputs": [
+    {
+      "name": "services",
+      "type": "multiLine",
+      "label": "Services",
+      "defaultValue": "",
+      "required": true,
+      "helpMarkDown": "The services to stop and start"
+    },
+	{
+      "name": "stopservices",
+      "type": "boolean",
+      "label": "Stop services",
+      "defaultValue": "false",
+      "helpMarkDown": "Set this to true if the selected services should be stopped, if both start and stop are selected then stop is always before start"
+    },
+	{
+      "name": "startservices",
+      "type": "boolean",
+      "label": "Start services",
+      "defaultValue": "false",
+      "helpMarkDown": "Set this to true if the selected services should be started, if both start and stop are selected then stop is always before start"
+    },
+	{
+      "name": "servicewaittime",
+      "type": "string",
+      "label": "Service wait time",
+      "defaultValue": "5",
+      "helpMarkDown": "The service wait time. Used to make sure the service is completely stopped or started"
+    }
+  ],
+  "instanceNameFormat": "Start and stop windows services and then wait $(servicewaittime) seconds",
+  "execution": {
+    "PowerShell": {
+      "target": "$(currentDirectory)\\StartAndStopServices.ps1",
+      "argumentFormat": "",
+      "workingDirectory": "$(currentDirectory)"
+    }
+  }
+}

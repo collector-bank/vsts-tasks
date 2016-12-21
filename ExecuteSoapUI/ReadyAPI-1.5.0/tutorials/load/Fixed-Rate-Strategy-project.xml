@@ -1,0 +1,353 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project activeEnvironment="Default environment" name="Fixed Load Sample Project" resourceRoot="" soapui-version="6.0.0" abortOnError="false" runType="SEQUENTIAL" id="3cd36e0e-c1a5-4d56-b264-a9cf584f7e6c" xmlns:con="http://eviware.com/soapui/config">
+    <con:description>Simulates five virtual users coming to a local virtual service each second. Start the 'Account creation mock' virt manually before running the test.</con:description>
+    <con:settings/>
+    <con:interface xsi:type="con:RestService" wadlVersion="http://research.sun.com/wadl/2006/10" name="Account creation" type="rest" basePath="/" definitionUrl="WSDL-WADL/sample-service.wadl" id="159bda74-9c68-484f-bc7a-3e7e309e1a86" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <con:settings/>
+
+        
+        <con:definitionCache type="TEXT"/><con:endpoints>
+            <con:endpoint>http://localhost:8080</con:endpoint>
+        </con:endpoints>
+        <con:resource name="accountcreation" path="accountcreation" id="e457b38c-0f69-4c1b-b581-d8fc1324640a">
+            <con:settings/>
+            <con:parameters/>
+            <con:method name="Register a new account - viewAccountRegistration" method="GET" id="c00f6ea7-0883-4e4c-a510-baa24d82c7fe">
+                <con:settings/>
+                <con:parameters/>
+                <con:representation type="RESPONSE" id="">
+                    <con:mediaType>text/html</con:mediaType>
+                    <con:params/>
+                    <con:element xsi:nil="true"/>
+                    <con:description xsi:nil="true"/>
+                </con:representation>
+                <con:request name="Registration Form" mediaType="application/json" id="dfcfae68-df8d-4f37-bfec-ada23b58bcc1">
+                    <con:settings>
+                        <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/>
+                        </con:setting>
+                    </con:settings>
+                    <con:endpoint>http://localhost:8090</con:endpoint>
+                    <con:request/>
+                    <con:originalUri>http://localhost/accountcreation</con:originalUri>
+                    <con:credentials>
+                        <con:authType>No Authorization</con:authType>
+                    </con:credentials>
+                    <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+                    <con:jmsPropertyConfig/>
+                    <con:parameters/>
+                </con:request>
+            </con:method>
+            <con:method name="Register a new account - createUserAccount" method="POST" id="7967444c-6dda-4b47-b1ab-3a29c05b9100">
+                <con:settings/>
+                <con:parameters>
+                    <con:parameter>
+                        <con:name>username</con:name>
+                        <con:value xsi:nil="true"/>
+                        <con:style>QUERY</con:style>
+                        <con:default xsi:nil="true"/>
+                    </con:parameter>
+                    <con:parameter>
+                        <con:name>password</con:name>
+                        <con:value xsi:nil="true"/>
+                        <con:style>QUERY</con:style>
+                        <con:default xsi:nil="true"/>
+                    </con:parameter>
+                </con:parameters>
+                <con:representation type="REQUEST" id="">
+                    <con:mediaType>application/json</con:mediaType>
+                    <con:params/>
+                    <con:element xsi:nil="true"/>
+                    <con:description xsi:nil="true"/>
+                </con:representation>
+                <con:representation type="RESPONSE" id="">
+                    <con:mediaType>text/html</con:mediaType>
+                    <con:params/>
+                    <con:element xsi:nil="true"/>
+                    <con:description xsi:nil="true"/>
+                </con:representation>
+                <con:request name="Submit Registration Form" mediaType="application/json" postQueryString="false" id="ca7aff65-5338-42c6-9d24-4206ad19c098">
+                    <con:settings>
+                        <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/>
+                        </con:setting>
+                    </con:settings>
+                    <con:endpoint>http://localhost:8090</con:endpoint>
+                    <con:request/>
+                    <con:originalUri>http://localhost/accountcreation</con:originalUri>
+                    <con:credentials>
+                        <con:authType>No Authorization</con:authType>
+                    </con:credentials>
+                    <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+                    <con:jmsPropertyConfig/>
+                    <con:parameters>
+                        <con:entry key="username" value="john"/>
+                        <con:entry key="password" value="w0j39av0d8s"/>
+                    </con:parameters>
+                </con:request>
+            </con:method>
+        </con:resource>
+    </con:interface>
+    <con:testSuite name="Test account creation" id="09c7632d-bd0e-46d8-88ac-766dc1c2c5a0">
+        <con:description>TestSuite generated for REST Service [Sample REST project (5.0)]</con:description>
+        <con:settings/>
+        <con:runType>SEQUENTIAL</con:runType>
+        <con:testCase failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="accountcreation TestCase" searchProperties="true" id="8d536a60-da27-4037-a4e2-41c59979311c">
+            <con:description>TestCase generated for REST Resource [accountcreation] located at [/accountcreation]
+            </con:description>
+            <con:settings/>
+            
+            <con:testStep type="restrequest" name="View Form" id="2eba54bf-0751-40bb-a197-508afd68948c">
+                <con:settings/>
+                <con:config service="Account creation" resourcePath="/accountcreation" methodName="Register a new account - viewAccountRegistration" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                    <con:restRequest name="View Form" mediaType="application/json" id="497d08e2-f1fa-4484-a388-e60a181d6990">
+                        <con:settings>
+                            <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+                        </con:settings>
+                        <con:endpoint>http://localhost:8090</con:endpoint>
+                        <con:request/>
+                        <con:originalUri>http://localhost/accountcreation</con:originalUri>
+                        <con:credentials>
+                            <con:authType>No Authorization</con:authType>
+                        </con:credentials>
+                        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+                        <con:jmsPropertyConfig/>
+                        <con:parameters/>
+                    </con:restRequest>
+                </con:config>
+            </con:testStep>
+            <con:testStep type="restrequest" name="Submit Account Details" id="4c5126a3-8fa3-4d80-a415-8362b225e222">
+                <con:settings/>
+                <con:config service="Account creation" resourcePath="/accountcreation" methodName="Register a new account - createUserAccount" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                    <con:restRequest name="Submit Account Details" mediaType="application/json" postQueryString="false" id="6c0f25a7-e276-4f1f-be1d-23e6dac216c9">
+                        <con:settings>
+                            <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+                        </con:settings>
+                        <con:endpoint>http://localhost:8090</con:endpoint>
+                        <con:request/>
+                        <con:originalUri>http://localhost/accountcreation</con:originalUri>
+                        <con:credentials>
+                            <con:authType>No Authorization</con:authType>
+                        </con:credentials>
+                        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+                        <con:jmsPropertyConfig/>
+                        <con:parameters/>
+                    </con:restRequest>
+                </con:config>
+            </con:testStep><con:loadTest id="4ca48617-debe-431a-a927-ee370dfff01a" name="Fixed Rate Strategy (Account Creation)">
+                <con:settings><con:setting id="hasBeenConvertedToLoadUITest">true</con:setting></con:settings>
+                <con:threadCount>5</con:threadCount>
+                <con:startDelay>0</con:startDelay>
+                <con:sampleInterval>250</con:sampleInterval>
+                <con:calculateTPSOnTimePassed>true</con:calculateTPSOnTimePassed>
+                <con:resetStatisticsOnThreadCountChange>false</con:resetStatisticsOnThreadCountChange>
+                <con:historyLimit>-1</con:historyLimit>
+                <con:testLimit>60</con:testLimit>
+                <con:limitType>TIME</con:limitType>
+                <con:loadStrategy>
+                    <con:type>Fixed-Rate</con:type>
+                    <con:config>
+                        <maxThreads>20</maxThreads>
+                        <rate>10.0</rate>
+                        <level>false</level>
+                    </con:config>
+                </con:loadStrategy>
+                <con:assertion type="Step Status" name="Step Status"/>
+                <con:maxAssertionErrors>100</con:maxAssertionErrors>
+                <con:cancelExcessiveThreads>true</con:cancelExcessiveThreads>
+                <con:strategyInterval>500</con:strategyInterval>
+                <con:reportParameters/>
+            </con:loadTest>
+            <con:setupScript>project = testRunner.testCase.testSuite.project;
+
+                for(i=0; i&lt;project.mockServiceCount; i++) {
+                runner = project.getMockServiceAt(i).start();
+                }
+                for(i=0; i&lt;project.restMockServiceCount; i++) {
+                project.getRestMockServiceAt(i).start();
+                }
+            </con:setupScript>
+            <con:properties/>
+            <con:reportParameters/>
+        </con:testCase>
+        <con:properties/>
+        <con:reportParameters/>
+    </con:testSuite>
+    <con:restMockService port="8090" path="/" name="Account creation mock" host="localhost" id="14ea91dc-9fa2-41a1-9baa-1e9ee429426c" docroot="">
+        <con:settings/>
+        <con:properties/>
+        <con:constraints>
+            <con:congestion>0</con:congestion>
+            <con:inputBandwidth>125</con:inputBandwidth>
+            <con:outputBandwidth>125</con:outputBandwidth>
+            <con:maxThreadPoolCapacity>20</con:maxThreadPoolCapacity>
+            <con:coreThreadPoolCapacity>5</con:coreThreadPoolCapacity>
+            <con:virtError>
+                <con:start>-1</con:start>
+            </con:virtError>
+        </con:constraints>
+        <con:headerValidator/><con:restMockAction name="accountcreation" method="GET" resourcePath="/accountcreation" id="7ab7b1bc-8427-42e6-9808-f629f560f0b0">
+            <con:settings/>
+            <con:defaultResponse>Form View</con:defaultResponse>
+            <con:dispatchStyle>SEQUENCE</con:dispatchStyle>
+            <con:dispatchConfig/><con:response name="Form View" httpResponseStatus="200" mediaType="text/html" id="d9f694fa-5c6b-474d-a6a7-408a158ae5bc" dataSource="">
+                <con:settings/>
+                <con:responseContent><![CDATA[<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Account registration</title>
+		<meta name="description" content="SoapUI Sample content">
+	</head>
+
+	<body>
+  		<h1>Welcome!</h1>
+  		<form action="accountcreation" method="post" name="account_registration_form">
+  			<input type="text" name="username" placeholder="John Doe" />
+			<input type="password" name="password" />
+			<input type="submit" name="password" />
+		</form>
+  	</body>
+</html>]]></con:responseContent>
+            </con:response>
+        </con:restMockAction>
+        <con:restMockAction name="accountcreation" method="POST" resourcePath="/accountcreation" id="d53f14a2-fb22-4134-9a41-793b483d763a">
+            <con:settings/>
+            <con:defaultResponse>Successful</con:defaultResponse>
+            <con:dispatchStyle>SEQUENCE</con:dispatchStyle>
+            <con:dispatchConfig/><con:response name="Successful" httpResponseStatus="200" mediaType="text/html" id="2b2396d5-4b77-41a8-977f-21ddfb877504" dataSource="">
+                <con:settings/>
+                <con:responseContent><![CDATA[<html>
+	<head>
+		<meta charset="utf-8"/>
+		<title>Account registration</title>
+		<meta name="description" content="SoapUI Sample content"/>
+	</head>
+
+	<body>
+  		<h1>Welcome!</h1>
+  		<p>You have successfully registered your account!</p>
+	</body>
+</html>]]></con:responseContent>
+            </con:response>
+            <con:response name="Already Existing User" httpResponseStatus="200" mediaType="text/html" id="a34dec9a-1e14-4f61-ab12-b22e6cdfb984" dataSource="">
+                <con:settings/>
+                <con:responseContent><![CDATA[<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Account registration</title>
+		<meta name="description" content="SoapUI Sample content">
+	</head>
+
+	<body>
+  		<h1>User already exists</h1>
+  		<p>A user has already registered with the selected username - try another.</p>
+	</body>
+</html>]]></con:responseContent>
+            </con:response>
+            <con:response name="Internal Server Error" httpResponseStatus="500" mediaType="text/html" id="1117b112-b3e8-45e2-9ff3-46f54df8f2e7" dataSource="">
+                <con:settings/>
+                <con:responseContent><![CDATA[<html>
+	<head>
+		<meta charset="utf-8"/>
+		<title>Internal Server Error</title>
+		<meta name="description" content="SoapUI Sample content"/>
+	</head>
+
+	<body>
+  		<h1>The server was unable to serve your request</h1>
+  		<p>Due to some technical error the server was unable to complete the request, pleas come back later.</p>
+	</body>
+</html>]]></con:responseContent>
+            </con:response>
+        </con:restMockAction>
+    </con:restMockService>
+    <con:requirements/>
+    <con:properties/>
+    <con:wssContainer/>
+    <con:databaseConnectionContainer/>
+    <con:oAuth2ProfileContainer/>
+    <con:reporting>
+        <con:xmlTemplates/>
+        <con:parameters/>
+    </con:reporting>
+    <con:sensitiveInformation/>
+<con:authRepository/><con:loadUiTest name="Fixed Rate Strategy (Account Creation)" id="6f8ce912-32c5-45d0-8350-108543b9f056"><con:settings><con:setting id="convertedFromLoadTestModelItemId">4ca48617-debe-431a-a927-ee370dfff01a</con:setting></con:settings><con1:loadui-project id="033db177-8c18-4289-84bd-b883b2c0dab6" label="Fixed Rate Strategy (Account Creation)" xmlns:con1="http://eviware.com/loadui/config"><con1:properties><con1:property propagates="true" key="ModelItem.description" type="java.lang.String"/><con1:property propagates="true" key="CanvasItem.abortOnFinish" type="java.lang.Boolean">false</con1:property><con1:property propagates="true" key="ModelItem.saveReport" type="java.lang.Boolean">false</con1:property><con1:property propagates="true" key="ModelItem.reportFolder" type="java.lang.String"/><con1:property propagates="true" key="ModelItem.reportFormat" type="java.lang.String"/><con1:property propagates="true" key="ModelItem.remoteMode" type="java.lang.String"/></con1:properties><con1:attributes><con1:property key="limits">Time=60;</con1:property></con1:attributes><con1:addons/><con1:scene label="New Scenario" id="422ce4d4-800e-48f6-860a-9588649ca0ae" version="4"><con1:properties><con1:property propagates="true" key="ModelItem.description" type="java.lang.String"/><con1:property propagates="true" key="CanvasItem.abortOnFinish" type="java.lang.Boolean">false</con1:property><con1:property propagates="true" key="SceneItem.followProject" type="java.lang.Boolean">true</con1:property></con1:properties><con1:attributes><con1:property key="limits">Time=60;</con1:property></con1:attributes><con1:addons/><con1:component type="com.eviware.loadui.groovy.GroovyComponent" label="Fixed Rate 1" id="c194ddb1-9afe-403b-b9d2-afd11655dbd1" category="generators"><con1:properties><con1:property propagates="true" key="ModelItem.description" type="java.lang.String"/><con1:property propagates="true" key="_script" type="java.lang.String">// 
+// Copyright 2014 SmartBear Software
+// 
+// Licensed under the EUPL, Version 1.1 or - as soon they will be approved by the European Commission - subsequent
+// versions of the EUPL (the "Licence");
+// You may not use this work except in compliance with the Licence.
+// You may obtain a copy of the Licence at:
+// 
+// http://ec.europa.eu/idabc/eupl
+// 
+// Unless required by applicable law or agreed to in writing, software distributed under the Licence is
+// distributed on an "AS IS" basis, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
+// express or implied. See the Licence for the specific language governing permissions and limitations
+// under the Licence.
+// 
+
+/**
+ * Sends an empty message periodically, at a set rate
+ *
+ * @id com.eviware.FixedRate
+ * @help http://www.loadui.org/Generators/fixed-rate-component.html
+ * @name Fixed Rate
+ * @category generators
+ * @nonBlocking true
+ */
+
+import java.util.concurrent.TimeUnit
+
+//Properties
+rate = createProperty('rate', Long, 10) { schedule() }
+unit = createProperty('unit', String, 'Sec') { schedule() }
+
+onReplace(stateProperty) { value ->
+    if (value) schedule()
+    else future?.cancel(true)
+}
+
+burstSize = createProperty('burstSize', Long, 1)
+
+triggerBurst = {
+    burstSize.value.times {
+        trigger()
+    }
+}
+
+future = null
+schedule = {
+    future?.cancel(true)
+    if (stateProperty.value) {
+        long microsecondsPerUnit = unit.value == 'Sec' ? 1000000 : unit.value == 'Min' ? 60000000 : 3600000000
+        long delay = Math.max(1, (long) (microsecondsPerUnit / rate.value ?: 1))
+        future = scheduleAtFixedRate(triggerBurst, delay, delay, TimeUnit.MICROSECONDS)
+    }
+}
+
+onAction("START") { schedule() }
+onAction("STOP") { future?.cancel(true) }
+
+//Layout
+layout {
+    property(property: rate, label: 'Rate', min: 1)
+    separator(vertical: true)
+    property(property: unit, label: 'Unit', options: ['Sec', 'Min', 'Hour'])
+    separator(vertical: true)
+    box(widget: 'display') {
+        node(label: 'Rate', content: { "$rate.value / $unit.value" }, constraints: 'wmin 75')
+    }
+}
+
+//Compact Layout
+compactLayout {
+    box(widget: 'display') {
+        node(label: 'Rate', content: { "$rate.value / $unit.value" })
+    }
+}
+
+//Settings
+settings(label: "General") {
+    property(property: burstSize, label: 'Burst size')
+}
+
+if (running) schedule()</con1:property><con1:property propagates="true" key="stateProperty" type="java.lang.Boolean">true</con1:property><con1:property propagates="true" key="rate" type="java.lang.Long">5</con1:property><con1:property propagates="true" key="unit" type="java.lang.String">Sec</con1:property><con1:property propagates="true" key="burstSize" type="java.lang.Long">1</con1:property></con1:properties><con1:attributes><con1:property key="com.eviware.loadui.api.model.ComponentItem@type">Fixed Rate</con1:property><con1:property key="_digest">1951e3929e55f1139d94e67e4eba8e63</con1:property><con1:property key="_id">com.eviware.FixedRate</con1:property><con1:property key="_classLoader">com.eviware.FixedRate</con1:property></con1:attributes><con1:addons/></con1:component><con1:component type="com.eviware.loadui.components.soapui.SoapUISamplerComponent" label="Ready API TestCase Runner 1" id="589e4b80-433f-42ae-9944-ff6aa86845f7" category="Runners"><con1:properties><con1:property propagates="true" key="ModelItem.description" type="java.lang.String"/><con1:property propagates="true" key="concurrentSamples" type="java.lang.Long">1000</con1:property><con1:property propagates="true" key="property_name_is_not_relevant_for_private_property" type="java.lang.Long">9223372036854775807</con1:property><con1:property propagates="true" key="maxQueueSize" type="java.lang.Long">1000</con1:property><con1:property propagates="true" key="countDiscarded" type="java.lang.Boolean">false</con1:property><con1:property propagates="true" key="disabledTestSteps" type="java.lang.String"/><con1:property propagates="true" key="_thinkTime" type="java.lang.Long">0</con1:property><con1:property propagates="true" key="ReadyApiTestCase" type="com.eviware.soapui.impl.wsdl.testcase.WsdlTestCase">8d536a60-da27-4037-a4e2-41c59979311c</con1:property><con1:property propagates="true" key="raiseError" type="java.lang.Boolean">true</con1:property><con1:property propagates="true" key="outputTestCaseProperties" type="java.lang.Boolean">true</con1:property><con1:property propagates="true" key="OutputLevel" type="java.lang.String">TestCase only</con1:property><con1:property propagates="true" key="closeConnectionsAfterRequest" type="java.lang.Boolean">false</con1:property><con1:property propagates="true" key="disableSoapuiAssertions" type="java.lang.Boolean">false</con1:property><con1:property propagates="true" key="forceShareDatasources" type="java.lang.Boolean">true</con1:property></con1:properties><con1:attributes><con1:property key="com.eviware.loadui.api.model.ComponentItem@type">Ready API TestCase Runner</con1:property></con1:attributes><con1:addons/></con1:component><con1:connection outputTerminalId="c194ddb1-9afe-403b-b9d2-afd11655dbd1/triggerTerminal" inputTerminalId="589e4b80-433f-42ae-9944-ff6aa86845f7/triggerTerminal"/></con1:scene><con1:statistics><con1:page title="DefaultLoadUIStatisticPage"><con1:chartGroup type="com.eviware.loadui.api.statistics.model.chart.line.LineChartView" title="" groupType="Monitors"><con1:attributes/></con1:chartGroup></con1:page></con1:statistics></con1:loadui-project><con:loadUITestScenario projectId="033db177-8c18-4289-84bd-b883b2c0dab6" scenarioId="422ce4d4-800e-48f6-860a-9588649ca0ae" name="New Scenario" id="2ab5dbd2-82a5-45dc-8696-8a892a92a86d"><con:settings/></con:loadUITestScenario></con:loadUiTest></con:soapui-project>

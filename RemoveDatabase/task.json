@@ -1,0 +1,32 @@
+{
+  "id": "5DE86DE4-4C7B-409F-863C-6412D7DEF241",
+  "name": "RemoveDatabase",  
+  "friendlyName": "Remove SQL server database",
+  "description": "Used to remove a local database",
+  "category": "Utility",
+  "author": "Nohm",
+  "version": {
+    "Major": 0,
+    "Minor": 1,
+    "Patch": 2
+  },
+  "minimumAgentVersion": "1.83.0",
+  "inputs": [
+    {
+        "name": "dbName",
+        "type": "string",
+        "label": "Database name",
+        "defaultValue": "",
+        "required": true,
+        "helpMarkDown": "The name of the database to remove"
+    }
+  ],
+  "instanceNameFormat": "Remove $(dbName) database",
+  "execution": {
+    "PowerShell": {
+      "target": "$(currentDirectory)\\RemoveDatabase.ps1",
+      "argumentFormat": "",
+      "workingDirectory": "$(currentDirectory)"
+    }
+  }
+}

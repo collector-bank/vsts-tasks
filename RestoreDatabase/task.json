@@ -1,0 +1,48 @@
+{
+  "id": "fbae48f5-f67c-4aa6-8ccc-8ca7c88c9182",
+  "name": "RestoreDatabase",  
+  "friendlyName": "Restore SQL server database",
+  "description": "Used to restore a database",
+  "category": "Utility",
+  "author": "Nohm",
+  "version": {
+    "Major": 1,
+    "Minor": 0,
+    "Patch": 7
+  },
+  "minimumAgentVersion": "1.83.0",
+  "inputs": [
+    {
+        "name": "fileName",
+        "type": "filePath",
+        "label": "Backup file path",
+        "defaultValue": "",
+        "required": true,
+        "helpMarkDown": "The SQL server backup file path"
+    },
+    {
+        "name": "dbName",
+        "type": "string",
+        "label": "Database name",
+        "defaultValue": "",
+        "required": true,
+        "helpMarkDown": "The name of the database to restore to"
+    },
+	{
+        "name": "OurVerbose",
+        "type": "string",
+        "label": "VerbosePreference",
+        "defaultValue": "Continue",
+        "required": false,
+        "helpMarkDown": "Powershell VerbosePreference(Accepted values is Continue and SilentlyContinue)"
+    }
+  ],
+  "instanceNameFormat": "Restore $(dbName) database",
+  "execution": {
+    "PowerShell": {
+      "target": "$(currentDirectory)\\RestoreDatabase.ps1",
+      "argumentFormat": "",
+      "workingDirectory": "$(currentDirectory)"
+    }
+  }
+}

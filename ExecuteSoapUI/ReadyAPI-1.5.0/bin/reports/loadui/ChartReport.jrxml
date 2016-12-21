@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd"
+              name="ChartReport" pageWidth="505" pageHeight="802" columnWidth="505" leftMargin="0" rightMargin="0"
+              topMargin="0" bottomMargin="0">
+    <property name="ireport.zoom" value="1.0"/>
+    <property name="ireport.x" value="0"/>
+    <property name="ireport.y" value="0"/>
+    <template>
+        <![CDATA[com.eviware.loadui.api.LoadUI.getWorkingDir().getAbsolutePath() + "/reports/loadui/styles.jrtx"]]></template>
+    <field name="chartName" class="java.lang.String"/>
+    <field name="isImage" class="java.lang.Boolean"/>
+    <field name="chart" class="java.awt.Image"/>
+    <field name="chartTitle" class="java.lang.String"/>
+    <field name="isTable" class="java.lang.Boolean"/>
+    <field name="tableReportName" class="java.lang.String"/>
+    <field name="table" class="net.sf.jasperreports.engine.JRDataSource"/>
+    <field name="legend" class="net.sf.jasperreports.engine.JRDataSource"/>
+    <background>
+        <band splitType="Stretch"/>
+    </background>
+    <detail>
+        <band height="100" splitType="Prevent">
+            <textField>
+                <reportElement positionType="Float" x="0" y="0" width="505" height="20" forecolor="#000000"/>
+                    <textElement>
+                        <font isBold="true" size="13"/>
+                    </textElement>
+                    <textFieldExpression class="java.lang.String"><![CDATA[$F{chartTitle}]]></textFieldExpression>
+            </textField>
+            <image scaleImage="RealHeight">
+                <reportElement x="0" y="40" width="505" height="50">
+                    <printWhenExpression>
+                        <![CDATA[new Boolean($F{isImage}.booleanValue())]]>
+                    </printWhenExpression>
+                </reportElement>
+                <imageExpression class="java.awt.Image"><![CDATA[$F{chart}]]></imageExpression>
+            </image>
+            <subreport>
+                <reportElement positionType="Float" x="0" y="40" width="505" height="50" isRemoveLineWhenBlank="true">
+                    <printWhenExpression>
+                        <![CDATA[new Boolean($F{isTable}.booleanValue())]]>
+                    </printWhenExpression>
+                </reportElement>
+                <dataSourceExpression><![CDATA[$F{table}]]></dataSourceExpression>
+                <subreportExpression class="java.lang.String"><![CDATA[$F{tableReportName}]]></subreportExpression>
+            </subreport>
+        </band>
+    </detail>
+</jasperReport>

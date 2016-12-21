@@ -1,0 +1,586 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project activeEnvironment="Default environment" name="XPATH Injection Sample Project" resourceRoot="${projectDir}" soapui-version="6.0.0" abortOnError="false" runType="SEQUENTIAL" id="56e06d62-1a4d-445a-8d5f-e79ad1abddc2" xmlns:con="http://eviware.com/soapui/config">
+  <con:description>Demonstrates checking a local virtual service for vulnerability to XPATH injections.</con:description>
+  <con:settings>
+    <con:setting id="com.eviware.soapui.impl.wsdl.actions.iface.tools.support.ProSecurityTestRunnerAction@values-local"><![CDATA[<xml-fragment xmlns:con="http://eviware.com/soapui/config">
+  <con:entry key="Environment" value="Default"/>
+  <con:entry key="Global Properties" value=""/>
+  <con:entry key="TestSuite" value="TestSuite 1"/>
+  <con:entry key="Password" value=""/>
+  <con:entry key="soapui-setings.xml Password" value=""/>
+  <con:entry key="SecurityTest" value="&lt;all>"/>
+  <con:entry key="Tool Args" value=""/>
+  <con:entry key="Ignore Errors" value="false"/>
+  <con:entry key="Host:Port" value=""/>
+  <con:entry key="WSS Password Type" value=""/>
+  <con:entry key="Save Project" value="false"/>
+  <con:entry key="Enable UI" value="false"/>
+  <con:entry key="System Properties" value=""/>
+  <con:entry key="Domain" value=""/>
+  <con:entry key="Coverage Report" value="false"/>
+  <con:entry key="SecurityTestRunner Path" value="C:\Program Files\SmartBear\soapUI-Pro-4.6.1\bin"/>
+  <con:entry key="Export JUnit Results" value="true"/>
+  <con:entry key="Open Report" value="false"/>
+  <con:entry key="Project Properties" value=""/>
+  <con:entry key="Export All" value="false"/>
+  <con:entry key="Project Password" value=""/>
+  <con:entry key="Report Format(s)" value="PDF"/>
+  <con:entry key="TestCase" value="TestCase 1"/>
+  <con:entry key="Print Report" value="true"/>
+  <con:entry key="Username" value=""/>
+  <con:entry key="Root Folder" value="C:\TestReport\"/>
+  <con:entry key="Select Report Type" value=""/>
+  <con:entry key="Save After" value="false"/>
+  <con:entry key="Add Settings" value="false"/>
+  <con:entry key="Endpoint" value=""/>
+</xml-fragment>]]></con:setting>
+    <con:setting id="com.eviware.soapui.impl.wsdl.actions.iface.tools.soapui.ProTestRunnerAction@values-local"><![CDATA[<xml-fragment xmlns:con="http://eviware.com/soapui/config">
+  <con:entry key="Environment" value="Default"/>
+  <con:entry key="Global Properties" value=""/>
+  <con:entry key="TestSuite" value="&lt;all>"/>
+  <con:entry key="Report to Generate" value=""/>
+  <con:entry key="Password" value=""/>
+  <con:entry key="soapui-setings.xml Password" value=""/>
+  <con:entry key="TestRunner Path" value=""/>
+  <con:entry key="Tool Args" value=""/>
+  <con:entry key="Ignore Errors" value="false"/>
+  <con:entry key="Host:Port" value=""/>
+  <con:entry key="WSS Password Type" value=""/>
+  <con:entry key="Save Project" value="false"/>
+  <con:entry key="Enable UI" value="false"/>
+  <con:entry key="System Properties" value=""/>
+  <con:entry key="Domain" value=""/>
+  <con:entry key="Coverage Report" value="false"/>
+  <con:entry key="Export JUnit Results" value="false"/>
+  <con:entry key="Open Report" value="false"/>
+  <con:entry key="Project Properties" value=""/>
+  <con:entry key="Project Password" value=""/>
+  <con:entry key="Export All" value="false"/>
+  <con:entry key="Report Format(s)" value=""/>
+  <con:entry key="TestCase" value="&lt;all>"/>
+  <con:entry key="Print Report" value="false"/>
+  <con:entry key="Username" value=""/>
+  <con:entry key="Root Folder" value=""/>
+  <con:entry key="Save After" value="false"/>
+  <con:entry key="Add Settings" value="false"/>
+  <con:entry key="Endpoint" value=""/>
+</xml-fragment>]]></con:setting>
+  </con:settings>
+  <con:interface xsi:type="con:WsdlInterface" wsaVersion="NONE" name="SecurityProjectSoapBinding" type="wsdl" bindingName="{http://securityproject.SmartBear.com}SecurityProjectSoapBinding" soapVersion="1_1" anonymous="optional" definition="http://localhost:8094/SecurityProject/wsdl/SecurityProject.wsdl" id="6ca93130-3082-4058-9b69-d3bec4dab55b" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <con:settings/>
+    <con:definitionCache type="TEXT" rootPart="http://localhost:8094/SecurityProject/wsdl/SecurityProject.wsdl">
+      <con:part>
+        <con:url>http://localhost:8094/SecurityProject/wsdl/SecurityProject.wsdl</con:url>
+        <con:content><![CDATA[<wsdl:definitions targetNamespace="http://securityproject.SmartBear.com" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://securityproject.SmartBear.com" xmlns:intf="http://securityproject.SmartBear.com" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+  <wsdl:types>
+    <schema elementFormDefault="qualified" targetNamespace="http://securityproject.SmartBear.com" xmlns="http://www.w3.org/2001/XMLSchema">
+      <element name="login">
+        <complexType>
+          <sequence>
+            <element name="name" type="xsd:string"/>
+            <element name="password" type="xsd:string"/>
+          </sequence>
+        </complexType>
+      </element>
+      <element name="loginResponse">
+        <complexType>
+          <sequence>
+            <element name="loginReturn" type="xsd:string"/>
+          </sequence>
+        </complexType>
+      </element>
+      <element name="logout">
+        <complexType>
+          <sequence>
+            <element name="sessionID" type="xsd:string"/>
+          </sequence>
+        </complexType>
+      </element>
+      <element name="logoutResponse">
+        <complexType>
+          <sequence>
+            <element name="logoutReturn" type="xsd:boolean"/>
+          </sequence>
+        </complexType>
+      </element>
+      <element name="guestBookPost">
+        <complexType>
+          <sequence>
+            <element name="sessionID" type="xsd:string"/>
+            <element name="post" type="xsd:string"/>
+          </sequence>
+        </complexType>
+      </element>
+      <element name="guestBookPostResponse">
+        <complexType>
+          <sequence>
+            <element name="guestBookPostReturn" type="xsd:boolean"/>
+          </sequence>
+        </complexType>
+      </element>
+      <element name="getGuestBookPost">
+        <complexType>
+          <sequence>
+            <element name="UserID" type="xsd:string"/>
+            <element name="postID" type="xsd:string"/>
+          </sequence>
+        </complexType>
+      </element>
+      <element name="getGuestBookPostResponse">
+        <complexType>
+          <sequence>
+            <element name="getGuestBookPostReturn" type="xsd:boolean"/>
+          </sequence>
+        </complexType>
+      </element>
+    </schema>
+  </wsdl:types>
+  <wsdl:message name="guestBookPostResponse">
+    <wsdl:part element="impl:guestBookPostResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="guestBookPostRequest">
+    <wsdl:part element="impl:guestBookPost" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="logoutResponse">
+    <wsdl:part element="impl:logoutResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="logoutRequest">
+    <wsdl:part element="impl:logout" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getGuestBookPostRequest">
+    <wsdl:part element="impl:getGuestBookPost" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="loginRequest">
+    <wsdl:part element="impl:login" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getGuestBookPostResponse">
+    <wsdl:part element="impl:getGuestBookPostResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="loginResponse">
+    <wsdl:part element="impl:loginResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="SecurityProject">
+    <wsdl:operation name="login">
+      <wsdl:input message="impl:loginRequest" name="loginRequest"></wsdl:input>
+      <wsdl:output message="impl:loginResponse" name="loginResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="logout">
+      <wsdl:input message="impl:logoutRequest" name="logoutRequest"></wsdl:input>
+      <wsdl:output message="impl:logoutResponse" name="logoutResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="guestBookPost">
+      <wsdl:input message="impl:guestBookPostRequest" name="guestBookPostRequest"></wsdl:input>
+      <wsdl:output message="impl:guestBookPostResponse" name="guestBookPostResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getGuestBookPost">
+      <wsdl:input message="impl:getGuestBookPostRequest" name="getGuestBookPostRequest"></wsdl:input>
+      <wsdl:output message="impl:getGuestBookPostResponse" name="getGuestBookPostResponse"></wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="SecurityProjectSoapBinding" type="impl:SecurityProject">
+    <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="login">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="loginRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="loginResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="logout">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="logoutRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="logoutResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="guestBookPost">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="guestBookPostRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="guestBookPostResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getGuestBookPost">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="getGuestBookPostRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getGuestBookPostResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="SecurityProjectService">
+    <wsdl:port binding="impl:SecurityProjectSoapBinding" name="SecurityProject">
+      <wsdlsoap:address location="http://localhost:8094/SecurityProject/services/SecurityProject"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>]]></con:content>
+        <con:type>http://schemas.xmlsoap.org/wsdl/</con:type>
+      </con:part>
+    </con:definitionCache>
+    <con:endpoints>
+      <con:endpoint>http://localhost:8094/SecurityProject/services/SecurityProject</con:endpoint>
+      <con:endpoint>http://localhost:8094/webServices/services/SecurityProject</con:endpoint>
+    </con:endpoints>
+    <con:operation isOneWay="false" action="" name="login" bindingOperationName="login" type="Request-Response" outputName="loginResponse" inputName="loginRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional" id="765e8662-78c8-4f48-b3b7-c7967c9b535f">
+      <con:settings/>
+      <con:call name="Request 1" id="7b40120f-a6a5-40e0-817c-8e5e221e7171" defaultOutgoingWss="" defaultIncomingWss="">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+        </con:settings>
+        <con:encoding>UTF-8</con:encoding>
+        <con:endpoint>http://localhost:8094/SecurityProject/services/SecurityProject</con:endpoint>
+        <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://webservices.SmartBear.com" xmlns:sec="http://securityproject.SmartBear.com">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <sec:login>
+         <sec:name>scott</sec:name>
+         <sec:password>tiger</sec:password>
+      </sec:login>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request>
+        <con:credentials>
+          <con:selectedAuthProfile>Basic</con:selectedAuthProfile>
+          <con:addedBasicAuthenticationTypes>Basic</con:addedBasicAuthenticationTypes>
+          <con:authType>Global HTTP Settings</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:jmsPropertyConfig/>
+        <con:wsaConfig mustUnderstand="NONE" version="200508" action="http://webservices.SmartBear.com/SecurityProject/loginRequest"/>
+        <con:wsrmConfig version="1.2"/>
+      </con:call>
+    </con:operation>
+    <con:operation isOneWay="false" action="" name="logout" bindingOperationName="logout" type="Request-Response" outputName="logoutResponse" inputName="logoutRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional" id="6d82f500-e2c0-41cf-ba86-654d64ab4b05">
+      <con:settings/>
+      <con:call name="Request 1" id="dfa77388-e66d-48a0-a6bb-29462e7c6130" defaultOutgoingWss="" defaultIncomingWss="">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+        </con:settings>
+        <con:encoding>UTF-8</con:encoding>
+        <con:endpoint>http://localhost:8094/SecurityProject/services/SecurityProject</con:endpoint>
+        <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://webservices.SmartBear.com" xmlns:sec="http://securityproject.SmartBear.com">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <sec:logout>
+         <sec:sessionID>?</sec:sessionID>
+      </sec:logout>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request>
+        <con:credentials>
+          <con:selectedAuthProfile>Basic</con:selectedAuthProfile>
+          <con:addedBasicAuthenticationTypes>Basic</con:addedBasicAuthenticationTypes>
+          <con:authType>Global HTTP Settings</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:jmsPropertyConfig/>
+        <con:wsaConfig mustUnderstand="NONE" version="200508" action="http://webservices.SmartBear.com/SecurityProject/logoutRequest"/>
+        <con:wsrmConfig version="1.2"/>
+      </con:call>
+    </con:operation>
+    <con:operation isOneWay="false" action="" name="guestBookPost" bindingOperationName="guestBookPost" type="Request-Response" outputName="guestBookPostResponse" inputName="guestBookPostRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional" id="e5a770b3-a965-44d0-b086-18a24ea1530a">
+      <con:settings/>
+      <con:call name="Request 1" id="e04f5bed-497c-470b-b7f9-3b0b11984e84" defaultOutgoingWss="" defaultIncomingWss="">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+        </con:settings>
+        <con:encoding>UTF-8</con:encoding>
+        <con:endpoint>http://localhost:8094/SecurityProject/services/SecurityProject</con:endpoint>
+        <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://webservices.SmartBear.com" xmlns:sec="http://securityproject.SmartBear.com">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <sec:guestBookPost>
+         <sec:sessionID>?</sec:sessionID>
+         <sec:post>?</sec:post>
+      </sec:guestBookPost>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request>
+        <con:credentials>
+          <con:selectedAuthProfile>Basic</con:selectedAuthProfile>
+          <con:addedBasicAuthenticationTypes>Basic</con:addedBasicAuthenticationTypes>
+          <con:authType>Global HTTP Settings</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:jmsPropertyConfig/>
+        <con:wsaConfig mustUnderstand="NONE" version="200508" action="http://webservices.SmartBear.com/SecurityProject/GuestBookPostRequest"/>
+        <con:wsrmConfig version="1.2"/>
+      </con:call>
+    </con:operation>
+    <con:operation isOneWay="false" action="" name="getGuestBookPost" bindingOperationName="getGuestBookPost" type="Request-Response" outputName="getGuestBookPostResponse" inputName="getGuestBookPostRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional" id="98fb92e6-f4c2-4f23-8619-3c2441213800">
+      <con:settings/>
+      <con:call name="Request 1" id="a253119b-d0ea-4e7e-ae57-8896c7c4f863" defaultOutgoingWss="" defaultIncomingWss="">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+        </con:settings>
+        <con:encoding>UTF-8</con:encoding>
+        <con:endpoint>http://localhost:8094/SecurityProject/services/SecurityProject</con:endpoint>
+        <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:sec="http://securityproject.SmartBear.com">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <sec:getGuestBookPost>
+         <sec:UserID>?</sec:UserID>
+         <sec:postID>?</sec:postID>
+      </sec:getGuestBookPost>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request>
+        <con:credentials>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:jmsPropertyConfig/>
+        <con:wsaConfig mustUnderstand="NONE" version="200508" action="http://securityproject.SmartBear.com/SecurityProject/getGuestBookPostRequest"/>
+        <con:wsrmConfig version="1.2"/>
+      </con:call>
+    </con:operation>
+  </con:interface>
+  <con:testSuite name="TestSuite" id="705895a6-4cd7-4254-b9c8-ccf9cd12a7ed">
+    <con:settings/>
+    <con:runType>SEQUENTIAL</con:runType>
+    <con:testCase failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="Security TestCase" searchProperties="true" id="77f10121-6645-43ca-9d03-fcfd769971a3">
+      <con:settings>
+        <con:setting id="IncludeOverview">true</con:setting>
+        <con:setting id="IncludeResults">true</con:setting>
+        <con:setting id="FlowLayout">false</con:setting>
+        <con:setting id="ErrorDetails">true</con:setting>
+        <con:setting id="IncludeCoverage">true</con:setting>
+      </con:settings>
+      <con:testStep type="VirtRunnerTestStep" name="Start Virt Service" id="ae4bfa65-be8f-4ff6-a697-84ab3c058f82">
+        <con:settings/>
+        <con:config>
+          <url>localhost</url>
+          <server>XPATH Injection Virt</server>
+          <action>run</action>
+        </con:config>
+      </con:testStep>
+      <con:testStep type="request" name="login" id="267766ca-a614-485a-9bc4-4d7727b886fb">
+        <con:settings/>
+        <con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:interface>SecurityProjectSoapBinding</con:interface>
+          <con:operation>login</con:operation>
+          <con:request name="login" outgoingWss="" incomingWss="" timeout="" sslKeystore="" useWsAddressing="false" useWsReliableMessaging="false" wssPasswordType="" id="ff205e8c-dfa1-4930-8828-f465021ce9cc" defaultOutgoingWss="" defaultIncomingWss="">
+            <con:settings>
+              <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+            </con:settings>
+            <con:encoding>UTF-8</con:encoding>
+            <con:endpoint>http://localhost:8094/SecurityProject/services/SecurityProject</con:endpoint>
+            <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://webservices.SmartBear.com" xmlns:sec="http://securityproject.SmartBear.com">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <sec:login>
+         <sec:name>scott</sec:name>
+         <sec:password>tiger</sec:password>
+      </sec:login>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request>
+            <con:assertion type="SOAP Response" name="SOAP Response" id="f7271612-988c-4a38-8da9-5845f117ab7a"/>
+            <con:credentials>
+              <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+              <con:addedBasicAuthenticationTypes>Basic</con:addedBasicAuthenticationTypes>
+              <con:authType>No Authorization</con:authType>
+            </con:credentials>
+            <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+            <con:jmsPropertyConfig/>
+            <con:wsaConfig mustUnderstand="NONE" version="200508" action="http://webservices.SmartBear.com/SecurityProject/loginRequest"/>
+            <con:wsrmConfig version="1.2"/>
+          </con:request>
+        </con:config>
+      </con:testStep>
+      <con:testStep type="VirtRunnerTestStep" name="Stop Virt Service" id="3f479cff-6dd4-4d31-b60c-cf6658130269">
+        <con:settings/>
+        <con:config>
+          <url>localhost</url>
+          <server>XPATH Injection Virt</server>
+          <action>stop</action>
+        </con:config>
+      </con:testStep>
+      <con:properties/>
+      <con:reportParameters/>
+      <con:securityTest name="SecurityTest Case" failOnError="true" id="82ca3b1c-d8f1-46d8-9e36-0c8590bb2f9c" testCaseId="77f10121-6645-43ca-9d03-fcfd769971a3">
+        <con:settings>
+          <con:setting id="IncludeSecurityTestOverview">true</con:setting>
+        </con:settings>
+        <con:testStepSecurityTest>
+          <con:testStepId>267766ca-a614-485a-9bc4-4d7727b886fb</con:testStepId>
+          <con:testStepSecurityScan type="XPathInjectionSecurityScan" name="XPath Injection" id="da9cd367-92d4-4fc6-bb74-aa601bb1d2ba" applyForFailedStep="false" disabled="false" runOnlyOnce="true">
+            <con:settings/>
+            <con:config xsi:type="con:XPathInjection" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+              <con:xpathList>or name(//users/LoginID[1]) = 'LoginID' or 'a'='b</con:xpathList>
+              <con:xpathList>' or '1'='1</con:xpathList>
+              <con:xpathList>1/0</con:xpathList>
+              <con:xpathList>'%20o/**/r%201/0%20--</con:xpathList>
+              <con:xpathList>' o/**/r 1/0 --</con:xpathList>
+              <con:xpathList>;</con:xpathList>
+              <con:xpathList>'%20and%201=2%20--</con:xpathList>
+              <con:xpathList>' and 1=2 --</con:xpathList>
+              <con:xpathList>test�%20UNION%20select%201,%20@@version,%201,%201;�</con:xpathList>
+              <con:xpathList>test� UNION select 1, @@version, 1, 1;�</con:xpathList>
+            </con:config>
+            <con:assertion type="Sensitive Information Exposure" id="055a9af1-9a80-4165-87b3-b9ef988b2062" name="Sensitive Information Exposure">
+              <con:configuration>
+                <IncludeProjectSpecific>true</IncludeProjectSpecific>
+                <IncludeGlobal>true</IncludeGlobal>
+              </con:configuration>
+            </con:assertion>
+            <con:assertion type="XPath Match" id="75e26016-c5d7-4662-b3d4-62a14b3b36ed" name="XPath Match">
+              <con:configuration>
+                <path>declare namespace ns1='http://securityproject.SmartBear.com';
+exists(//ns1:loginResponse[1]/ns1:loginReturn[1])</path>
+                <content>false</content>
+                <allowWildcards>false</allowWildcards>
+                <ignoreNamspaceDifferences>false</ignoreNamspaceDifferences>
+                <ignoreComments>false</ignoreComments>
+              </con:configuration>
+            </con:assertion>
+            <con:testStep xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+            <con:checkedParameters xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+              <con:parameters label="password1" parameterName="Request" xpath="declare namespace sec='http://securityproject.SmartBear.com'; //sec:login[1]/sec:password[1]" checked="true"/>
+              <con:parameters label="name" parameterName="Request" xpath="declare namespace sec='http://securityproject.SmartBear.com'; //sec:login[1]/sec:name[1]" checked="true"/>
+            </con:checkedParameters>
+            <con:executionStrategy xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+              <con:strategy>ONE_BY_ONE</con:strategy>
+              <con:delay>100</con:delay>
+            </con:executionStrategy>
+          </con:testStepSecurityScan>
+        </con:testStepSecurityTest>
+        <con:properties/>
+        <con:reportParameters/>
+      </con:securityTest>
+      <con:breakPoints>
+        <con:testStepId>ae4bfa65-be8f-4ff6-a697-84ab3c058f82</con:testStepId>
+        <con:status>NONE</con:status>
+        <con:properties/>
+      </con:breakPoints>
+    </con:testCase>
+    <con:properties/>
+    <con:reportParameters/>
+  </con:testSuite>
+  <con:mockService id="6a72d687-88b0-4c31-ad62-a3dfd048172e" port="8094" path="/" host="michaelgiller" name="XPATH Injection Virt">
+    <con:settings>
+      <con:setting id="com.eviware.soapui.impl.wsdl.mock.WsdlMockService@require-soap-action">false</con:setting>
+    </con:settings>
+    <con:properties/>
+    <con:constraints>
+      <con:congestion>0</con:congestion>
+      <con:inputBandwidth>-1</con:inputBandwidth>
+      <con:outputBandwidth>-1</con:outputBandwidth>
+      <con:maxThreadPoolCapacity>10</con:maxThreadPoolCapacity>
+      <con:coreThreadPoolCapacity>5</con:coreThreadPoolCapacity>
+      <con:minApplicationDelay>0</con:minApplicationDelay>
+      <con:virtError>
+        <con:start>-1</con:start>
+      </con:virtError>
+    </con:constraints>
+    <con:dataSources/>
+    <con:headerValidator type="NONE"/>
+    <con:mockOperation name="login" id="e099e371-136c-4146-8c0b-e4231702d7a6" interface="SecurityProjectSoapBinding" operation="login">
+      <con:settings/>
+      <con:defaultResponse>Invalid Login</con:defaultResponse>
+      <con:dispatchStyle>SCRIPT</con:dispatchStyle>
+      <con:dispatchPath>def groovyUtils = new com.eviware.soapui.support.GroovyUtils( context )
+def holder = groovyUtils.getXmlHolder( mockRequest.requestContent )
+
+def username = holder.getNodeValue( "declare namespace sec='http://securityproject.SmartBear.com'; //sec:login[1]/sec:name[1]" )
+def password = holder.getNodeValue( "declare namespace sec='http://securityproject.SmartBear.com'; //sec:login[1]/sec:password[1]" )
+
+// validate
+if (username.equals("scott") &amp;&amp; (password.equals("tiger") || password.equals(";"))) {
+	
+	// seems ok
+	def sessionid = String.valueOf( Math.random() ).substring( 2 )
+
+	requestContext.sessionid = sessionid
+	return "OK Response"
+}
+
+// else 
+return "Invalid Login"</con:dispatchPath>
+      <con:response name="OK Response" id="eaa018c6-e033-481c-9664-1c12371fd8a6" httpResponseStatus="200" encoding="UTF-8" dataSource="">
+        <con:settings/>
+        <con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+   <soapenv:Body>
+      <loginResponse xmlns="http://securityproject.SmartBear.com">
+         <loginReturn>${sessionid}</loginReturn>
+      </loginResponse>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:responseContent>
+        <con:wsaConfig mustUnderstand="NONE" version="200508" action="http://securityproject.SmartBear.com/SecurityProject/loginResponse"/>
+      </con:response>
+      <con:response name="Invalid Login" id="5a851653-1d55-4a06-b977-d51485fbea2e" httpResponseStatus="500" encoding="UTF-8" dataSource="">
+        <con:settings/>
+        <con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:sam="http://www.soapui.org/sample/">
+   <soapenv:Body>
+      <soapenv:Fault>
+         <faultcode>Client</faultcode>
+         <faultstring>Invalid Login</faultstring>
+         <detail>
+            <sam:loginFault>The login credentials are invalid</sam:loginFault>
+         </detail>
+      </soapenv:Fault>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:responseContent>
+        <con:wsaConfig mustUnderstand="NONE" version="200508" action="http://securityproject.SmartBear.com/SecurityProject/loginResponse"/>
+      </con:response>
+      <con:dispatchConfig/>
+    </con:mockOperation>
+  </con:mockService>
+  <con:requirements>
+    <con:requirement>
+      <con:id>1</con:id>
+      <con:name>Can we login</con:name>
+      <con:description>Can we login</con:description>
+      <con:status>In Scope</con:status>
+      <con:links/>
+      <con:testCases/>
+    </con:requirement>
+  </con:requirements>
+  <con:properties/>
+  <con:wssContainer/>
+  <con:databaseConnectionContainer/>
+  <con:oAuth2ProfileContainer>
+    <con:oAuth2Profile>
+      <con:name>OAuth 2 - Profile 1</con:name>
+      <con:type>OAuth 2.0</con:type>
+      <con:accessTokenPosition>HEADER</con:accessTokenPosition>
+      <con:refreshAccessTokenMethod>AUTOMATIC</con:refreshAccessTokenMethod>
+    </con:oAuth2Profile>
+  </con:oAuth2ProfileContainer>
+  <con:reporting>
+    <con:reportTemplates/>
+    <con:xmlTemplates/>
+    <con:parameters/>
+  </con:reporting>
+  <con:eventHandlers type="SecurityTestRunListener.afterSecurityScanRequest" name="SecurityTestRunListener.afterSecurityScanRequest">
+    <con:script disabled="true">// create groovyUtils and XmlHolder for response of Request 1 request
+def groovyUtils = new com.eviware.soapui.support.GroovyUtils( context )
+def stepName = context.getCurrentStep().getLabel()
+
+// if 200 HTTP status code - Enable Assertion
+if (testRunner.testCase.testSteps[stepName].testRequest.response.responseHeaders["#status#"].contains("HTTP/1.1 200 OK")){
+	
+	log.info "ENABLED"
+	testRunner.testCase.testSteps[stepName].assertions["Valid HTTP Status Codes"].disabled = false
+// else disable it
+} else {
+	log.info "DISABLED"
+	testRunner.testCase.testSteps[stepName].assertions["Valid HTTP Status Codes"].disabled = true
+}</con:script>
+  </con:eventHandlers>
+  <con:sensitiveInformation>
+    <ProjectSpecificExposureList>null###null</ProjectSpecificExposureList>
+  </con:sensitiveInformation>
+  <con:environment name="DEV">
+    <con:service type="SOAP" name="SecurityProjectSoapBinding">
+      <con:endpoint domain="" incomingWss="" outgoingWss="" password="" username="" wssTimeToLive="" wssType="">http://localhost:8094/webServices/services/SecurityProject</con:endpoint>
+    </con:service>
+    <con:databaseConnectionContainer/>
+  </con:environment>
+  <con:authRepository/>
+</con:soapui-project>

@@ -1,0 +1,2491 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project id="9261172e-0239-4bb5-8ec1-c48dd1c2b924" activeEnvironment="Default environment" name="Google Maps Sample Project" resourceRoot="" soapui-version="6.0.0" xmlns:con="http://eviware.com/soapui/config">
+  <con:settings/>
+  <con:interface xsi:type="con:RestService" id="d6f9213c-afb4-4203-8a72-4303f5cbd15a" wadlVersion="http://wadl.dev.java.net/2009/02" name="http://maps.googleapis.com" type="rest" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <con:settings/>
+    <con:definitionCache type="TEXT" rootPart=""/>
+    <con:endpoints>
+      <con:endpoint>http://localhost:8088/</con:endpoint>
+      <con:endpoint>http://maps.googleapis.com</con:endpoint>
+    </con:endpoints>
+    <con:resource name="Get distance and travel time between two cities (JSON)" path="/maps/api/distancematrix/json" id="57c865d8-c048-44de-94f6-ae884783a83c">
+      <con:settings/>
+      <con:parameters>
+        <con:parameter>
+          <con:name>origins</con:name>
+          <con:value>${#Project#origins}</con:value>
+          <con:style>QUERY</con:style>
+          <con:default>${#Project#origins}</con:default>
+          <con:path xsi:nil="true"/>
+          <con:description xsi:nil="true"/>
+        </con:parameter>
+        <con:parameter>
+          <con:name>destinations</con:name>
+          <con:value>${#Project#destinations}</con:value>
+          <con:style>QUERY</con:style>
+          <con:default>${#Project#destinations}</con:default>
+          <con:path xsi:nil="true"/>
+          <con:description xsi:nil="true"/>
+        </con:parameter>
+        <con:parameter>
+          <con:name>mode</con:name>
+          <con:value>bicycling</con:value>
+          <con:style>QUERY</con:style>
+          <con:default>bicycling</con:default>
+          <con:path xsi:nil="true"/>
+          <con:description xsi:nil="true"/>
+        </con:parameter>
+        <con:parameter>
+          <con:name>language</con:name>
+          <con:value>en-US</con:value>
+          <con:style>QUERY</con:style>
+          <con:default>en-US</con:default>
+          <con:path xsi:nil="true"/>
+          <con:description xsi:nil="true"/>
+        </con:parameter>
+        <con:parameter>
+          <con:name>sensor</con:name>
+          <con:value>false</con:value>
+          <con:style>QUERY</con:style>
+          <con:default>false</con:default>
+          <con:path xsi:nil="true"/>
+          <con:description xsi:nil="true"/>
+        </con:parameter>
+      </con:parameters>
+      <con:method name="GET JSON request &quot;between two cities&quot;" id="40fa076c-60ce-46a2-bcde-019768a62454" method="GET">
+        <con:settings/>
+        <con:parameters/>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/json; charset=UTF-8</con:mediaType>
+          <con:status>200</con:status>
+          <con:params/>
+          <con:element xmlns:json="http://maps.googleapis.com/maps/api/distancematrix/json">json:Response</con:element>
+        </con:representation>
+        <con:representation type="FAULT">
+          <con:mediaType>text/html; charset=UTF-8</con:mediaType>
+          <con:status>401</con:status>
+          <con:params/>
+          <con:element>html</con:element>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType xsi:nil="true"/>
+          <con:status>0</con:status>
+          <con:params/>
+          <con:element>data</con:element>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType xsi:nil="true"/>
+          <con:status>0</con:status>
+          <con:params/>
+          <con:element>data</con:element>
+        </con:representation>
+        <con:request name="Request" id="7ff376a9-b1f0-4856-b156-147b57948b8a" mediaType="application/json" postQueryString="false">
+          <con:settings>
+            <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+          </con:settings>
+          <con:endpoint>http://localhost:8088/</con:endpoint>
+          <con:request/>
+          <con:originalUri>http://localhost/maps/api/distancematrix/json</con:originalUri>
+          <con:credentials>
+            <con:authType>No Authorization</con:authType>
+          </con:credentials>
+          <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+          <con:parameters>
+            <con:entry key="destinations" value="${#Project#destinations}"/>
+            <con:entry key="mode" value="transit"/>
+          </con:parameters>
+        </con:request>
+      </con:method>
+    </con:resource>
+    <con:resource name="Get information by address" path="/maps/api/geocode/json" id="81a3a10d-389f-41ee-9964-6ba4c9b99e1a">
+      <con:settings/>
+      <con:parameters>
+        <con:parameter>
+          <con:name>address</con:name>
+          <con:value>221B Baker Street, London</con:value>
+          <con:style>QUERY</con:style>
+          <con:default>221B Baker Street, London</con:default>
+        </con:parameter>
+        <con:parameter>
+          <con:name>sensor</con:name>
+          <con:value>false</con:value>
+          <con:style>QUERY</con:style>
+          <con:default>false</con:default>
+        </con:parameter>
+        <con:parameter>
+          <con:name>language</con:name>
+          <con:value/>
+          <con:style>QUERY</con:style>
+          <con:default/>
+          <con:description xsi:nil="true"/>
+        </con:parameter>
+      </con:parameters>
+      <con:method name="GET request &quot;info by address&quot;" id="b98784e4-2d44-42f9-8de8-cad2cc487e76" method="GET">
+        <con:settings/>
+        <con:parameters/>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/json; charset=UTF-8</con:mediaType>
+          <con:status>200</con:status>
+          <con:params/>
+          <con:element xmlns:json="http://maps.googleapis.com/maps/api/geocode/json">json:Response</con:element>
+        </con:representation>
+        <con:representation type="FAULT">
+          <con:mediaType>text/xml</con:mediaType>
+          <con:status>404</con:status>
+          <con:params/>
+          <con:element>html</con:element>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType xsi:nil="true"/>
+          <con:status>0</con:status>
+          <con:params/>
+          <con:element>data</con:element>
+        </con:representation>
+        <con:request name="The British Museum" id="e23be461-89d4-4791-8f3a-8e60f28edaef" mediaType="application/json">
+          <con:settings>
+            <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+          </con:settings>
+          <con:endpoint>http://localhost:8088/</con:endpoint>
+          <con:request/>
+          <con:originalUri>http://maps.googleapis.com/maps/api/geocode/json</con:originalUri>
+          <con:credentials>
+            <con:authType>No Authorization</con:authType>
+          </con:credentials>
+          <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+          <con:parameters>
+            <con:entry key="address" value="The British Museum, Great Russell Street, London"/>
+            <con:entry key="language" value="en-US"/>
+          </con:parameters>
+          <con:parameterOrder>
+            <con:entry>address</con:entry>
+            <con:entry>language</con:entry>
+            <con:entry>sensor</con:entry>
+          </con:parameterOrder>
+        </con:request>
+        <con:request name="Palais Royal" id="e23be461-89d4-4791-8f3a-8e60f28edaef" mediaType="application/json">
+          <con:settings>
+            <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+          </con:settings>
+          <con:endpoint>http://localhost:8088/</con:endpoint>
+          <con:request/>
+          <con:originalUri>http://maps.googleapis.com/maps/api/geocode/json</con:originalUri>
+          <con:credentials>
+            <con:authType>No Authorization</con:authType>
+          </con:credentials>
+          <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+          <con:parameters>
+            <con:entry key="address" value="Palais Royal, Musée du Louvre, Paris, France"/>
+            <con:entry key="language" value="en-US"/>
+          </con:parameters>
+          <con:parameterOrder>
+            <con:entry>address</con:entry>
+            <con:entry>language</con:entry>
+            <con:entry>sensor</con:entry>
+          </con:parameterOrder>
+        </con:request>
+        <con:request name="State Hermitage Museum" id="e23be461-89d4-4791-8f3a-8e60f28edaef" mediaType="application/json">
+          <con:settings>
+            <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+          </con:settings>
+          <con:endpoint>http://localhost:8088/</con:endpoint>
+          <con:request/>
+          <con:originalUri>http://maps.googleapis.com/maps/api/geocode/json</con:originalUri>
+          <con:credentials>
+            <con:authType>No Authorization</con:authType>
+          </con:credentials>
+          <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+          <con:parameters>
+            <con:entry key="address" value="State Hermitage Museum, Saint Petersburg, Russia"/>
+            <con:entry key="language" value="en-US"/>
+          </con:parameters>
+          <con:parameterOrder>
+            <con:entry>address</con:entry>
+            <con:entry>language</con:entry>
+            <con:entry>sensor</con:entry>
+          </con:parameterOrder>
+        </con:request>
+        <con:request name="Paseo del Prado" id="e23be461-89d4-4791-8f3a-8e60f28edaef" mediaType="application/json">
+          <con:settings>
+            <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+          </con:settings>
+          <con:endpoint>http://localhost:8088/</con:endpoint>
+          <con:request/>
+          <con:originalUri>http://maps.googleapis.com/maps/api/geocode/json</con:originalUri>
+          <con:credentials>
+            <con:authType>No Authorization</con:authType>
+          </con:credentials>
+          <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+          <con:parameters>
+            <con:entry key="address" value="Paseo del Prado, Madrid, Spain"/>
+            <con:entry key="language" value="en-US"/>
+          </con:parameters>
+          <con:parameterOrder>
+            <con:entry>address</con:entry>
+            <con:entry>language</con:entry>
+            <con:entry>sensor</con:entry>
+          </con:parameterOrder>
+        </con:request>
+        <con:request name="Metropolitan Museum of Art" id="e23be461-89d4-4791-8f3a-8e60f28edaef" mediaType="application/json">
+          <con:settings>
+            <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+          </con:settings>
+          <con:endpoint>http://localhost:8088/</con:endpoint>
+          <con:request/>
+          <con:originalUri>http://maps.googleapis.com/maps/api/geocode/json</con:originalUri>
+          <con:credentials>
+            <con:authType>No Authorization</con:authType>
+          </con:credentials>
+          <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+          <con:parameters>
+            <con:entry key="address" value="Metropolitan Museum of Art, New York City, NY"/>
+            <con:entry key="language" value="en-US"/>
+          </con:parameters>
+          <con:parameterOrder>
+            <con:entry>address</con:entry>
+            <con:entry>language</con:entry>
+            <con:entry>sensor</con:entry>
+          </con:parameterOrder>
+        </con:request>
+        <con:request name="Egyptian Museum" id="e23be461-89d4-4791-8f3a-8e60f28edaef" mediaType="application/json">
+          <con:settings>
+            <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+          </con:settings>
+          <con:endpoint>http://localhost:8088/</con:endpoint>
+          <con:request/>
+          <con:originalUri>http://maps.googleapis.com/maps/api/geocode/json</con:originalUri>
+          <con:credentials>
+            <con:authType>No Authorization</con:authType>
+          </con:credentials>
+          <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+          <con:parameters>
+            <con:entry key="address" value="Egyptian Museum, Cairo, Egypt"/>
+            <con:entry key="language" value="en-US"/>
+          </con:parameters>
+          <con:parameterOrder>
+            <con:entry>address</con:entry>
+            <con:entry>language</con:entry>
+            <con:entry>sensor</con:entry>
+          </con:parameterOrder>
+        </con:request>
+      </con:method>
+    </con:resource>
+    <con:resource name="Get distance and travel time between two cities (XML)" path="/maps/api/distancematrix/xml" id="57c865d8-c048-44de-94f6-ae884783a83c">
+      <con:settings/>
+      <con:parameters>
+        <con:parameter>
+          <con:name>origins</con:name>
+          <con:value>${#Project#origins}</con:value>
+          <con:style>QUERY</con:style>
+          <con:default>${#Project#origins}</con:default>
+          <con:path xsi:nil="true"/>
+          <con:description xsi:nil="true"/>
+        </con:parameter>
+        <con:parameter>
+          <con:name>destinations</con:name>
+          <con:value>${#Project#destinations}</con:value>
+          <con:style>QUERY</con:style>
+          <con:default>${#Project#destinations}</con:default>
+          <con:path xsi:nil="true"/>
+          <con:description xsi:nil="true"/>
+        </con:parameter>
+        <con:parameter>
+          <con:name>mode</con:name>
+          <con:value>bicycling</con:value>
+          <con:style>QUERY</con:style>
+          <con:default>bicycling</con:default>
+          <con:path xsi:nil="true"/>
+          <con:description xsi:nil="true"/>
+        </con:parameter>
+        <con:parameter>
+          <con:name>language</con:name>
+          <con:value>en-US</con:value>
+          <con:style>QUERY</con:style>
+          <con:default>en-US</con:default>
+          <con:path xsi:nil="true"/>
+          <con:description xsi:nil="true"/>
+        </con:parameter>
+        <con:parameter>
+          <con:name>sensor</con:name>
+          <con:value>false</con:value>
+          <con:style>QUERY</con:style>
+          <con:default>false</con:default>
+          <con:path xsi:nil="true"/>
+          <con:description xsi:nil="true"/>
+        </con:parameter>
+      </con:parameters>
+      <con:method name="GET XML request &quot;between two cities&quot;" id="40fa076c-60ce-46a2-bcde-019768a62454" method="GET">
+        <con:settings/>
+        <con:parameters/>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/json; charset=UTF-8</con:mediaType>
+          <con:status>200</con:status>
+          <con:params/>
+          <con:element xmlns:json="http://maps.googleapis.com/maps/api/distancematrix/json">json:Response</con:element>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/xml; charset=UTF-8</con:mediaType>
+          <con:status>200</con:status>
+          <con:params/>
+          <con:element>DistanceMatrixResponse</con:element>
+        </con:representation>
+        <con:representation type="FAULT">
+          <con:mediaType xsi:nil="true"/>
+          <con:status>500</con:status>
+          <con:params/>
+          <con:element>data</con:element>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/xml</con:mediaType>
+          <con:status>200</con:status>
+          <con:params/>
+          <con:element>DistanceMatrixResponse</con:element>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType xsi:nil="true"/>
+          <con:status>0</con:status>
+          <con:params/>
+          <con:element>data</con:element>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType xsi:nil="true"/>
+          <con:status>0</con:status>
+          <con:params/>
+          <con:element>data</con:element>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType xsi:nil="true"/>
+          <con:status>0</con:status>
+          <con:params/>
+          <con:element>data</con:element>
+        </con:representation>
+        <con:representation type="FAULT">
+          <con:mediaType xsi:nil="true"/>
+          <con:status>500</con:status>
+          <con:params/>
+          <con:element>data</con:element>
+        </con:representation>
+        <con:representation type="FAULT">
+          <con:mediaType xsi:nil="true"/>
+          <con:status>500</con:status>
+          <con:params/>
+          <con:element>data</con:element>
+        </con:representation>
+        <con:representation type="FAULT">
+          <con:mediaType xsi:nil="true"/>
+          <con:status>500</con:status>
+          <con:params/>
+          <con:element>data</con:element>
+        </con:representation>
+        <con:representation type="FAULT">
+          <con:mediaType xsi:nil="true"/>
+          <con:status>500</con:status>
+          <con:params/>
+          <con:element>data</con:element>
+        </con:representation>
+        <con:request name="Request" id="2f715393-7574-4da1-8b12-79b82ad5d08d" mediaType="application/json">
+          <con:settings>
+            <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+            <con:setting id="com.eviware.soapui.support.editor.views.xml.form2.FormEditorView@ViewType">All</con:setting>
+          </con:settings>
+          <con:endpoint>http://localhost:8088/</con:endpoint>
+          <con:request/>
+          <con:originalUri>http://maps.googleapis.com/maps/api/distancematrix/json</con:originalUri>
+          <con:credentials>
+            <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+            <con:authType>No Authorization</con:authType>
+          </con:credentials>
+          <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+          <con:parameters>
+            <con:entry key="destinations" value="${#Project#destinations}"/>
+            <con:entry key="origins" value="${#Project#origins}"/>
+            <con:entry key="mode" value="transit"/>
+          </con:parameters>
+          <con:parameterOrder>
+            <con:entry>origins</con:entry>
+            <con:entry>destinations</con:entry>
+            <con:entry>mode</con:entry>
+            <con:entry>language</con:entry>
+            <con:entry>sensor</con:entry>
+          </con:parameterOrder>
+        </con:request>
+      </con:method>
+    </con:resource>
+    <con:resource name="Get elevation" path="/maps/api/elevation/xml" id="62d26c99-efae-4cbd-ae1d-fe365a569431">
+      <con:settings/>
+      <con:parameters>
+        <con:parameter>
+          <con:name>locations</con:name>
+          <con:value>39.7391536,-104.9847034|39.7391536,-104.9847034</con:value>
+          <con:style>QUERY</con:style>
+          <con:default>39.7391536,-104.9847034|39.7391536,-104.9847034</con:default>
+        </con:parameter>
+      </con:parameters>
+      <con:method name="GET request &quot;elevation&quot;" id="e92a541e-387a-49c1-84c6-038362bf20e5" method="GET">
+        <con:settings/>
+        <con:parameters/>
+        <con:representation type="FAULT">
+          <con:mediaType>text/html; charset=UTF-8</con:mediaType>
+          <con:status>401 404</con:status>
+          <con:params/>
+          <con:element>html</con:element>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/xml; charset=UTF-8</con:mediaType>
+          <con:status>200</con:status>
+          <con:params/>
+          <con:element>ElevationResponse</con:element>
+        </con:representation>
+        <con:representation type="FAULT">
+          <con:mediaType>application/xml; charset=UTF-8</con:mediaType>
+          <con:status>400</con:status>
+          <con:params/>
+          <con:element>ElevationResponse</con:element>
+        </con:representation>
+        <con:representation type="FAULT">
+          <con:mediaType xsi:nil="true"/>
+          <con:status>500</con:status>
+          <con:params/>
+          <con:element>data</con:element>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/xml</con:mediaType>
+          <con:status>200</con:status>
+          <con:params/>
+          <con:element>ElevationResponse</con:element>
+        </con:representation>
+        <con:representation type="FAULT">
+          <con:mediaType xsi:nil="true"/>
+          <con:status>500</con:status>
+          <con:params/>
+          <con:element>data</con:element>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType xsi:nil="true"/>
+          <con:status>0</con:status>
+          <con:params/>
+          <con:element>data</con:element>
+        </con:representation>
+        <con:request name="Request" id="1acaa827-202b-4d21-b968-bc4ce26eaf62" mediaType="application/json">
+          <con:settings>
+            <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+          </con:settings>
+          <con:endpoint>http://localhost:8088/</con:endpoint>
+          <con:request/>
+          <con:originalUri>http://localhost/maps.googleapis.com/maps/api/elevation/xml</con:originalUri>
+          <con:credentials>
+            <con:authType>No Authorization</con:authType>
+          </con:credentials>
+          <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+          <con:parameters>
+            <entry key="locations" value="0,0" xmlns="http://eviware.com/soapui/config"/>
+          </con:parameters>
+          <con:parameterOrder>
+            <con:entry>locations</con:entry>
+          </con:parameterOrder>
+        </con:request>
+      </con:method>
+    </con:resource>
+    <con:resource name="Get page with error" path="/" id="d97bef12-d5ff-4e63-a624-efd2fb9d490a">
+      <con:settings/>
+      <con:parameters/>
+      <con:method name="Get page with error" id="5a9fc55f-571b-4293-bebf-7ba138958e84" method="GET">
+        <con:settings/>
+        <con:parameters/>
+        <con:representation type="FAULT">
+          <con:mediaType>text/html; charset=UTF-8</con:mediaType>
+          <con:status>401</con:status>
+          <con:params/>
+          <con:element>html</con:element>
+        </con:representation>
+        <con:representation type="FAULT">
+          <con:mediaType>text/html; charset=utf-8</con:mediaType>
+          <con:status>404</con:status>
+          <con:params/>
+          <con:element>html</con:element>
+        </con:representation>
+        <con:representation type="FAULT">
+          <con:mediaType>text/html</con:mediaType>
+          <con:status>500 502 503</con:status>
+          <con:params/>
+          <con:element>html</con:element>
+        </con:representation>
+        <con:request name="Request" id="bcc31dab-b99f-49f4-a4b4-ce138abe199e" mediaType="application/json">
+          <con:settings>
+            <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+          </con:settings>
+          <con:endpoint>http://localhost:8088/</con:endpoint>
+          <con:request/>
+          <con:originalUri>http://localhost/zalupa</con:originalUri>
+          <con:credentials>
+            <con:authType>No Authorization</con:authType>
+          </con:credentials>
+          <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+          <con:parameters/>
+        </con:request>
+      </con:method>
+    </con:resource>
+  </con:interface>
+  <con:testSuite id="5f7788a9-6ccb-4afe-b7b6-d05bee53e9a6" name="GoogleMaps API">
+    <con:description>The project demonstrates work with Virt which was created on the ‘googleapi maps’ service basis http://maps.googleapis.com</con:description>
+    <con:settings/>
+    <con:runType>SEQUENTIAL</con:runType>
+    <con:testCase id="2f832bbf-3dbe-4a75-aec1-5c386d065d08" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="Get distance and travel time between two cities" searchProperties="true">
+      <con:description>Before the Virt start, the needed service launch is carried out using Setup Script.
+Work with Groovy Script is demonstrated.
+Upon completion, Virt is stopped with TearDown Script.</con:description>
+      <con:settings/>
+      <con:testStep type="restrequest" name="Send request" id="db084b62-c408-4553-8a4f-bba0ab6362da">
+        <con:settings/>
+        <con:config service="http://maps.googleapis.com" resourcePath="/maps/api/distancematrix/json" methodName="GET JSON request &quot;between two cities&quot;" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:restRequest name="Send request" id="2f715393-7574-4da1-8b12-79b82ad5d08d" mediaType="application/json">
+            <con:settings>
+              <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+              <con:setting id="com.eviware.soapui.support.editor.views.xml.form2.FormEditorView@ViewType">All</con:setting>
+            </con:settings>
+            <con:endpoint>http://localhost:8088/</con:endpoint>
+            <con:request/>
+            <con:originalUri>http://maps.googleapis.com/maps/api/distancematrix/json</con:originalUri>
+            <con:assertion type="JsonPath Existence Match" id="8b89215b-518d-49db-a50c-5c2db49cfa5f" name="Check if &quot;value&quot; exists">
+              <con:configuration>
+                <path>$.rows[0].elements[0].distance.value</path>
+                <content>true</content>
+                <allowWildcards>false</allowWildcards>
+                <ignoreNamspaceDifferences>false</ignoreNamspaceDifferences>
+                <ignoreComments>false</ignoreComments>
+              </con:configuration>
+            </con:assertion>
+            <con:assertion type="JsonPath Existence Match" id="1404553a-6231-4b93-be5c-53f71ad8e8da" name="JSONPath Existence Match">
+              <con:configuration>
+                <path>$.rows[0].elements[0].distance.value</path>
+                <content>true</content>
+                <allowWildcards>false</allowWildcards>
+                <ignoreNamspaceDifferences>false</ignoreNamspaceDifferences>
+                <ignoreComments>false</ignoreComments>
+              </con:configuration>
+            </con:assertion>
+            <con:credentials>
+              <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+              <con:authType>No Authorization</con:authType>
+            </con:credentials>
+            <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+            <con:parameters>
+              <con:entry key="destinations" value="${#Project#destinations}"/>
+              <con:entry key="origins" value="${#Project#origins}"/>
+            </con:parameters>
+            <con:parameterOrder>
+              <con:entry>origins</con:entry>
+              <con:entry>destinations</con:entry>
+              <con:entry>mode</con:entry>
+              <con:entry>language</con:entry>
+              <con:entry>sensor</con:entry>
+            </con:parameterOrder>
+          </con:restRequest>
+        </con:config>
+      </con:testStep>
+      <con:testStep type="groovy" name="Groovy Script - Run request in a loop" id="54f1f32f-19e7-44f7-b9ab-b94323df14ec">
+        <con:settings/>
+        <con:config>
+          <script>for(i=1; i&lt;6; i++)
+	testRunner.runTestStepByName("Send request");</script>
+        </con:config>
+      </con:testStep>
+      <con:setupScript>virtRunner.run("GoogleMapsVirt")</con:setupScript>
+      <con:tearDownScript>virtRunner.stop ("GoogleMapsVirt")</con:tearDownScript>
+      <con:properties/>
+      <con:reportParameters/>
+    </con:testCase>
+    <con:testCase id="eb7623b8-8ea9-4bec-84ba-bd4595284ac7" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="Get information by address" searchProperties="true">
+      <con:description>Before the Virt start, the needed service launch is carried out using Setup Script.
+Work with requests of REST type is demonstrated.
+Upon completion, Virt is stopped with TearDown Script.</con:description>
+      <con:settings/>
+      <con:testStep type="restrequest" name="The British Museum" id="bbae21eb-f8bd-4fd9-b8d1-6fb9aa3370d6">
+        <con:settings/>
+        <con:config service="http://maps.googleapis.com" resourcePath="/maps/api/geocode/json" methodName="GET request &quot;info by address&quot;" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:restRequest name="The British Museum" id="e23be461-89d4-4791-8f3a-8e60f28edaef" mediaType="application/json">
+            <con:settings>
+              <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+            </con:settings>
+            <con:endpoint>http://localhost:8088/</con:endpoint>
+            <con:request/>
+            <con:originalUri>http://maps.googleapis.com/maps/api/geocode/json</con:originalUri>
+            <con:assertion type="JsonPath Match" id="fc45dda0-18ca-4be8-b327-292f82bccd71" name="JsonPath Match">
+              <con:configuration>
+                <path>$.status</path>
+                <content>OK</content>
+                <allowWildcards>false</allowWildcards>
+                <ignoreNamspaceDifferences>false</ignoreNamspaceDifferences>
+                <ignoreComments>false</ignoreComments>
+              </con:configuration>
+            </con:assertion>
+            <con:credentials>
+              <con:authType>No Authorization</con:authType>
+            </con:credentials>
+            <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+            <con:parameters>
+              <con:entry key="address" value="The British Museum, Great Russell Street, London"/>
+              <con:entry key="language" value="en-US"/>
+            </con:parameters>
+            <con:parameterOrder>
+              <con:entry>address</con:entry>
+              <con:entry>language</con:entry>
+              <con:entry>sensor</con:entry>
+            </con:parameterOrder>
+          </con:restRequest>
+        </con:config>
+      </con:testStep>
+      <con:testStep type="restrequest" name="Palais Royal" id="f27d37c0-359e-42c7-bdd6-27b3ef7d36e3">
+        <con:settings/>
+        <con:config service="http://maps.googleapis.com" resourcePath="/maps/api/geocode/json" methodName="GET request &quot;info by address&quot;" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:restRequest name="Palais Royal" id="e23be461-89d4-4791-8f3a-8e60f28edaef" mediaType="application/json">
+            <con:settings>
+              <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+            </con:settings>
+            <con:endpoint>http://localhost:8088/</con:endpoint>
+            <con:request/>
+            <con:originalUri>http://maps.googleapis.com/maps/api/geocode/json</con:originalUri>
+            <con:assertion type="JsonPath Match" id="4647f875-ec2f-48b9-820f-85f7d6923662" name="JsonPath Match">
+              <con:configuration>
+                <path>$.status</path>
+                <content>OK</content>
+                <allowWildcards>false</allowWildcards>
+                <ignoreNamspaceDifferences>false</ignoreNamspaceDifferences>
+                <ignoreComments>false</ignoreComments>
+              </con:configuration>
+            </con:assertion>
+            <con:credentials>
+              <con:authType>No Authorization</con:authType>
+            </con:credentials>
+            <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+            <con:parameters>
+              <con:entry key="address" value="Palais Royal, Musée du Louvre, Paris, France"/>
+              <con:entry key="language" value="en-US"/>
+            </con:parameters>
+            <con:parameterOrder>
+              <con:entry>address</con:entry>
+              <con:entry>language</con:entry>
+              <con:entry>sensor</con:entry>
+            </con:parameterOrder>
+          </con:restRequest>
+        </con:config>
+      </con:testStep>
+      <con:testStep type="restrequest" name="State Hermitage Museum" id="3a010a65-408d-497e-8f76-7bf0a4a9a347">
+        <con:settings/>
+        <con:config service="http://maps.googleapis.com" resourcePath="/maps/api/geocode/json" methodName="GET request &quot;info by address&quot;" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:restRequest name="State Hermitage Museum" id="e23be461-89d4-4791-8f3a-8e60f28edaef" mediaType="application/json">
+            <con:settings>
+              <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+            </con:settings>
+            <con:endpoint>http://localhost:8088/</con:endpoint>
+            <con:request/>
+            <con:originalUri>http://maps.googleapis.com/maps/api/geocode/json</con:originalUri>
+            <con:assertion type="JsonPath Match" id="3b7f3583-3e82-4f2b-962d-274d7cf0b3a8" name="JsonPath Match">
+              <con:configuration>
+                <path>$.status</path>
+                <content>OK</content>
+                <allowWildcards>false</allowWildcards>
+                <ignoreNamspaceDifferences>false</ignoreNamspaceDifferences>
+                <ignoreComments>false</ignoreComments>
+              </con:configuration>
+            </con:assertion>
+            <con:credentials>
+              <con:authType>No Authorization</con:authType>
+            </con:credentials>
+            <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+            <con:parameters>
+              <con:entry key="address" value="State Hermitage Museum, Saint Petersburg, Russia"/>
+              <con:entry key="language" value="en-US"/>
+            </con:parameters>
+            <con:parameterOrder>
+              <con:entry>address</con:entry>
+              <con:entry>language</con:entry>
+              <con:entry>sensor</con:entry>
+            </con:parameterOrder>
+          </con:restRequest>
+        </con:config>
+      </con:testStep>
+      <con:testStep type="restrequest" name="Paseo del Prado" id="c9ed94f6-7704-40dc-b8d5-95c04725ca5b">
+        <con:settings/>
+        <con:config service="http://maps.googleapis.com" resourcePath="/maps/api/geocode/json" methodName="GET request &quot;info by address&quot;" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:restRequest name="Paseo del Prado" id="e23be461-89d4-4791-8f3a-8e60f28edaef" mediaType="application/json">
+            <con:settings>
+              <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+            </con:settings>
+            <con:endpoint>http://localhost:8088/</con:endpoint>
+            <con:request/>
+            <con:originalUri>http://maps.googleapis.com/maps/api/geocode/json</con:originalUri>
+            <con:assertion type="JsonPath Match" id="c00c9570-e0ec-42f3-bab1-701552efa106" name="JsonPath Match">
+              <con:configuration>
+                <path>$.status</path>
+                <content>OK</content>
+                <allowWildcards>false</allowWildcards>
+                <ignoreNamspaceDifferences>false</ignoreNamspaceDifferences>
+                <ignoreComments>false</ignoreComments>
+              </con:configuration>
+            </con:assertion>
+            <con:credentials>
+              <con:authType>No Authorization</con:authType>
+            </con:credentials>
+            <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+            <con:parameters>
+              <con:entry key="address" value="Paseo del Prado, Madrid, Spain"/>
+              <con:entry key="language" value="en-US"/>
+            </con:parameters>
+            <con:parameterOrder>
+              <con:entry>address</con:entry>
+              <con:entry>language</con:entry>
+              <con:entry>sensor</con:entry>
+            </con:parameterOrder>
+          </con:restRequest>
+        </con:config>
+      </con:testStep>
+      <con:testStep type="restrequest" name="Metropolitan Museum of Art" id="b051f919-665d-4530-b9e2-2b2e80495166">
+        <con:settings/>
+        <con:config service="http://maps.googleapis.com" resourcePath="/maps/api/geocode/json" methodName="GET request &quot;info by address&quot;" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:restRequest name="Metropolitan Museum of Art" id="e23be461-89d4-4791-8f3a-8e60f28edaef" mediaType="application/json">
+            <con:settings>
+              <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+            </con:settings>
+            <con:endpoint>http://localhost:8088/</con:endpoint>
+            <con:request/>
+            <con:originalUri>http://maps.googleapis.com/maps/api/geocode/json</con:originalUri>
+            <con:assertion type="JsonPath Match" id="515fcad1-a916-49eb-a76a-53054847c80a" name="JsonPath Match">
+              <con:configuration>
+                <path>$.status</path>
+                <content>OK</content>
+                <allowWildcards>false</allowWildcards>
+                <ignoreNamspaceDifferences>false</ignoreNamspaceDifferences>
+                <ignoreComments>false</ignoreComments>
+              </con:configuration>
+            </con:assertion>
+            <con:credentials>
+              <con:authType>No Authorization</con:authType>
+            </con:credentials>
+            <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+            <con:parameters>
+              <con:entry key="address" value="Metropolitan Museum of Art, New York City, NY"/>
+              <con:entry key="language" value="en-US"/>
+            </con:parameters>
+            <con:parameterOrder>
+              <con:entry>address</con:entry>
+              <con:entry>language</con:entry>
+              <con:entry>sensor</con:entry>
+            </con:parameterOrder>
+          </con:restRequest>
+        </con:config>
+      </con:testStep>
+      <con:testStep type="restrequest" name="Egyptian Museum" id="85c98bb7-f814-4242-84a7-69433d0236e7">
+        <con:settings/>
+        <con:config service="http://maps.googleapis.com" resourcePath="/maps/api/geocode/json" methodName="GET request &quot;info by address&quot;" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:restRequest name="Egyptian Museum" id="e23be461-89d4-4791-8f3a-8e60f28edaef" mediaType="application/json">
+            <con:settings>
+              <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+            </con:settings>
+            <con:endpoint>http://localhost:8088/</con:endpoint>
+            <con:request/>
+            <con:originalUri>http://maps.googleapis.com/maps/api/geocode/json</con:originalUri>
+            <con:assertion type="JsonPath Match" id="b2e89c9e-c3d0-4523-ae09-762e3dffd901" name="JsonPath Match">
+              <con:configuration>
+                <path>$.status</path>
+                <content>OK</content>
+                <allowWildcards>false</allowWildcards>
+                <ignoreNamspaceDifferences>false</ignoreNamspaceDifferences>
+                <ignoreComments>false</ignoreComments>
+              </con:configuration>
+            </con:assertion>
+            <con:credentials>
+              <con:authType>No Authorization</con:authType>
+            </con:credentials>
+            <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+            <con:parameters>
+              <con:entry key="address" value="Egyptian Museum, Cairo, Egypt"/>
+              <con:entry key="language" value="en-US"/>
+            </con:parameters>
+            <con:parameterOrder>
+              <con:entry>address</con:entry>
+              <con:entry>language</con:entry>
+              <con:entry>sensor</con:entry>
+            </con:parameterOrder>
+          </con:restRequest>
+        </con:config>
+      </con:testStep>
+      <con:setupScript>virtRunner.run("GoogleMapsVirt")</con:setupScript>
+      <con:tearDownScript>virtRunner.stop ("GoogleMapsVirt")</con:tearDownScript>
+      <con:properties/>
+      <con:reportParameters/>
+      <con:breakPoints>
+        <con:testStepId>bbae21eb-f8bd-4fd9-b8d1-6fb9aa3370d6</con:testStepId>
+        <con:status>NONE</con:status>
+        <con:properties/>
+      </con:breakPoints>
+      <con:breakPoints>
+        <con:testStepId>f27d37c0-359e-42c7-bdd6-27b3ef7d36e3</con:testStepId>
+        <con:status>NONE</con:status>
+        <con:properties/>
+      </con:breakPoints>
+      <con:breakPoints>
+        <con:testStepId>3a010a65-408d-497e-8f76-7bf0a4a9a347</con:testStepId>
+        <con:status>NONE</con:status>
+        <con:properties/>
+      </con:breakPoints>
+      <con:breakPoints>
+        <con:testStepId>c9ed94f6-7704-40dc-b8d5-95c04725ca5b</con:testStepId>
+        <con:status>NONE</con:status>
+        <con:properties/>
+      </con:breakPoints>
+      <con:breakPoints>
+        <con:testStepId>b051f919-665d-4530-b9e2-2b2e80495166</con:testStepId>
+        <con:status>NONE</con:status>
+        <con:properties/>
+      </con:breakPoints>
+      <con:breakPoints>
+        <con:testStepId>85c98bb7-f814-4242-84a7-69433d0236e7</con:testStepId>
+        <con:status>NONE</con:status>
+        <con:properties/>
+      </con:breakPoints>
+    </con:testCase>
+    <con:testCase id="7b9235c1-867e-4584-ba84-8aa657010c1b" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="Get distance and travel time between two cities (DataSource)" searchProperties="true">
+      <con:description>Before the Virt start, the needed service launch is carried out using Setup Script.
+Work with TestStep: DataSource, DataSource Loop, Properties, Property Transfer, Assertions, Groovy Script is demonstrated.
+Upon completion, Virt is stopped with TearDown Script.</con:description>
+      <con:settings/>
+      <con:testStep type="datasource" name="DataSource with city data" id="6f4e08e0-1d64-4bad-b8d9-ab26eec989aa">
+        <con:settings/>
+        <con:config xsi:type="con:DataSourceStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:dataSource type="Grid">
+            <con:configuration>
+              <row><![CDATA[<xml-fragment><con:entry xmlns:con="http://eviware.com/soapui/config">Prague</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">Warsaw</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">689</con:entry></xml-fragment>]]></row>
+              <row><![CDATA[<xml-fragment><con:entry xmlns:con="http://eviware.com/soapui/config">Oslo</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">Stockholm</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">525</con:entry></xml-fragment>]]></row>
+              <row><![CDATA[<xml-fragment><con:entry xmlns:con="http://eviware.com/soapui/config">Minsk</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">Moscow</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">718</con:entry></xml-fragment>]]></row>
+              <row><![CDATA[<xml-fragment><con:entry xmlns:con="http://eviware.com/soapui/config">Amsterdam</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">Paris</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">502</con:entry></xml-fragment>]]></row>
+              <row><![CDATA[<xml-fragment><con:entry xmlns:con="http://eviware.com/soapui/config">Copenhagen</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">Berlin</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">439</con:entry></xml-fragment>]]></row>
+            </con:configuration>
+          </con:dataSource>
+          <con:property>origins</con:property>
+          <con:property>destinations</con:property>
+          <con:property>distance</con:property>
+          <con:restartOnRun>true</con:restartOnRun>
+        </con:config>
+      </con:testStep>
+      <con:testStep type="properties" name="Set properties for two cities" id="4891c90d-4aef-49e3-83d4-16b59c3a2209">
+        <con:settings/>
+        <con:config xsi:type="con:PropertiesStep" saveFirst="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:properties>
+            <con:property>
+              <con:name>origins</con:name>
+              <con:value>Copenhagen</con:value>
+            </con:property>
+            <con:property>
+              <con:name>origin_address</con:name>
+              <con:value>Copenhagen, Denmark</con:value>
+            </con:property>
+            <con:property>
+              <con:name>destinations</con:name>
+              <con:value>Berlin</con:value>
+            </con:property>
+            <con:property>
+              <con:name>destination_address</con:name>
+              <con:value>Berlin, Germany</con:value>
+            </con:property>
+            <con:property>
+              <con:name>distance_value</con:name>
+              <con:value>438922</con:value>
+            </con:property>
+          </con:properties>
+        </con:config>
+      </con:testStep>
+      <con:testStep type="restrequest" name="Send request" id="32492573-e67a-4522-b263-c6ca7554beb1">
+        <con:settings/>
+        <con:config service="http://maps.googleapis.com" resourcePath="/maps/api/distancematrix/xml" methodName="GET XML request &quot;between two cities&quot;" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:restRequest name="Send request" id="2f715393-7574-4da1-8b12-79b82ad5d08d" mediaType="application/json">
+            <con:settings>
+              <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+              <con:setting id="com.eviware.soapui.support.editor.views.xml.form2.FormEditorView@ViewType">All</con:setting>
+            </con:settings>
+            <con:endpoint>http://localhost:8088/</con:endpoint>
+            <con:request/>
+            <con:originalUri>http://maps.googleapis.com/maps/api/distancematrix/json</con:originalUri>
+            <con:assertion type="XPath Match" id="bfb06612-cc47-40e0-ab95-b3bae2f183d6" name="XPath Match">
+              <con:configuration>
+                <path>//DistanceMatrixResponse[1]/row[1]/element[1]/distance[1]/text[1]</path>
+                <content>${DataSource with city data#distance} km</content>
+                <allowWildcards>false</allowWildcards>
+                <ignoreNamspaceDifferences>false</ignoreNamspaceDifferences>
+                <ignoreComments>false</ignoreComments>
+              </con:configuration>
+            </con:assertion>
+            <con:assertion type="GroovyScriptAssertion" id="1d5f7c3b-dfdc-409c-bb73-32c2e640b561" name="Script Assertion">
+              <con:configuration>
+                <scriptText>def respStr = messageExchange.responseContentAsXml.toString();
+assert respStr.contains("&lt;status>OK&lt;/status>");</scriptText>
+              </con:configuration>
+            </con:assertion>
+            <con:assertion type="GroovyScriptAssertion" id="c7eb15a7-42be-459a-ab50-2c08e5657f42" name="Assert node [value]">
+              <con:configuration>
+                <scriptText>import com.eviware.soapui.support.XmlHolder;
+
+def holder = new XmlHolder( messageExchange.responseContentAsXml );
+def nodeValue = holder.getNodeValue("//DistanceMatrixResponse[1]/row[1]/element[1]/distance[1]/value[1]").toString();
+def nodeINt = Integer.parseInt(nodeValue);
+nodeINt = (int)Math.round(nodeINt/1000);
+
+assert nodeINt.toString() == context.expand( '${DataSource with city data#distance}' )</scriptText>
+              </con:configuration>
+            </con:assertion>
+            <con:assertion type="XPath Match" id="4d54a04d-f292-4258-b37d-7afc4ff11169" name="Check &quot;status&quot; content">
+              <con:configuration>
+                <path>//DistanceMatrixResponse[1]/status[1]/text()</path>
+                <content>OK</content>
+                <allowWildcards>false</allowWildcards>
+                <ignoreNamspaceDifferences>false</ignoreNamspaceDifferences>
+                <ignoreComments>false</ignoreComments>
+              </con:configuration>
+            </con:assertion>
+            <con:credentials>
+              <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+              <con:authType>No Authorization</con:authType>
+            </con:credentials>
+            <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+            <con:parameters>
+              <con:entry key="destinations" value="${DataSource with city data#destinations}"/>
+              <con:entry key="origins" value="${DataSource with city data#origins}"/>
+              <con:entry key="mode" value="transit"/>
+            </con:parameters>
+            <con:parameterOrder>
+              <con:entry>origins</con:entry>
+              <con:entry>destinations</con:entry>
+              <con:entry>mode</con:entry>
+              <con:entry>language</con:entry>
+              <con:entry>sensor</con:entry>
+            </con:parameterOrder>
+          </con:restRequest>
+        </con:config>
+      </con:testStep>
+      <con:testStep type="transfer" name="Copy values from responses and datasources to properties" id="1f1511b8-e5bc-4bb8-af30-d13816c892eb">
+        <con:settings/>
+        <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+            <con:name>origins</con:name>
+            <con:sourceType>origins</con:sourceType>
+            <con:sourceStep>DataSource with city data</con:sourceStep>
+            <con:sourcePath/>
+            <con:targetType>origins</con:targetType>
+            <con:targetStep>Set properties for two cities</con:targetStep>
+            <con:upgraded>true</con:upgraded>
+          </con:transfers>
+          <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+            <con:name>origin_address</con:name>
+            <con:sourceType>ResponseAsXml</con:sourceType>
+            <con:sourceStep>Send request</con:sourceStep>
+            <con:sourcePath>//DistanceMatrixResponse[1]/origin_address[1]</con:sourcePath>
+            <con:targetType>origin_address</con:targetType>
+            <con:targetStep>Set properties for two cities</con:targetStep>
+            <con:targetPath/>
+            <con:type>XPATH</con:type>
+            <con:upgraded>true</con:upgraded>
+          </con:transfers>
+          <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+            <con:name>destinations</con:name>
+            <con:sourceType>destinations</con:sourceType>
+            <con:sourceStep>DataSource with city data</con:sourceStep>
+            <con:sourcePath/>
+            <con:targetType>destinations</con:targetType>
+            <con:targetStep>Set properties for two cities</con:targetStep>
+            <con:upgraded>true</con:upgraded>
+          </con:transfers>
+          <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+            <con:name>destination_address</con:name>
+            <con:sourceType>ResponseAsXml</con:sourceType>
+            <con:sourceStep>Send request</con:sourceStep>
+            <con:sourcePath>//DistanceMatrixResponse[1]/destination_address[1]</con:sourcePath>
+            <con:targetType>destination_address</con:targetType>
+            <con:targetStep>Set properties for two cities</con:targetStep>
+            <con:upgraded>true</con:upgraded>
+          </con:transfers>
+          <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true">
+            <con:name>distance_value</con:name>
+            <con:sourceType>ResponseAsXml</con:sourceType>
+            <con:sourceStep>Send request</con:sourceStep>
+            <con:sourcePath>//DistanceMatrixResponse[1]/row[1]/element[1]/distance[1]/value[1]</con:sourcePath>
+            <con:targetType>distance_value</con:targetType>
+            <con:targetStep>Set properties for two cities</con:targetStep>
+            <con:targetPath/>
+            <con:type>XPATH</con:type>
+            <con:upgraded>true</con:upgraded>
+          </con:transfers>
+        </con:config>
+      </con:testStep>
+      <con:testStep type="assertionteststep" name="Check response values" id="27eb2d74-b923-4a2a-9509-34bcc56d2daf">
+        <con:settings/>
+        <con:config xsi:type="con:AssertionTestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:entry>
+            <con:id>459311f3-a9af-439a-822f-128f324450f2</con:id>
+            <con:isGroup>false</con:isGroup>
+            <con:sourceId>4891c90d-4aef-49e3-83d4-16b59c3a2209</con:sourceId>
+            <con:propertyName>origin_address</con:propertyName>
+            <con:assertion type="Simple Contains" name="Check response value with the &quot;origin&quot; property" id="a2aedfa3-046f-43fb-8c1a-25b6ec36e1b9">
+              <con:configuration>
+                <token>${Properties for two cities#origins}</token>
+                <ignoreCase>false</ignoreCase>
+                <useRegEx>false</useRegEx>
+              </con:configuration>
+            </con:assertion>
+          </con:entry>
+          <con:entry>
+            <con:id>a3f67e6c-200d-46a7-8deb-fdaf9eacd230</con:id>
+            <con:isGroup>false</con:isGroup>
+            <con:sourceId>4891c90d-4aef-49e3-83d4-16b59c3a2209</con:sourceId>
+            <con:propertyName>destination_address</con:propertyName>
+            <con:assertion type="Simple Contains" name="Check response value with the &quot;destination&quot; property" id="4e93348c-1d9a-4f37-98b6-d7ede5f0e7e4">
+              <con:configuration>
+                <token>${Properties for two cities#destinations}</token>
+                <ignoreCase>false</ignoreCase>
+                <useRegEx>false</useRegEx>
+              </con:configuration>
+            </con:assertion>
+          </con:entry>
+          <con:entry>
+            <con:id>8ac185ca-c105-4d14-9da1-ec85e67b6794</con:id>
+            <con:isGroup>false</con:isGroup>
+            <con:sourceId>32492573-e67a-4522-b263-c6ca7554beb1</con:sourceId>
+            <con:propertyName>Response</con:propertyName>
+            <con:assertion type="Valid HTTP Status Codes" name="Check valid HTTP Status Codes" id="fae98528-e87e-4488-97bd-92e56665a43b">
+              <con:configuration>
+                <codes>200</codes>
+              </con:configuration>
+            </con:assertion>
+          </con:entry>
+          <con:entry>
+            <con:id>d123bbb2-21a0-427a-b263-c4dae61985bc</con:id>
+            <con:isGroup>false</con:isGroup>
+            <con:sourceId>32492573-e67a-4522-b263-c6ca7554beb1</con:sourceId>
+            <con:propertyName>Response</con:propertyName>
+            <con:assertion type="Invalid HTTP Status Codes" name="Check invalid HTTP Status Codes" id="9ee1d83d-0d07-46f6-8f48-344d6b2cee60">
+              <con:configuration>
+                <codes>404,500,501,502,503,504,505,506,507,508,509,510,511</codes>
+              </con:configuration>
+            </con:assertion>
+          </con:entry>
+        </con:config>
+      </con:testStep>
+      <con:testStep type="groovy" name="Check property values in Groovy script" id="a0398182-1588-4395-be2e-9ef3657fa9a3">
+        <con:settings/>
+        <con:config>
+          <script>def dv = context.expand( '${Set properties for two cities#distance_value}' );
+dv = (int)Math.round(Integer.parseInt(dv)/1000);
+assert dv.toString() == context.expand( '${DataSource with city data#distance}' );</script>
+        </con:config>
+      </con:testStep>
+      <con:testStep type="datasourceloop" name="Iterate through city data" id="fbe7aa9a-618d-4549-a186-976710972e2a">
+        <con:settings/>
+        <con:config>
+          <dataSourceStep>DataSource with city data</dataSourceStep>
+          <targetStep>Send request</targetStep>
+        </con:config>
+      </con:testStep>
+      <con:setupScript>virtRunner.run("GoogleMapsVirt")</con:setupScript>
+      <con:tearDownScript>virtRunner.stop ("GoogleMapsVirt")</con:tearDownScript>
+      <con:properties/>
+      <con:reportParameters/>
+      <con:breakPoints>
+        <con:testStepId>32492573-e67a-4522-b263-c6ca7554beb1</con:testStepId>
+        <con:status>NONE</con:status>
+        <con:properties/>
+      </con:breakPoints>
+      <con:breakPoints>
+        <con:testStepId>6f4e08e0-1d64-4bad-b8d9-ab26eec989aa</con:testStepId>
+        <con:status>NONE</con:status>
+        <con:properties/>
+      </con:breakPoints>
+      <con:breakPoints>
+        <con:testStepId>fbe7aa9a-618d-4549-a186-976710972e2a</con:testStepId>
+        <con:status>NONE</con:status>
+        <con:properties/>
+      </con:breakPoints>
+      <con:breakPoints>
+        <con:testStepId>1f1511b8-e5bc-4bb8-af30-d13816c892eb</con:testStepId>
+        <con:status>NONE</con:status>
+        <con:properties/>
+      </con:breakPoints>
+      <con:breakPoints>
+        <con:testStepId>4891c90d-4aef-49e3-83d4-16b59c3a2209</con:testStepId>
+        <con:status>NONE</con:status>
+        <con:properties/>
+      </con:breakPoints>
+      <con:breakPoints>
+        <con:testStepId>27eb2d74-b923-4a2a-9509-34bcc56d2daf</con:testStepId>
+        <con:status>NONE</con:status>
+        <con:properties/>
+      </con:breakPoints>
+    </con:testCase>
+    <con:testCase id="2b0a3b39-a959-476a-b69d-2678f01cf448" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="Get elevation" searchProperties="true">
+      <con:description>Before the Virt start, the needed service launch is carried out using Setup Script.
+Work with TestStep: DataSource, DataSource Loop is demonstrated.
+Upon completion, Virt is stopped with TearDown Script.</con:description>
+      <con:settings/>
+      <con:testStep type="datasource" name="DataSource with coordinates" id="89ad462c-ec31-4246-bea2-e193e3933e07">
+        <con:settings/>
+        <con:config xsi:type="con:DataSourceStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:dataSource type="Grid">
+            <con:configuration>
+              <row><![CDATA[<xml-fragment><con:entry xmlns:con="http://eviware.com/soapui/config">48.858056</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">2.294444</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">33.3223763</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">9.5439520</con:entry></xml-fragment>]]></row>
+              <row><![CDATA[<xml-fragment><con:entry xmlns:con="http://eviware.com/soapui/config">27.988056</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">86.925278</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">8815.7158203</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">152.7032318</con:entry></xml-fragment>]]></row>
+              <row><![CDATA[<xml-fragment><con:entry xmlns:con="http://eviware.com/soapui/config">41.890169</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">12.492269</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">22.4374981</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">4.7719760</con:entry></xml-fragment>]]></row>
+              <row><![CDATA[<xml-fragment><con:entry xmlns:con="http://eviware.com/soapui/config">43.722983</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">10.396308</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">7.4073606</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">610.8129272</con:entry></xml-fragment>]]></row>
+              <row><![CDATA[<xml-fragment><con:entry xmlns:con="http://eviware.com/soapui/config">55.751667</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">37.617778</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">148.4299316</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">152.7032318</con:entry></xml-fragment>]]></row>
+              <row><![CDATA[<xml-fragment><con:entry xmlns:con="http://eviware.com/soapui/config">40.689167</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">-74.044583</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">2.0590007</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">76.3516159</con:entry></xml-fragment>]]></row>
+              <row><![CDATA[<xml-fragment><con:entry xmlns:con="http://eviware.com/soapui/config">-22.952778</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">-43.209583</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">325.1607666</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">610.8129272</con:entry></xml-fragment>]]></row>
+            </con:configuration>
+          </con:dataSource>
+          <con:property>lat</con:property>
+          <con:property>lng</con:property>
+          <con:property>elevation</con:property>
+          <con:property>resolution</con:property>
+          <con:restartOnRun>true</con:restartOnRun>
+        </con:config>
+      </con:testStep>
+      <con:testStep type="restrequest" name="Send request" id="bd55254e-82ad-472c-b566-6ecf3e73a1dd">
+        <con:settings/>
+        <con:config service="http://maps.googleapis.com" resourcePath="/maps/api/elevation/xml" methodName="GET request &quot;elevation&quot;" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:restRequest name="Send request" id="1acaa827-202b-4d21-b968-bc4ce26eaf62" mediaType="application/json">
+            <con:settings>
+              <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+            </con:settings>
+            <con:endpoint>http://localhost:8088/</con:endpoint>
+            <con:request/>
+            <con:originalUri>http://localhost/maps.googleapis.com/maps/api/elevation/xml</con:originalUri>
+            <con:assertion type="XPath Match" id="b00b286b-2772-4b91-8406-835f6cb0a6f7" name="Check elevation">
+              <con:configuration>
+                <path>//ElevationResponse[1]/result[1]/elevation[1]/text()</path>
+                <content>${DataSource with coordinates#elevation}</content>
+                <allowWildcards>false</allowWildcards>
+                <ignoreNamspaceDifferences>false</ignoreNamspaceDifferences>
+                <ignoreComments>false</ignoreComments>
+              </con:configuration>
+            </con:assertion>
+            <con:assertion type="XPath Match" id="549f25ba-9981-4795-8692-03c7a5310bdf" name="Check resolution">
+              <con:configuration>
+                <path>//ElevationResponse[1]/result[1]/resolution[1]/text()</path>
+                <content>${DataSource with coordinates#resolution}</content>
+                <allowWildcards>false</allowWildcards>
+                <ignoreNamspaceDifferences>false</ignoreNamspaceDifferences>
+                <ignoreComments>false</ignoreComments>
+              </con:configuration>
+            </con:assertion>
+            <con:credentials>
+              <con:authType>No Authorization</con:authType>
+            </con:credentials>
+            <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+            <con:parameters>
+              <entry key="locations" value="${DataSource with coordinates#lat}, ${DataSource with coordinates#lng}" xmlns="http://eviware.com/soapui/config"/>
+            </con:parameters>
+            <con:parameterOrder>
+              <con:entry>locations</con:entry>
+            </con:parameterOrder>
+          </con:restRequest>
+        </con:config>
+      </con:testStep>
+      <con:testStep type="datasourceloop" name="Iterate through coordinates in a loop" id="882f07a0-86e5-4f6e-8321-fd7093a9fb97">
+        <con:settings/>
+        <con:config>
+          <dataSourceStep>DataSource with coordinates</dataSourceStep>
+          <targetStep>Send request</targetStep>
+        </con:config>
+      </con:testStep>
+      <con:setupScript>virtRunner.run("GoogleMapsVirt")</con:setupScript>
+      <con:tearDownScript>virtRunner.stop ("GoogleMapsVirt")</con:tearDownScript>
+      <con:properties/>
+      <con:reportParameters/>
+      <con:breakPoints>
+        <con:testStepId>bd55254e-82ad-472c-b566-6ecf3e73a1dd</con:testStepId>
+        <con:status>NONE</con:status>
+        <con:properties/>
+      </con:breakPoints>
+    </con:testCase>
+    <con:testCase id="94943e2f-4e78-421f-bdaa-c5221b68d776" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="Get page with error" searchProperties="true">
+      <con:description>Before the Virt start, the needed service launch is carried out using Setup Script.
+Work of a possible page generation with an error from the Virt service is demonstrated.
+Upon completion, Virt is stopped with TearDown Script.</con:description>
+      <con:settings/>
+      <con:testStep type="restrequest" name="Get 404 Not Found" id="aec36a88-9d5f-45bf-b334-d724fce795df">
+        <con:settings/>
+        <con:config service="http://maps.googleapis.com" resourcePath="/" methodName="Get page with error" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:restRequest name="Get 404 Not Found" id="bcc31dab-b99f-49f4-a4b4-ce138abe199e" mediaType="application/json">
+            <con:settings>
+              <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+            </con:settings>
+            <con:endpoint>http://localhost:8088/</con:endpoint>
+            <con:request/>
+            <con:originalUri>http://localhost/</con:originalUri>
+            <con:assertion type="XPath Match" id="d5257e60-9233-498b-ad2f-5e937cde0207" name="Check &quot;h2&quot; content">
+              <con:configuration>
+                <path>//html[1]/body[1]/h2[1]/text()</path>
+                <content>* - *.</content>
+                <allowWildcards>true</allowWildcards>
+                <ignoreNamspaceDifferences>false</ignoreNamspaceDifferences>
+                <ignoreComments>false</ignoreComments>
+              </con:configuration>
+            </con:assertion>
+            <con:assertion type="XPath Match" id="07b8e7c6-70a0-4f21-a973-d53df89f401d" name="Check &quot;html&quot; content">
+              <con:configuration>
+                <path>exists( //html)</path>
+                <content>true</content>
+                <allowWildcards>false</allowWildcards>
+                <ignoreNamspaceDifferences>false</ignoreNamspaceDifferences>
+                <ignoreComments>false</ignoreComments>
+              </con:configuration>
+            </con:assertion>
+            <con:assertion type="Valid HTTP Status Codes" id="c8e1abf6-7c1a-48df-8e09-9288866e729c" name="Valid HTTP Status Codes">
+              <con:settings/>
+              <con:configuration>
+                <codes>404,500,502,503</codes>
+              </con:configuration>
+            </con:assertion>
+            <con:credentials>
+              <con:authType>No Authorization</con:authType>
+            </con:credentials>
+            <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+            <con:parameters/>
+          </con:restRequest>
+        </con:config>
+      </con:testStep>
+      <con:setupScript>virtRunner.run("GoogleMapsVirt")</con:setupScript>
+      <con:tearDownScript>virtRunner.stop ("GoogleMapsVirt")</con:tearDownScript>
+      <con:properties/>
+      <con:reportParameters/>
+    </con:testCase>
+    <con:properties/>
+    <con:setupScript/>
+    <con:tearDownScript/>
+    <con:reportParameters/>
+  </con:testSuite>
+  <con:restMockService id="25b49809-519b-4ae4-969e-8ab29ce1e510" port="8088" path="/" host="localhost" name="GoogleMapsVirt">
+    <con:settings/>
+    <con:properties>
+      <con:property>
+        <con:name>lat</con:name>
+        <con:value>-22.952778</con:value>
+      </con:property>
+      <con:property>
+        <con:name>lng</con:name>
+        <con:value>-43.209583</con:value>
+      </con:property>
+      <con:property>
+        <con:name>elevation</con:name>
+        <con:value>325.1607666</con:value>
+      </con:property>
+      <con:property>
+        <con:name>resolution</con:name>
+        <con:value>610.8129272</con:value>
+      </con:property>
+    </con:properties>
+    <con:constraints>
+      <con:congestion>0</con:congestion>
+      <con:inputBandwidth>-1</con:inputBandwidth>
+      <con:outputBandwidth>-1</con:outputBandwidth>
+      <con:maxThreadPoolCapacity>10</con:maxThreadPoolCapacity>
+      <con:coreThreadPoolCapacity>5</con:coreThreadPoolCapacity>
+      <con:minApplicationDelay>0</con:minApplicationDelay>
+      <con:virtError>
+        <con:start>-1</con:start>
+      </con:virtError>
+    </con:constraints>
+    <con:dataSources>
+      <con:dataSource>
+        <con:dataSource type="Grid">
+          <con:configuration>
+            <row><![CDATA[<xml-fragment><con:entry xmlns:con="http://eviware.com/soapui/config">Oslo</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">Copenhagen‎</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">Copenhagen, Denmark</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">Oslo, Norway</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">603 km</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">603090</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">5 hours 57 mins</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">21447</con:entry></xml-fragment>]]></row>
+            <row><![CDATA[<xml-fragment><con:entry xmlns:con="http://eviware.com/soapui/config">Helsinki</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">Stockholm</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">Stockholm, Sweden</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">Helsinki, Finland</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">518 km</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">517719</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">11 hours 28 mins</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">41296</con:entry></xml-fragment>]]></row>
+            <row><![CDATA[<xml-fragment><con:entry xmlns:con="http://eviware.com/soapui/config">Prague</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">Moscow</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">Moscow, Russia</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">Prague, Czech Republic</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">1,933 km</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">1932886</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">21 hours 19 mins</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">76739</con:entry></xml-fragment>]]></row>
+            <row><![CDATA[<xml-fragment><con:entry xmlns:con="http://eviware.com/soapui/config">Paris</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">Berlin</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">Berlin, Germany</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">Paris, France</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">1,048 km</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">1047617</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">9 hours 42 mins</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">34939</con:entry></xml-fragment>]]></row>
+            <row><![CDATA[<xml-fragment><con:entry xmlns:con="http://eviware.com/soapui/config">Rome</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">Lisbon</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">Lisbon, Portugal</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">Rome, Italy</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">2,516 km</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">2516486</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">23 hours 1 min</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">82887</con:entry></xml-fragment>]]></row>
+            <row><![CDATA[<xml-fragment><con:entry xmlns:con="http://eviware.com/soapui/config">Athens</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">Madrid</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">Madrid, Madrid, Spain</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">Athens, Greece</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">3,687 km</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">3686995</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">1 day 12 hours</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">128097</con:entry></xml-fragment>]]></row>
+          </con:configuration>
+        </con:dataSource>
+        <con:name>DataSource for Virt</con:name>
+        <con:property>origins</con:property>
+        <con:property>destinations</con:property>
+        <con:property>destination_addresses</con:property>
+        <con:property>origin_addresses</con:property>
+        <con:property>distance_text</con:property>
+        <con:property>distance_value</con:property>
+        <con:property>duration_text</con:property>
+        <con:property>duration_value</con:property>
+      </con:dataSource>
+    </con:dataSources>
+    <con:headerValidator type="NONE"/>
+    <con:assertion type="GroovyScriptAssertion" id="f812c6d3-f201-48a0-a2e0-fc8558819ee8" name="Check resolution from response">
+      <con:configuration>
+        <scriptText>def resolution = context.expand( '${#MockService#resolution}' );
+assert resolution != null;</scriptText>
+      </con:configuration>
+    </con:assertion>
+    <con:assertion type="GroovyScriptAssertion" id="79c534f8-670a-40b3-9062-113a9720a771" name="Check value of parameter &quot;lat&quot;">
+      <con:configuration>
+        <scriptText>def lat = context.expand( '${#MockService#lat}' );
+assert lat != null;</scriptText>
+      </con:configuration>
+    </con:assertion>
+    <con:restMockAction name="/maps/api/distancematrix/xml" method="GET" resourcePath="/maps/api/distancematrix/xml" id="9e455f67-cad6-45ab-aac1-59b75f7e4a48">
+      <con:settings/>
+      <con:defaultResponse>Between Prague and Warsaw</con:defaultResponse>
+      <con:dispatchStyle>SCRIPT</con:dispatchStyle>
+      <con:dispatchConfig/>
+      <con:dispatchPath>def pOrigins = null;
+def pDestinations = null;
+def paramEnum = mockRequest.httpRequest.parameterNames;
+
+while (paramEnum.hasMoreElements())
+{
+	def param = paramEnum.nextElement();
+	if(param.toString() == "origins")
+		pOrigins = param;
+	else if(param.toString() == "destinations")
+		pDestinations = param;
+}
+
+def vOrigins = mockRequest.httpRequest.getParameterValues(pOrigins)[0];
+def vDestinations = mockRequest.httpRequest.getParameterValues(pDestinations)[0];
+
+return "Between "+vOrigins.toString() + " and " + vDestinations.toString();</con:dispatchPath>
+      <con:response name="Between Prague and Warsaw" id="00bea336-af41-47bf-ac78-163fbbe7e1f7" httpResponseStatus="200" mediaType="application/xml" encoding="UTF-8" dataSource="">
+        <con:settings/>
+        <con:responseContent><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+<DistanceMatrixResponse>
+   <status>OK</status>
+   <origin_address>Prague, Czech Republic</origin_address>
+   <destination_address>Warsaw, Poland</destination_address>
+   <row>
+      <element>
+         <status>OK</status>
+         <duration>
+            <value>24561</value>
+            <text>6 hours 49 mins</text>
+         </duration>
+         <distance>
+            <value>689372</value>
+            <text>689 km</text>
+         </distance>
+      </element>
+   </row>
+</DistanceMatrixResponse>]]></con:responseContent>
+      </con:response>
+      <con:response name="Between Oslo and Stockholm" id="47ebcac3-8184-45e9-9f21-e40ac0e1d532" httpResponseStatus="200" dataSource="">
+        <con:settings/>
+        <con:responseContent><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+<DistanceMatrixResponse>
+   <status>OK</status>
+   <origin_address>Oslo, Norway</origin_address>
+   <destination_address>Stockholm, Sweden</destination_address>
+   <row>
+      <element>
+         <status>OK</status>
+         <duration>
+            <value>21170</value>
+            <text>5 hours 53 mins</text>
+         </duration>
+         <distance>
+            <value>524722</value>
+            <text>525 km</text>
+         </distance>
+      </element>
+   </row>
+</DistanceMatrixResponse>]]></con:responseContent>
+      </con:response>
+      <con:response name="Between Minsk and Moscow" id="25d98ac7-ce14-4fd5-92f1-3a0c34755208" httpResponseStatus="200" dataSource="">
+        <con:settings/>
+        <con:responseContent><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+<DistanceMatrixResponse>
+   <status>OK</status>
+   <origin_address>Minsk, Belarus</origin_address>
+   <destination_address>Moscow, Russia</destination_address>
+   <row>
+      <element>
+         <status>OK</status>
+         <duration>
+            <value>32151</value>
+            <text>8 hours 56 mins</text>
+         </duration>
+         <distance>
+            <value>717501</value>
+            <text>718 km</text>
+         </distance>
+      </element>
+   </row>
+</DistanceMatrixResponse>]]></con:responseContent>
+      </con:response>
+      <con:response name="Between Amsterdam and Paris" id="35404c26-9f91-40bd-bd4a-2f9ee66f3f3b" httpResponseStatus="200" dataSource="">
+        <con:settings/>
+        <con:responseContent><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+<DistanceMatrixResponse>
+   <status>OK</status>
+   <origin_address>Amsterdam, Netherlands</origin_address>
+   <destination_address>Paris, France</destination_address>
+   <row>
+      <element>
+         <status>OK</status>
+         <duration>
+            <value>17949</value>
+            <text>4 hours 59 mins</text>
+         </duration>
+         <distance>
+            <value>501833</value>
+            <text>502 km</text>
+         </distance>
+      </element>
+   </row>
+</DistanceMatrixResponse>]]></con:responseContent>
+      </con:response>
+      <con:response name="Between Copenhagen and Berlin" id="05365ff1-5125-4431-888f-cefb2cc99ca6" httpResponseStatus="200" dataSource="">
+        <con:settings/>
+        <con:responseContent><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+<DistanceMatrixResponse>
+   <status>OK</status>
+   <origin_address>Copenhagen, Denmark</origin_address>
+   <destination_address>Berlin, Germany</destination_address>
+   <row>
+      <element>
+         <status>OK</status>
+         <duration>
+            <value>21739</value>
+            <text>6 hours 2 mins</text>
+         </duration>
+         <distance>
+            <value>438922</value>
+            <text>439 km</text>
+         </distance>
+      </element>
+   </row>
+</DistanceMatrixResponse>]]></con:responseContent>
+      </con:response>
+      <con:response name="Default response" id="a14f3344-1525-44a7-bbcd-b6890a0a5826" httpResponseStatus="200" dataSource="">
+        <con:settings/>
+        <con:responseContent><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+<DistanceMatrixResponse>
+ <status>OK</status>
+ <origin_address></origin_address>
+ <destination_address></destination_address>
+ <row>
+  <element>
+   <status>NOT_FOUND</status>
+  </element>
+ </row>
+</DistanceMatrixResponse>]]></con:responseContent>
+      </con:response>
+    </con:restMockAction>
+    <con:restMockAction name="/maps/api/geocode/json" method="GET" resourcePath="/maps/api/geocode/json" id="1374c2e6-f567-4009-9a4c-0e999dd2441d">
+      <con:settings/>
+      <con:defaultResponse>The British Museum</con:defaultResponse>
+      <con:dispatchStyle>RANDOM</con:dispatchStyle>
+      <con:dispatchConfig/>
+      <con:dispatchPath>/*
+// Script dispatcher is used to select a response based on the incoming request.
+// Here are few examples showing how to match based on path, query param, header and body
+
+// Match based on path
+def requestPath = mockRequest.getPath()
+log.info "Path: "+ requestPath
+
+if( requestPath.contains("json") )
+{
+    // return the name of the response you want to dispatch
+    return "JSON Response"
+}
+
+
+// Match based on query parameter
+def queryString = mockRequest.getRequest().getQueryString()
+log.info "QueryString: " + queryString
+
+if( queryString.contains("stockholm") )
+{
+    // return the name of the response you want to dispatch
+    return "Response Stockholm"
+}
+else if( queryString.contains("london") )
+{
+    // return the name of the response you want to dispatch
+    return "Response London"
+}
+
+
+// Match based on header
+def acceptEncodingHeaderList = mockRequest.getRequestHeaders().get("Accept-Encoding")
+log.info "AcceptEncoding Header List: " + acceptEncodingHeaderList
+
+if( acceptEncodingHeaderList.contains("gzip,deflate") )
+{
+    // return the name of the response you want to dispatch
+    return "GZiped Response"
+}
+
+
+// Match based on body
+def requestBody = mockRequest.getRequestContent()
+log.info "Request body: " + requestBody
+
+if( requestBody.contains("some data") )
+{
+    // return the name of the response you want to dispatch
+    return "Response N"
+}
+*/
+
+def reqStr = mockRequest.httpRequest.queryString;
+context.</con:dispatchPath>
+      <con:response name="The British Museum" id="695d1ada-0d84-4991-94da-e6d4bbea7a45" httpResponseStatus="200" mediaType="application/json" encoding="UTF-8" dataSource="">
+        <con:settings/>
+        <con:responseContent>{
+   "results" : [
+      {
+         "address_components" : [
+            {
+               "long_name" : "The British Museum",
+               "short_name" : "The British Museum",
+               "types" : [ "point_of_interest", "establishment" ]
+            },
+            {
+               "long_name" : "Great Russell Street",
+               "short_name" : "Great Russell St",
+               "types" : [ "route" ]
+            },
+            {
+               "long_name" : "London",
+               "short_name" : "London",
+               "types" : [ "locality", "political" ]
+            },
+            {
+               "long_name" : "London",
+               "short_name" : "London",
+               "types" : [ "postal_town" ]
+            },
+            {
+               "long_name" : "Greater London",
+               "short_name" : "Gt Lon",
+               "types" : [ "administrative_area_level_2", "political" ]
+            },
+            {
+               "long_name" : "England",
+               "short_name" : "England",
+               "types" : [ "administrative_area_level_1", "political" ]
+            },
+            {
+               "long_name" : "United Kingdom",
+               "short_name" : "GB",
+               "types" : [ "country", "political" ]
+            },
+            {
+               "long_name" : "WC1B 3DG",
+               "short_name" : "WC1B 3DG",
+               "types" : [ "postal_code" ]
+            }
+         ],
+         "formatted_address" : "The British Museum, Great Russell Street, London WC1B 3DG, UK",
+         "geometry" : {
+            "location" : {
+               "lat" : 51.5194133,
+               "lng" : -0.1269566
+            },
+            "location_type" : "APPROXIMATE",
+            "viewport" : {
+               "northeast" : {
+                  "lat" : 51.52076228029149,
+                  "lng" : -0.125607619708498
+               },
+               "southwest" : {
+                  "lat" : 51.51806431970849,
+                  "lng" : -0.128305580291502
+               }
+            }
+         },
+         "types" : [ "museum", "point_of_interest", "establishment" ]
+      }
+   ],
+   "status" : "OK"
+}</con:responseContent>
+        <con:header>
+          <con:name>X-Frame-Options</con:name>
+          <con:value>SAMEORIGIN</con:value>
+        </con:header>
+        <con:header>
+          <con:name>Access-Control-Allow-Origin</con:name>
+          <con:value>*</con:value>
+        </con:header>
+        <con:header>
+          <con:name>Date</con:name>
+          <con:value>Wed, 26 Nov 2014 09:05:52 GMT</con:value>
+        </con:header>
+        <con:header>
+          <con:name>X-XSS-Protection</con:name>
+          <con:value>1; mode=block</con:value>
+        </con:header>
+        <con:header>
+          <con:name>Expires</con:name>
+          <con:value>Thu, 27 Nov 2014 09:05:52 GMT</con:value>
+        </con:header>
+        <con:header>
+          <con:name>Alternate-Protocol</con:name>
+          <con:value>80:quic,p=0.02</con:value>
+        </con:header>
+        <con:header>
+          <con:name>Server</con:name>
+          <con:value>mafe</con:value>
+        </con:header>
+        <con:header>
+          <con:name>Cache-Control</con:name>
+          <con:value>public, max-age=86400</con:value>
+        </con:header>
+      </con:response>
+      <con:response name="Palais Royal" id="2dfdd316-4e3e-4ea5-9246-1fb0a93f29ae" httpResponseStatus="200" mediaType="application/json" encoding="UTF-8" dataSource="">
+        <con:settings/>
+        <con:responseContent>{
+   "results" : [
+      {
+         "address_components" : [
+            {
+               "long_name" : "Palais Royal - Musée du Louvre",
+               "short_name" : "Palais Royal - Musée du Louvre",
+               "types" : [ "subway_station", "transit_station", "train_station", "establishment" ]
+            },
+            {
+               "long_name" : "Paris",
+               "short_name" : "Paris",
+               "types" : [ "locality", "political" ]
+            },
+            {
+               "long_name" : "Paris",
+               "short_name" : "75",
+               "types" : [ "administrative_area_level_2", "political" ]
+            },
+            {
+               "long_name" : "Île-de-France",
+               "short_name" : "IDF",
+               "types" : [ "administrative_area_level_1", "political" ]
+            },
+            {
+               "long_name" : "France",
+               "short_name" : "FR",
+               "types" : [ "country", "political" ]
+            },
+            {
+               "long_name" : "75001",
+               "short_name" : "75001",
+               "types" : [ "postal_code" ]
+            }
+         ],
+         "formatted_address" : "Palais Royal - Musée du Louvre, 75001 Paris, France",
+         "geometry" : {
+            "location" : {
+               "lat" : 48.86292599999999,
+               "lng" : 2.33603
+            },
+            "location_type" : "APPROXIMATE",
+            "viewport" : {
+               "northeast" : {
+                  "lat" : 48.86427498029149,
+                  "lng" : 2.337378980291502
+               },
+               "southwest" : {
+                  "lat" : 48.86157701970849,
+                  "lng" : 2.334681019708498
+               }
+            }
+         },
+         "types" : [ "subway_station", "transit_station", "train_station", "establishment" ]
+      }
+   ],
+   "status" : "OK"
+}</con:responseContent>
+        <con:header>
+          <con:name>X-Frame-Options</con:name>
+          <con:value>SAMEORIGIN</con:value>
+        </con:header>
+        <con:header>
+          <con:name>Access-Control-Allow-Origin</con:name>
+          <con:value>*</con:value>
+        </con:header>
+        <con:header>
+          <con:name>Date</con:name>
+          <con:value>Wed, 26 Nov 2014 09:05:54 GMT</con:value>
+        </con:header>
+        <con:header>
+          <con:name>X-XSS-Protection</con:name>
+          <con:value>1; mode=block</con:value>
+        </con:header>
+        <con:header>
+          <con:name>Expires</con:name>
+          <con:value>Thu, 27 Nov 2014 09:05:54 GMT</con:value>
+        </con:header>
+        <con:header>
+          <con:name>Alternate-Protocol</con:name>
+          <con:value>80:quic,p=0.02</con:value>
+        </con:header>
+        <con:header>
+          <con:name>Server</con:name>
+          <con:value>mafe</con:value>
+        </con:header>
+        <con:header>
+          <con:name>Cache-Control</con:name>
+          <con:value>public, max-age=86400</con:value>
+        </con:header>
+      </con:response>
+      <con:response name="State Hermitage Museum" id="bfe4d5f6-d64c-4136-a6b1-fe0d6570a1cc" httpResponseStatus="200" mediaType="application/json" encoding="UTF-8" dataSource="">
+        <con:settings/>
+        <con:responseContent>{
+   "results" : [
+      {
+         "address_components" : [
+            {
+               "long_name" : "State Hermitage Museum",
+               "short_name" : "State Hermitage Museum",
+               "types" : [ "point_of_interest", "establishment" ]
+            },
+            {
+               "long_name" : "2",
+               "short_name" : "2",
+               "types" : [ "street_number" ]
+            },
+            {
+               "long_name" : "Dvortsovaya ploshchad'",
+               "short_name" : "Dvortsovaya pl.",
+               "types" : [ "route" ]
+            },
+            {
+               "long_name" : "Sankt-Peterburg",
+               "short_name" : "СПБ",
+               "types" : [ "locality", "political" ]
+            },
+            {
+               "long_name" : "gorod Sankt-Peterburg",
+               "short_name" : "g. Sankt-Peterburg",
+               "types" : [ "administrative_area_level_2", "political" ]
+            },
+            {
+               "long_name" : "Saint Petersburg",
+               "short_name" : "Saint Petersburg",
+               "types" : [ "administrative_area_level_1", "political" ]
+            },
+            {
+               "long_name" : "Russia",
+               "short_name" : "RU",
+               "types" : [ "country", "political" ]
+            },
+            {
+               "long_name" : "190000",
+               "short_name" : "190000",
+               "types" : [ "postal_code" ]
+            }
+         ],
+         "formatted_address" : "State Hermitage Museum, Dvortsovaya ploshchad', 2, Sankt-Peterburg, Russia, 190000",
+         "geometry" : {
+            "location" : {
+               "lat" : 59.93983170000001,
+               "lng" : 30.3145597
+            },
+            "location_type" : "APPROXIMATE",
+            "viewport" : {
+               "northeast" : {
+                  "lat" : 59.94118068029151,
+                  "lng" : 30.3159086802915
+               },
+               "southwest" : {
+                  "lat" : 59.9384827197085,
+                  "lng" : 30.3132107197085
+               }
+            }
+         },
+         "types" : [ "museum", "point_of_interest", "establishment" ]
+      }
+   ],
+   "status" : "OK"
+}</con:responseContent>
+        <con:header>
+          <con:name>X-Frame-Options</con:name>
+          <con:value>SAMEORIGIN</con:value>
+        </con:header>
+        <con:header>
+          <con:name>Access-Control-Allow-Origin</con:name>
+          <con:value>*</con:value>
+        </con:header>
+        <con:header>
+          <con:name>Date</con:name>
+          <con:value>Wed, 26 Nov 2014 09:05:58 GMT</con:value>
+        </con:header>
+        <con:header>
+          <con:name>X-XSS-Protection</con:name>
+          <con:value>1; mode=block</con:value>
+        </con:header>
+        <con:header>
+          <con:name>Expires</con:name>
+          <con:value>Thu, 27 Nov 2014 09:05:58 GMT</con:value>
+        </con:header>
+        <con:header>
+          <con:name>Alternate-Protocol</con:name>
+          <con:value>80:quic,p=0.02</con:value>
+        </con:header>
+        <con:header>
+          <con:name>Server</con:name>
+          <con:value>mafe</con:value>
+        </con:header>
+        <con:header>
+          <con:name>Cache-Control</con:name>
+          <con:value>public, max-age=86400</con:value>
+        </con:header>
+      </con:response>
+      <con:response name="Paseo del Prado" id="56696900-fb22-4668-b551-a73dedb2c27f" httpResponseStatus="200" mediaType="application/json" encoding="UTF-8" dataSource="">
+        <con:settings/>
+        <con:responseContent>{
+   "results" : [
+      {
+         "address_components" : [
+            {
+               "long_name" : "Paseo del Prado",
+               "short_name" : "Paseo del Prado",
+               "types" : [ "route" ]
+            },
+            {
+               "long_name" : "Madrid",
+               "short_name" : "Madrid",
+               "types" : [ "locality", "political" ]
+            },
+            {
+               "long_name" : "Madrid",
+               "short_name" : "M",
+               "types" : [ "administrative_area_level_2", "political" ]
+            },
+            {
+               "long_name" : "Comunidad de Madrid",
+               "short_name" : "Comunidad de Madrid",
+               "types" : [ "administrative_area_level_1", "political" ]
+            },
+            {
+               "long_name" : "Spain",
+               "short_name" : "ES",
+               "types" : [ "country", "political" ]
+            }
+         ],
+         "formatted_address" : "Paseo del Prado, Madrid, Madrid, Spain",
+         "geometry" : {
+            "bounds" : {
+               "northeast" : {
+                  "lat" : 40.4195537,
+                  "lng" : -3.6917221
+               },
+               "southwest" : {
+                  "lat" : 40.4092901,
+                  "lng" : -3.6950608
+               }
+            },
+            "location" : {
+               "lat" : 40.4147153,
+               "lng" : -3.6933898
+            },
+            "location_type" : "GEOMETRIC_CENTER",
+            "viewport" : {
+               "northeast" : {
+                  "lat" : 40.4195537,
+                  "lng" : -3.6917221
+               },
+               "southwest" : {
+                  "lat" : 40.4092901,
+                  "lng" : -3.6950608
+               }
+            }
+         },
+         "types" : [ "route" ]
+      }
+   ],
+   "status" : "OK"
+}</con:responseContent>
+        <con:header>
+          <con:name>X-Frame-Options</con:name>
+          <con:value>SAMEORIGIN</con:value>
+        </con:header>
+        <con:header>
+          <con:name>Access-Control-Allow-Origin</con:name>
+          <con:value>*</con:value>
+        </con:header>
+        <con:header>
+          <con:name>Date</con:name>
+          <con:value>Wed, 26 Nov 2014 09:06:01 GMT</con:value>
+        </con:header>
+        <con:header>
+          <con:name>X-XSS-Protection</con:name>
+          <con:value>1; mode=block</con:value>
+        </con:header>
+        <con:header>
+          <con:name>Expires</con:name>
+          <con:value>Thu, 27 Nov 2014 09:06:01 GMT</con:value>
+        </con:header>
+        <con:header>
+          <con:name>Alternate-Protocol</con:name>
+          <con:value>80:quic,p=0.02</con:value>
+        </con:header>
+        <con:header>
+          <con:name>Server</con:name>
+          <con:value>mafe</con:value>
+        </con:header>
+        <con:header>
+          <con:name>Cache-Control</con:name>
+          <con:value>public, max-age=86400</con:value>
+        </con:header>
+      </con:response>
+      <con:response name="Metropolitan Museum of Art" id="e7dbc878-ff4f-4dc9-b6cd-b1b04b05c53d" httpResponseStatus="200" mediaType="application/json" encoding="UTF-8" dataSource="">
+        <con:settings/>
+        <con:responseContent>{
+   "results" : [
+      {
+         "address_components" : [
+            {
+               "long_name" : "Metropolitan Museum of Art",
+               "short_name" : "Metropolitan Museum of Art",
+               "types" : [ "premise" ]
+            },
+            {
+               "long_name" : "Central Park",
+               "short_name" : "Central Park",
+               "types" : [ "neighborhood", "political" ]
+            },
+            {
+               "long_name" : "Manhattan",
+               "short_name" : "Manhattan",
+               "types" : [ "sublocality_level_1", "sublocality", "political" ]
+            },
+            {
+               "long_name" : "New York",
+               "short_name" : "New York",
+               "types" : [ "locality", "political" ]
+            },
+            {
+               "long_name" : "New York County",
+               "short_name" : "New York County",
+               "types" : [ "administrative_area_level_2", "political" ]
+            },
+            {
+               "long_name" : "New York",
+               "short_name" : "NY",
+               "types" : [ "administrative_area_level_1", "political" ]
+            },
+            {
+               "long_name" : "United States",
+               "short_name" : "US",
+               "types" : [ "country", "political" ]
+            },
+            {
+               "long_name" : "10028",
+               "short_name" : "10028",
+               "types" : [ "postal_code" ]
+            }
+         ],
+         "formatted_address" : "Metropolitan Museum of Art, New York, NY 10028, USA",
+         "geometry" : {
+            "bounds" : {
+               "northeast" : {
+                  "lat" : 40.7809792,
+                  "lng" : -73.96164399999999
+               },
+               "southwest" : {
+                  "lat" : 40.7778256,
+                  "lng" : -73.965143
+               }
+            },
+            "location" : {
+               "lat" : 40.7791865,
+               "lng" : -73.96353479999999
+            },
+            "location_type" : "ROOFTOP",
+            "viewport" : {
+               "northeast" : {
+                  "lat" : 40.7809792,
+                  "lng" : -73.96164399999999
+               },
+               "southwest" : {
+                  "lat" : 40.7778256,
+                  "lng" : -73.965143
+               }
+            }
+         },
+         "types" : [ "premise" ]
+      }
+   ],
+   "status" : "OK"
+}</con:responseContent>
+        <con:header>
+          <con:name>X-Frame-Options</con:name>
+          <con:value>SAMEORIGIN</con:value>
+        </con:header>
+        <con:header>
+          <con:name>Access-Control-Allow-Origin</con:name>
+          <con:value>*</con:value>
+        </con:header>
+        <con:header>
+          <con:name>Date</con:name>
+          <con:value>Wed, 26 Nov 2014 09:06:03 GMT</con:value>
+        </con:header>
+        <con:header>
+          <con:name>X-XSS-Protection</con:name>
+          <con:value>1; mode=block</con:value>
+        </con:header>
+        <con:header>
+          <con:name>Expires</con:name>
+          <con:value>Thu, 27 Nov 2014 09:06:03 GMT</con:value>
+        </con:header>
+        <con:header>
+          <con:name>Alternate-Protocol</con:name>
+          <con:value>80:quic,p=0.02</con:value>
+        </con:header>
+        <con:header>
+          <con:name>Server</con:name>
+          <con:value>mafe</con:value>
+        </con:header>
+        <con:header>
+          <con:name>Cache-Control</con:name>
+          <con:value>public, max-age=86400</con:value>
+        </con:header>
+      </con:response>
+      <con:response name="Egyptian Museum of Antiquities" id="30474a56-298e-48b0-8d56-92e1fc0e1adf" httpResponseStatus="200" mediaType="application/json" encoding="UTF-8" dataSource="">
+        <con:settings/>
+        <con:responseContent>{
+   "results" : [
+      {
+         "address_components" : [
+            {
+               "long_name" : "Egyptian Museum of Antiquities",
+               "short_name" : "Egyptian Museum of Antiquities",
+               "types" : [ "establishment" ]
+            },
+            {
+               "long_name" : "Meret Basha",
+               "short_name" : "Meret Basha",
+               "types" : [ "route" ]
+            },
+            {
+               "long_name" : "Cairo",
+               "short_name" : "Cairo",
+               "types" : [ "locality", "political" ]
+            },
+            {
+               "long_name" : "Ismailia",
+               "short_name" : "Ismailia",
+               "types" : [ "administrative_area_level_3", "political" ]
+            },
+            {
+               "long_name" : "Qasr an Nile",
+               "short_name" : "Qasr an Nile",
+               "types" : [ "administrative_area_level_2", "political" ]
+            },
+            {
+               "long_name" : "Cairo Governorate",
+               "short_name" : "Cairo Governorate",
+               "types" : [ "administrative_area_level_1", "political" ]
+            },
+            {
+               "long_name" : "Egypt",
+               "short_name" : "EG",
+               "types" : [ "country", "political" ]
+            },
+            {
+               "long_name" : "11516",
+               "short_name" : "11516",
+               "types" : [ "postal_code" ]
+            }
+         ],
+         "formatted_address" : "Egyptian Museum of Antiquities, Meret Basha, Ismailia, Qasr an Nile, Cairo Governorate 11516, Egypt",
+         "geometry" : {
+            "bounds" : {
+               "northeast" : {
+                  "lat" : 30.0486062,
+                  "lng" : 31.2345198
+               },
+               "southwest" : {
+                  "lat" : 30.0466983,
+                  "lng" : 31.2327102
+               }
+            },
+            "location" : {
+               "lat" : 30.0476522,
+               "lng" : 31.233615
+            },
+            "location_type" : "APPROXIMATE",
+            "viewport" : {
+               "northeast" : {
+                  "lat" : 30.0490012302915,
+                  "lng" : 31.2349639802915
+               },
+               "southwest" : {
+                  "lat" : 30.0463032697085,
+                  "lng" : 31.2322660197085
+               }
+            }
+         },
+         "types" : [ "museum", "establishment" ]
+      }
+   ],
+   "status" : "OK"
+}</con:responseContent>
+        <con:header>
+          <con:name>X-Frame-Options</con:name>
+          <con:value>SAMEORIGIN</con:value>
+        </con:header>
+        <con:header>
+          <con:name>Access-Control-Allow-Origin</con:name>
+          <con:value>*</con:value>
+        </con:header>
+        <con:header>
+          <con:name>Date</con:name>
+          <con:value>Wed, 26 Nov 2014 09:06:06 GMT</con:value>
+        </con:header>
+        <con:header>
+          <con:name>X-XSS-Protection</con:name>
+          <con:value>1; mode=block</con:value>
+        </con:header>
+        <con:header>
+          <con:name>Expires</con:name>
+          <con:value>Thu, 27 Nov 2014 09:06:06 GMT</con:value>
+        </con:header>
+        <con:header>
+          <con:name>Alternate-Protocol</con:name>
+          <con:value>80:quic,p=0.02</con:value>
+        </con:header>
+        <con:header>
+          <con:name>Server</con:name>
+          <con:value>mafe</con:value>
+        </con:header>
+        <con:header>
+          <con:name>Cache-Control</con:name>
+          <con:value>public, max-age=86400</con:value>
+        </con:header>
+      </con:response>
+    </con:restMockAction>
+    <con:restMockAction name="/maps/api/distancematrix/json" method="GET" resourcePath="/maps/api/distancematrix/json" id="268fb0fd-ba71-42bb-ab22-e35ba7be23ed">
+      <con:settings/>
+      <con:defaultResponse>Return values from DataSource</con:defaultResponse>
+      <con:dispatchStyle>SEQUENCE</con:dispatchStyle>
+      <con:dispatchConfig/>
+      <con:dispatchPath>/*
+// Script dispatcher is used to select a response based on the incoming request.
+// Here are few examples showing how to match based on path, query param, header and body
+
+// Match based on path
+def requestPath = mockRequest.getPath()
+log.info "Path: "+ requestPath
+
+if( requestPath.contains("json") )
+{
+    // return the name of the response you want to dispatch
+    return "JSON Response"
+}
+
+
+// Match based on query parameter
+def queryString = mockRequest.getRequest().getQueryString()
+log.info "QueryString: " + queryString
+
+if( queryString.contains("stockholm") )
+{
+    // return the name of the response you want to dispatch
+    return "Response Stockholm"
+}
+else if( queryString.contains("london") )
+{
+    // return the name of the response you want to dispatch
+    return "Response London"
+}
+
+
+// Match based on header
+def acceptEncodingHeaderList = mockRequest.getRequestHeaders().get("Accept-Encoding")
+log.info "AcceptEncoding Header List: " + acceptEncodingHeaderList
+
+if( acceptEncodingHeaderList.contains("gzip,deflate") )
+{
+    // return the name of the response you want to dispatch
+    return "GZiped Response"
+}
+
+
+// Match based on body
+def requestBody = mockRequest.getRequestContent()
+log.info "Request body: " + requestBody
+
+if( requestBody.contains("some data") )
+{
+    // return the name of the response you want to dispatch
+    return "Response N"
+}
+*/</con:dispatchPath>
+      <con:response name="Return values from DataSource" id="224a34e3-52e8-4ead-a0af-56dc65d5b8a5" httpResponseStatus="200" mediaType="application/json" encoding="UTF-8" dataSource="DataSource for Virt">
+        <con:settings/>
+        <con:responseContent>{
+   "destination_addresses" : [ "${#MockResponse#destination_addresses}" ],
+   "origin_addresses" : [ "${#MockResponse#origin_addresses}" ],
+   "rows" : [
+      {
+         "elements" : [
+            {
+               "distance" : {
+                  "text" : "${#MockResponse#distance_text}",
+                  "value" : ${#MockResponse#distance_value}
+               },
+               "duration" : {
+                  "text" : "${#MockResponse#duration_text}",
+                  "value" : ${#MockResponse#duration_value}
+               },
+               "status" : "OK"
+            }
+         ]
+      }
+   ],
+   "status" : "OK"
+}</con:responseContent>
+        <con:header>
+          <con:name>X-Frame-Options</con:name>
+          <con:value>SAMEORIGIN</con:value>
+        </con:header>
+        <con:header>
+          <con:name>Date</con:name>
+          <con:value>Wed, 26 Nov 2014 11:15:13 GMT</con:value>
+        </con:header>
+        <con:header>
+          <con:name>X-XSS-Protection</con:name>
+          <con:value>1; mode=block</con:value>
+        </con:header>
+        <con:header>
+          <con:name>Expires</con:name>
+          <con:value>Thu, 27 Nov 2014 11:15:13 GMT</con:value>
+        </con:header>
+        <con:header>
+          <con:name>Alternate-Protocol</con:name>
+          <con:value>80:quic,p=0.02</con:value>
+        </con:header>
+        <con:header>
+          <con:name>Server</con:name>
+          <con:value>mafe</con:value>
+        </con:header>
+        <con:header>
+          <con:name>Cache-Control</con:name>
+          <con:value>public, max-age=86400</con:value>
+        </con:header>
+      </con:response>
+    </con:restMockAction>
+    <con:restMockAction name="/maps/api/elevation/xml" method="GET" resourcePath="/maps/api/elevation/xml" id="46b1daff-c51b-4bff-bd19-d21b55858696">
+      <con:settings/>
+      <con:defaultResponse xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">Return values from DataSource</con:defaultResponse>
+      <con:dispatchStyle>SEQUENCE</con:dispatchStyle>
+      <con:dispatchConfig/>
+      <con:dispatchPath>/*
+// Script dispatcher is used to select a response based on the incoming request.
+// Here are few examples showing how to match based on path, query param, header and body
+
+// Match based on path
+def requestPath = mockRequest.getPath()
+log.info "Path: "+ requestPath
+
+if( requestPath.contains("json") )
+{
+    // return the name of the response you want to dispatch
+    return "JSON Response"
+}
+
+
+// Match based on query parameter
+def queryString = mockRequest.getRequest().getQueryString()
+log.info "QueryString: " + queryString
+
+if( queryString.contains("stockholm") )
+{
+    // return the name of the response you want to dispatch
+    return "Response Stockholm"
+}
+else if( queryString.contains("london") )
+{
+    // return the name of the response you want to dispatch
+    return "Response London"
+}
+
+
+// Match based on header
+def acceptEncodingHeaderList = mockRequest.getRequestHeaders().get("Accept-Encoding")
+log.info "AcceptEncoding Header List: " + acceptEncodingHeaderList
+
+if( acceptEncodingHeaderList.contains("gzip,deflate") )
+{
+    // return the name of the response you want to dispatch
+    return "GZiped Response"
+}
+
+
+// Match based on body
+def requestBody = mockRequest.getRequestContent()
+log.info "Request body: " + requestBody
+
+if( requestBody.contains("some data") )
+{
+    // return the name of the response you want to dispatch
+    return "Response N"
+}
+*/</con:dispatchPath>
+      <con:response name="Return values from DataSource" id="9df06ea8-5e4c-4636-862d-5ec7b853c18c" httpResponseStatus="200" dataSource="DataSource for Virt">
+        <con:settings/>
+        <con:script>def grid =
+	[[48.858056, 2.294444, 33.3223763, 9.5439520],
+	[27.988056, 86.925278, 8815.7158203, 152.7032318],
+	[41.890169, 12.492269, 22.4374981, 4.7719760],
+	[43.722983, 10.396308, 7.4073606, 610.8129272],
+	[55.751667, 37.617778, 148.4299316, 152.7032318],
+	[40.689167, -74.044583, 2.0590007, 76.3516159],
+	[-22.952778, -43.209583, 325.1607666, 610.8129272]];
+context.getMockService().getProperty("lat").value = 0;
+context.getMockService().getProperty("lng").value = 0;
+context.getMockService().getProperty("elevation").value = 0;
+context.getMockService().getProperty("resolution").value = 0;
+def reqStr = mockRequest.httpRequest.getQueryString();
+for(i=0; i&lt;7; i++)
+{
+	def pLat = grid[i][0];
+	def pLng = grid[i][1];
+	if(reqStr.contains(pLat.toString()) &amp;&amp; reqStr.contains(pLng.toString()))
+	{
+		context.getMockService().getProperty("lat").value = grid[i][0];
+		context.getMockService().getProperty("lng").value = grid[i][1];
+		context.getMockService().getProperty("elevation").value = grid[i][2];
+		context.getMockService().getProperty("resolution").value = grid[i][3];
+		break;
+	}
+}</con:script>
+        <con:responseContent><![CDATA[<ElevationResponse>
+   <status>OK</status>
+   <result>
+      <location>
+         <lat>${#MockService#lat}</lat>
+         <lng>${#MockService#lng}</lng>
+      </location>
+      <elevation>${#MockService#elevation}</elevation>
+      <resolution>${#MockService#resolution}</resolution>
+   </result>
+</ElevationResponse>]]></con:responseContent>
+      </con:response>
+    </con:restMockAction>
+    <con:restMockAction name="/" method="GET" resourcePath="/" id="81a23885-1bbb-4a60-8e6c-256988ffefaa">
+      <con:settings/>
+      <con:defaultResponse>404 Not Found</con:defaultResponse>
+      <con:dispatchStyle>SEQUENCE</con:dispatchStyle>
+      <con:dispatchConfig/>
+      <con:dispatchPath>/*
+// Script dispatcher is used to select a response based on the incoming request.
+// Here are few examples showing how to match based on path, query param, header and body
+
+// Match based on path
+def requestPath = mockRequest.getPath()
+log.info "Path: "+ requestPath
+
+if( requestPath.contains("json") )
+{
+    // return the name of the response you want to dispatch
+    return "JSON Response"
+}
+
+
+// Match based on query parameter
+def queryString = mockRequest.getRequest().getQueryString()
+log.info "QueryString: " + queryString
+
+if( queryString.contains("stockholm") )
+{
+    // return the name of the response you want to dispatch
+    return "Response Stockholm"
+}
+else if( queryString.contains("london") )
+{
+    // return the name of the response you want to dispatch
+    return "Response London"
+}
+
+
+// Match based on header
+def acceptEncodingHeaderList = mockRequest.getRequestHeaders().get("Accept-Encoding")
+log.info "AcceptEncoding Header List: " + acceptEncodingHeaderList
+
+if( acceptEncodingHeaderList.contains("gzip,deflate") )
+{
+    // return the name of the response you want to dispatch
+    return "GZiped Response"
+}
+
+
+// Match based on body
+def requestBody = mockRequest.getRequestContent()
+log.info "Request body: " + requestBody
+
+if( requestBody.contains("some data") )
+{
+    // return the name of the response you want to dispatch
+    return "Response N"
+}
+*/</con:dispatchPath>
+      <con:response name="404 Not Found" id="43f84105-a1a1-424d-9f9b-873a4688ce61" httpResponseStatus="404" mediaType="text/html" encoding="UTF-8" dataSource="">
+        <con:settings/>
+        <con:responseContent><![CDATA[<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+  <head>
+    <title>404 - Page not found</title>
+    <meta charset="utf-8"/>
+  </head>
+  <body>
+    <h2>404 - Page not found.</h2>
+  </body>
+</html>]]></con:responseContent>
+      </con:response>
+      <con:response name="500 Internal Server Error" id="02bec580-0581-4af8-82ab-c7f76c1678ff" httpResponseStatus="500" mediaType="text/html" dataSource="">
+        <con:settings/>
+        <con:responseContent><![CDATA[<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+  <head>
+    <title>500 - Internal Server Error</title>
+    <meta charset="utf-8"/>
+  </head>
+  <body>
+    <h2>500 - Internal Server Error.</h2>
+  </body>
+</html>]]></con:responseContent>
+      </con:response>
+      <con:response name="502 Bad Gateway" id="28ec7a11-e866-4459-a894-149a74e72c32" httpResponseStatus="502" mediaType="text/html" dataSource="">
+        <con:settings/>
+        <con:responseContent><![CDATA[<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+  <head>
+    <title>502 - Bad Gateway</title>
+    <meta charset="utf-8"/>
+  </head>
+  <body>
+    <h2>502 - Bad Gateway.</h2>
+  </body>
+</html>]]></con:responseContent>
+      </con:response>
+      <con:response name="503 Service Unavailable" id="efff6794-af22-4a99-96fb-6c6c3ffe4979" httpResponseStatus="503" mediaType="text/html" dataSource="">
+        <con:settings/>
+        <con:responseContent><![CDATA[<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+  <head>
+    <title>503 - Service Unavailable</title>
+    <meta charset="utf-8"/>
+  </head>
+  <body>
+    <h2>503 - Service Unavailable.</h2>
+  </body>
+</html>]]></con:responseContent>
+      </con:response>
+    </con:restMockAction>
+  </con:restMockService>
+  <con:requirements/>
+  <con:properties/>
+  <con:wssContainer/>
+  <con:databaseConnectionContainer/>
+  <con:oAuth2ProfileContainer/>
+  <con:reporting>
+    <con:reportTemplates/>
+    <con:xmlTemplates/>
+    <con:parameters/>
+  </con:reporting>
+  <con:authRepository/>
+</con:soapui-project>

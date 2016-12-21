@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="LoadUITestReport" language="groovy" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="30" rightMargin="30" topMargin="30" bottomMargin="30">
+	<property name="ireport.encoding" value="UTF-8"/>
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<template><![CDATA["../../styles.jrtx"]]></template>
+	<parameter name="IncludeOverview" class="java.lang.Boolean">
+		<property name="interactive" value="true"/>
+		<property name="label" value="Include Test Overview"/>
+		<parameterDescription><![CDATA[Includes the LoadUI NG test overview information in the report]]></parameterDescription>
+		<defaultValueExpression><![CDATA[true]]></defaultValueExpression>
+	</parameter>
+	<parameter name="IncludeResults" class="java.lang.Boolean">
+		<property name="interactive" value="true"/>
+		<property name="label" value="Include Latest Results"/>
+		<parameterDescription><![CDATA[Includes the latest LoadUI NG test results in the report]]></parameterDescription>
+		<defaultValueExpression><![CDATA[true]]></defaultValueExpression>
+	</parameter>
+	<parameter name="FlowLayout" class="java.lang.Boolean">
+		<property name="interactive" value="true"/>
+		<property name="label" value="Flow Layout"/>
+		<parameterDescription><![CDATA[Chooses a flow layout for the report]]></parameterDescription>
+		<defaultValueExpression><![CDATA[false]]></defaultValueExpression>
+	</parameter>
+	<parameter name="HeaderLogo" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["../../logos/header_logo.jpg"]]></defaultValueExpression>
+	</parameter>
+	<pageHeader>
+		<band height="51">
+			<printWhenExpression><![CDATA[$V{PAGE_NUMBER} == 1 || !$P{FlowLayout}]]></printWhenExpression>
+			<image scaleImage="Clip" hAlign="Right" onErrorType="Blank">
+				<reportElement x="0" y="0" width="535" height="51"/>
+				<imageExpression class="java.lang.String"><![CDATA[$P{HeaderLogo}]]></imageExpression>
+			</image>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="77">
+			<printWhenExpression><![CDATA[$V{PAGE_NUMBER} == 1 || $P{FlowLayout}]]></printWhenExpression>
+			<staticText>
+				<reportElement style="MainHeader" x="0" y="0" width="535" height="35"/>
+				<textElement/>
+				<text>Load Test Results for</text>
+			</staticText>
+			<textField>
+				<reportElement style="MainHeader" x="1" y="35" width="535" height="40"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA["${=loadUITest.name}"]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="350">
+			<subreport isUsingCache="true">
+				<reportElement positionType="Float" isPrintRepeatedValues="false" x="0" y="1" width="535" height="30" isRemoveLineWhenBlank="true">
+					<printWhenExpression><![CDATA[$P{IncludeOverview}]]></printWhenExpression>
+				</reportElement>
+				<subreportParameter name="IncludeOverview">
+					<subreportParameterExpression><![CDATA[$P{IncludeOverview}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="Type">
+					<subreportParameterExpression><![CDATA["Test"]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="FlowLayout">
+					<subreportParameterExpression><![CDATA[$P{FlowLayout}]]></subreportParameterExpression>
+				</subreportParameter>
+				<dataSourceExpression><![CDATA[$P{ReportMetrics}]]></dataSourceExpression>
+				<subreportExpression class="java.lang.String"><![CDATA["subreport:MetricsReport"]]></subreportExpression>
+			</subreport>
+			<break>
+				<reportElement positionType="Float" x="0" y="32" width="534" height="1">
+					<printWhenExpression><![CDATA[$P{IncludeOverview} && !$P{FlowLayout}]]></printWhenExpression>
+				</reportElement>
+			</break>
+			<subreport isUsingCache="true">
+				<reportElement positionType="Float" isPrintRepeatedValues="false" x="0" y="55" width="535" height="30" isRemoveLineWhenBlank="true">
+					<printWhenExpression><![CDATA[$P{IncludeResults}]]></printWhenExpression>
+				</reportElement>
+				<subreportParameter name="Type">
+					<subreportParameterExpression><![CDATA["Latest Test Execution"]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="FlowLayout">
+					<subreportParameterExpression><![CDATA[$P{FlowLayout}]]></subreportParameterExpression>
+				</subreportParameter>
+				<dataSourceExpression><![CDATA[$P{LoadUITestResults}]]></dataSourceExpression>
+				<subreportExpression class="java.lang.String"><![CDATA["subreport:MetricsReport"]]></subreportExpression>
+			</subreport>
+			<subreport isUsingCache="true">
+				<reportElement positionType="Float" isPrintRepeatedValues="false" x="0" y="105" width="536" height="30" isRemoveLineWhenBlank="true">
+					<printWhenExpression><![CDATA[$P{IncludeResults}]]></printWhenExpression>
+				</reportElement>
+				<subreportParameter name="FlowLayout">
+					<subreportParameterExpression><![CDATA[$P{FlowLayout}]]></subreportParameterExpression>
+				</subreportParameter>
+				<dataSourceExpression><![CDATA[$P{LoadUIScenarioResults}]]></dataSourceExpression>
+				<subreportExpression class="java.lang.String"><![CDATA["subreport:LoadUIScenarioResultsReport"]]></subreportExpression>
+			</subreport>
+			<subreport isUsingCache="true">
+				<reportElement positionType="Float" isPrintRepeatedValues="false" x="0" y="150" width="536" height="30" isRemoveLineWhenBlank="true">
+					<printWhenExpression><![CDATA[$P{IncludeResults}]]></printWhenExpression>
+				</reportElement>
+				<subreportParameter name="ReportName">
+					<subreportParameterExpression><![CDATA["Top 5 Test Cases"]]></subreportParameterExpression>
+				</subreportParameter>
+				<dataSourceExpression><![CDATA[$P{LoadUITopTestCases}]]></dataSourceExpression>
+				<subreportExpression class="java.lang.String"><![CDATA["subreport:LoadUIExecutionNotablesReport"]]></subreportExpression>
+			</subreport>
+			<subreport isUsingCache="true">
+				<reportElement positionType="Float" isPrintRepeatedValues="false" x="0" y="195" width="536" height="30" isRemoveLineWhenBlank="true">
+					<printWhenExpression><![CDATA[$P{IncludeResults}]]></printWhenExpression>
+				</reportElement>
+				<subreportParameter name="ReportName">
+					<subreportParameterExpression><![CDATA["Bottom 5 Test Cases"]]></subreportParameterExpression>
+				</subreportParameter>
+				<dataSourceExpression><![CDATA[$P{LoadUIBottomTestCases}]]></dataSourceExpression>
+				<subreportExpression class="java.lang.String"><![CDATA["subreport:LoadUIExecutionNotablesReport"]]></subreportExpression>
+			</subreport>
+			<break>
+				<reportElement positionType="Float" x="0" y="226" width="534" height="1">
+					<printWhenExpression><![CDATA[$P{IncludeResults} && !$P{FlowLayout}]]></printWhenExpression>
+				</reportElement>
+			</break>
+			<subreport isUsingCache="true">
+				<reportElement positionType="Float" isPrintRepeatedValues="false" x="0" y="240" width="536" height="100" isRemoveLineWhenBlank="true">
+				</reportElement>
+				<dataSourceExpression><![CDATA[$P{LoadUIOverviewChart}]]></dataSourceExpression>
+				<subreportExpression class="java.lang.String"><![CDATA["subreport:ChartsReport"]]></subreportExpression>
+			</subreport>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="24">
+			<printWhenExpression><![CDATA[!$P{FlowLayout}]]></printWhenExpression>
+        	<textField>
+        		<reportElement x="1" y="0" width="535" height="20" forecolor="#999999"/>
+        		<textElement textAlignment="Center" verticalAlignment="Middle"/>
+        		<textFieldExpression class="java.lang.String"><![CDATA["created with Ready! API on " + new Date()]]></textFieldExpression>
+        	</textField>
+        	<textField>
+        		<reportElement x="1" y="0" width="535" height="20" forecolor="#999999"/>
+        		<textElement textAlignment="Center" verticalAlignment="Middle"/>
+        		<textFieldExpression class="java.lang.String"><![CDATA["created with Ready! API on " + new Date()]]></textFieldExpression>
+        	</textField>
+        </band>
+	</pageFooter>
+</jasperReport>

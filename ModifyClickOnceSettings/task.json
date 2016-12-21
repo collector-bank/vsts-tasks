@@ -1,0 +1,56 @@
+{
+  "id": "136a7cad-2ed6-496a-ba52-80157d8a9a8f",
+  "name": "ModifyClickOnceSettings",  
+  "friendlyName": "Modify the ClickOnce settings",
+  "description": "Used to modify the ClickOnce settings publish URL, application version and minimum application version",
+  "category": "Utility",
+  "author": "Nohm",
+  "version": {
+    "Major": 1,
+    "Minor": 1,
+    "Patch": 1
+  },
+  "minimumAgentVersion": "1.83.0",
+  "inputs": [
+    {
+      "name": "csProjPath",
+      "type": "filePath",
+      "label": "CS proj path",
+      "defaultValue": "",
+      "required": true,
+      "helpMarkDown": "The full path to the CS proj file"
+    },
+    {
+        "name": "publishUrl",
+        "type": "string",
+        "label": "Publish URL",
+        "defaultValue": "",
+        "required": true,
+        "helpMarkDown": "The path to where the application is published, used by the ClickOnce setup file"
+    },
+    {
+        "name": "applicationVersion",
+        "type": "string",
+        "label": "Application version",
+        "defaultValue": "",
+        "required": true,
+        "helpMarkDown": "The application version of the ClickOnce client, e.g 1.2.3.4"
+    },
+    {
+      "name": "minimumApplicationVersion",
+      "type": "string",
+      "label": "Minimum application version",
+      "defaultValue": "",
+      "required": true,
+      "helpMarkDown": "The minimum application version of the ClickOnce client, e.g 1.2.3.4"
+    }
+  ],
+  "instanceNameFormat": "Setting ClickOnce publishUrl to $(publishUrl), application version to $(applicationVersion) and minimum application version to $(minimumApplicationVersion)",
+  "execution": {
+    "PowerShell": {
+      "target": "$(currentDirectory)\\ModifyClickOnceSettings.ps1",
+      "argumentFormat": "",
+      "workingDirectory": "$(currentDirectory)"
+    }
+  }
+}

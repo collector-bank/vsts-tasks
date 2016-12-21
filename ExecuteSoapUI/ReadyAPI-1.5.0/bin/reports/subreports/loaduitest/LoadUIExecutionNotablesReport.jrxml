@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd"
+	name="LoadUIExecutionNotablesReport" language="groovy" pageWidth="535" pageHeight="842" columnWidth="535" leftMargin="0" rightMargin="0"
+	topMargin="0" bottomMargin="0">
+	<template>"../../styles.jrtx"</template>
+	<parameter name="ReportName" class="java.lang.String">
+		<property name="interactive" value="false"/>
+		<property name="label" value="Report Name"/>
+		<parameterDescription>The name of the report</parameterDescription>
+	</parameter>
+	<field name="testCaseName" class="java.lang.String"/>
+	<field name="timeTaken" class="java.lang.String"/>
+	<field name="startTime" class="java.lang.String"/>
+	<field name="size" class="java.lang.String"/>
+	<columnHeader>
+		<band height="51">
+			<textField>
+				<reportElement style="SmallHeader" x="0" y="0" width="535" height="23"/>
+				<box bottomPadding="0">
+					<pen lineStyle="Double"/>
+					<topPen lineStyle="Double"/>
+					<leftPen lineStyle="Double"/>
+					<bottomPen lineStyle="Double"/>
+					<rightPen lineStyle="Double"/>
+				</box>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{ReportName}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="ColumnHeader" x="0" y="33" width="290" height="14"/>
+					<textElement>
+						<font isBold="true"/>
+					</textElement>
+					<text>Test case</text>
+			</staticText>
+			<staticText>
+				<reportElement style="ColumnHeader" x="290" y="33" width="80" height="14"/>
+					<textElement>
+						<font isBold="true"/>
+					</textElement>
+					<text>Time taken</text>
+			</staticText>
+			<staticText>
+				<reportElement style="ColumnHeader" x="370" y="33" width="80" height="14"/>
+					<textElement>
+						<font isBold="true"/>
+					</textElement>
+					<text>Start time</text>
+			</staticText>
+			<staticText>
+				<reportElement style="ColumnHeader" x="450" y="33" width="80" height="14"/>
+					<textElement>
+						<font isBold="true"/>
+					</textElement>
+					<text>Size</text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20" splitType="Prevent">
+			<textField isStretchWithOverflow="true">
+				<reportElement x="0" y="0" width="290" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String">$F{testCaseName}</textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="290" y="0" width="80" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String">$F{timeTaken}</textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="370" y="0" width="80" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String">$F{startTime}</textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="450" y="0" width="80" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String">$F{size}</textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

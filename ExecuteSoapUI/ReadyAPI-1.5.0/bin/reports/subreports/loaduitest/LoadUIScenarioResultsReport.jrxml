@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="LoadUIScenarioResultsReport" language="groovy" pageWidth="535" pageHeight="842" columnWidth="535" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0">
+	<template>"../../styles.jrtx"</template>
+	<field name="testCaseName" class="java.lang.String"/>
+	<field name="executionTime" class="java.lang.String"/>
+	<field name="requestsCount" class="java.lang.String"/>
+	<field name="assertionsCount" class="java.lang.String"/>
+	<field name="failedAssertionsCount" class="java.lang.String"/>
+	<columnHeader>
+		<band height="51">
+			<staticText>
+				<reportElement style="SmallHeader" x="0" y="0" width="535" height="23"/>
+				<box bottomPadding="0">
+					<pen lineStyle="Double"/>
+					<topPen lineStyle="Double"/>
+					<leftPen lineStyle="Double"/>
+					<bottomPen lineStyle="Double"/>
+					<rightPen lineStyle="Double"/>
+				</box>
+				<textElement/>
+				<text>Results for Scenarios</text>
+			</staticText>
+			<staticText>
+				<reportElement style="ColumnHeader" x="0" y="33" width="175" height="14"/>
+					<textElement>
+						<font isBold="true"/>
+					</textElement>
+					<text>Scenario</text>
+			</staticText>
+			<staticText>
+				<reportElement style="ColumnHeader" x="175" y="33" width="80" height="14"/>
+					<textElement>
+						<font isBold="true"/>
+					</textElement>
+					<text>Duration</text>
+			</staticText>
+			<staticText>
+				<reportElement style="ColumnHeader" x="255" y="33" width="80" height="14"/>
+					<textElement>
+						<font isBold="true"/>
+					</textElement>
+					<text>Requests</text>
+			</staticText>
+			<staticText>
+				<reportElement style="ColumnHeader" x="335" y="33" width="80" height="14"/>
+					<textElement>
+						<font isBold="true"/>
+					</textElement>
+					<text>Assertions</text>
+			</staticText>
+			<textField isStretchWithOverflow="true">
+				<reportElement style="ColumnHeader" x="415" y="33" width="115" height="14"/>
+					<textElement>
+						<font isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Failed Assertions"]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20" splitType="Prevent">
+			<textField isStretchWithOverflow="true">
+				<reportElement x="0" y="0" width="175" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String">$F{testCaseName}</textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="175" y="0" width="80" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String">$F{executionTime}</textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="255" y="0" width="80" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String">$F{requestsCount}</textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="335" y="0" width="80" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String">$F{assertionsCount}</textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="415" y="0" width="80" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String">$F{failedAssertionsCount}</textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

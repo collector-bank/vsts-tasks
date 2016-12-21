@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd"
+              name="TableReportWith10Columns" pageWidth="505" pageHeight="802" columnWidth="505" leftMargin="0" rightMargin="0"
+              topMargin="0" bottomMargin="10" whenResourceMissingType="Empty">
+    <property name="ireport.zoom" value="1.0"/>
+    <property name="ireport.x" value="0"/>
+    <property name="ireport.y" value="0"/>
+    <field name="COLUMN_0" class="java.lang.Object"/>
+    <field name="COLUMN_1" class="java.lang.Object"/>
+    <field name="COLUMN_2" class="java.lang.Object"/>
+    <field name="COLUMN_3" class="java.lang.Object"/>
+    <field name="COLUMN_4" class="java.lang.Object"/>
+    <field name="COLUMN_5" class="java.lang.Object"/>
+    <field name="COLUMN_6" class="java.lang.Object"/>
+    <field name="COLUMN_7" class="java.lang.Object"/>
+    <field name="COLUMN_8" class="java.lang.Object"/>
+    <field name="COLUMN_9" class="java.lang.Object"/>
+    <field name="columns" class="java.util.ArrayList"/>
+    <columnHeader>
+        <band height="22">
+            <textField isStretchWithOverflow="true">
+                <reportElement positionType="Float" stretchType="RelativeToTallestObject" x="0" y="0" width="50"
+                               height="20"/>
+                <textElement>
+                    <font isBold="true"/>
+                </textElement>
+                <textFieldExpression class="java.lang.String">
+                    <![CDATA[$F{columns}.size() > 0? ((String)$F{columns}.get( 0 )) : ""]]></textFieldExpression>
+            </textField>
+            <textField isStretchWithOverflow="true" pattern="">
+                <reportElement positionType="Float" stretchType="RelativeToTallestObject" x="51" y="0" width="50"
+                               height="20"/>
+                <textElement textAlignment="Right">
+                    <font isBold="true"/>
+                </textElement>
+                <textFieldExpression class="java.lang.String">
+                    <![CDATA[$F{columns}.size() > 1? ((String)$F{columns}.get( 1 )) : ""]]></textFieldExpression>
+            </textField>
+            <textField isStretchWithOverflow="true" pattern="">
+                <reportElement positionType="Float" stretchType="RelativeToTallestObject" x="101" y="0" width="50"
+                               height="20"/>
+                <textElement textAlignment="Right">
+                    <font isBold="true"/>
+                </textElement>
+                <textFieldExpression class="java.lang.String">
+                    <![CDATA[$F{columns}.size() > 2? ((String)$F{columns}.get( 2 )) : ""]]></textFieldExpression>
+            </textField>
+            <textField isStretchWithOverflow="true" pattern="">
+                <reportElement positionType="Float" stretchType="RelativeToTallestObject" x="151" y="0" width="50"
+                               height="20"/>
+                <textElement textAlignment="Right">
+                    <font isBold="true"/>
+                </textElement>
+                <textFieldExpression class="java.lang.String">
+                    <![CDATA[$F{columns}.size() > 3? ((String)$F{columns}.get( 3 )) : ""]]></textFieldExpression>
+            </textField>
+            <textField isStretchWithOverflow="true" pattern="">
+                <reportElement positionType="Float" stretchType="RelativeToTallestObject" x="201" y="0" width="50"
+                               height="20"/>
+                <textElement textAlignment="Right">
+                    <font isBold="true"/>
+                </textElement>
+                <textFieldExpression class="java.lang.String">
+                    <![CDATA[$F{columns}.size() > 4? ((String)$F{columns}.get( 4 )) : ""]]></textFieldExpression>
+            </textField>
+            <textField isStretchWithOverflow="true" pattern="">
+                <reportElement positionType="Float" stretchType="RelativeToTallestObject" x="251" y="0" width="50"
+                               height="20"/>
+                <textElement textAlignment="Right">
+                    <font isBold="true"/>
+                </textElement>
+                <textFieldExpression class="java.lang.String">
+                    <![CDATA[$F{columns}.size() > 5? ((String)$F{columns}.get( 5 )) : ""]]></textFieldExpression>
+            </textField>
+            <textField isStretchWithOverflow="true" pattern="">
+                <reportElement positionType="Float" stretchType="RelativeToTallestObject" x="301" y="0" width="50"
+                               height="20"/>
+                <textElement textAlignment="Right">
+                    <font isBold="true"/>
+                </textElement>
+                <textFieldExpression class="java.lang.String">
+                    <![CDATA[$F{columns}.size() > 6? ((String)$F{columns}.get( 6 )) : ""]]></textFieldExpression>
+            </textField>
+            <textField isStretchWithOverflow="true" pattern="">
+                <reportElement positionType="Float" stretchType="RelativeToTallestObject" x="351" y="0" width="50"
+                               height="20"/>
+                <textElement textAlignment="Right">
+                    <font isBold="true"/>
+                </textElement>
+                <textFieldExpression class="java.lang.String">
+                    <![CDATA[$F{columns}.size() > 7?((String)$F{columns}.get( 7 )) : ""]]></textFieldExpression>
+            </textField>
+            <textField isStretchWithOverflow="true" pattern="">
+                <reportElement positionType="Float" stretchType="RelativeToTallestObject" x="401" y="0" width="50"
+                               height="20"/>
+                <textElement textAlignment="Right">
+                    <font isBold="true"/>
+                </textElement>
+                <textFieldExpression class="java.lang.String">
+                    <![CDATA[$F{columns}.size() > 8? ((String)$F{columns}.get( 8 )) : ""]]></textFieldExpression>
+            </textField>
+            <textField isStretchWithOverflow="true" pattern="">
+                <reportElement positionType="Float" stretchType="RelativeToTallestObject" x="451" y="0" width="50"
+                               height="20"/>
+                <textElement textAlignment="Right">
+                    <font isBold="true"/>
+                </textElement>
+                <textFieldExpression class="java.lang.String">
+                    <![CDATA[$F{columns}.size() > 9? ((String)$F{columns}.get( 9 )) : ""]]></textFieldExpression>
+            </textField>
+            <textField isStretchWithOverflow="true" pattern="">
+                <reportElement positionType="Float" stretchType="RelativeToTallestObject" x="501" y="1" width="50"
+                               height="20"/>
+                <textElement textAlignment="Right">
+                    <font isBold="true"/>
+                </textElement>
+                <textFieldExpression class="java.lang.String">
+                    <![CDATA[$F{columns}.size() > 9? ((String)$F{columns}.get( 9 )).toUpperCase() : ""]]></textFieldExpression>
+            </textField>
+            <line>
+                <reportElement positionType="Float" x="0" y="20" width="505" height="1"/>
+            </line>
+        </band>
+    </columnHeader>
+    <detail>
+        <band height="21">
+            <textField isStretchWithOverflow="true" isBlankWhenNull="true">
+                <reportElement positionType="Float" x="0" y="0" width="50" height="20"
+                               isPrintWhenDetailOverflows="true"/>
+                <textElement textAlignment="Right"/>
+                <textFieldExpression class="java.lang.String">
+                    <![CDATA[$F{columns}.size() > 0? $F{COLUMN_0}.toString() : ""]]></textFieldExpression>
+            </textField>
+            <textField isStretchWithOverflow="true" evaluationTime="Auto" isBlankWhenNull="true">
+                <reportElement positionType="Float" x="51" y="0" width="50" height="20"/>
+                <textElement textAlignment="Right"/>
+                <textFieldExpression class="java.lang.String">
+                    <![CDATA[$F{columns}.size() > 1? $F{COLUMN_1}.toString() : ""]]></textFieldExpression>
+            </textField>
+            <textField isStretchWithOverflow="true" evaluationTime="Auto" isBlankWhenNull="true">
+                <reportElement positionType="Float" x="101" y="0" width="50" height="20"/>
+                <textElement textAlignment="Right"/>
+                <textFieldExpression class="java.lang.String">
+                    <![CDATA[$F{columns}.size() > 2? $F{COLUMN_2}.toString() : ""]]></textFieldExpression>
+            </textField>
+            <textField isStretchWithOverflow="true" evaluationTime="Auto" isBlankWhenNull="true">
+                <reportElement positionType="Float" x="151" y="0" width="50" height="20"/>
+                <textElement textAlignment="Right"/>
+                <textFieldExpression class="java.lang.String">
+                    <![CDATA[$F{columns}.size() > 3? $F{COLUMN_3}.toString() : ""]]></textFieldExpression>
+            </textField>
+            <textField isStretchWithOverflow="true" evaluationTime="Auto" isBlankWhenNull="true">
+                <reportElement positionType="Float" x="201" y="0" width="50" height="20" isRemoveLineWhenBlank="true"/>
+                <textElement textAlignment="Right"/>
+                <textFieldExpression class="java.lang.String">
+                    <![CDATA[$F{columns}.size() > 4? $F{COLUMN_4}.toString() : ""]]></textFieldExpression>
+            </textField>
+            <textField isStretchWithOverflow="true" evaluationTime="Auto" pattern="" isBlankWhenNull="true">
+                <reportElement positionType="Float" x="251" y="0" width="50" height="20" isRemoveLineWhenBlank="true"/>
+                <textElement textAlignment="Right"/>
+                <textFieldExpression class="java.lang.String">
+                    <![CDATA[$F{columns}.size() > 5? $F{COLUMN_5}.toString() : ""]]></textFieldExpression>
+            </textField>
+            <textField isStretchWithOverflow="true" evaluationTime="Auto" isBlankWhenNull="true">
+                <reportElement positionType="Float" x="301" y="0" width="50" height="20" isRemoveLineWhenBlank="true"/>
+                <textElement textAlignment="Right"/>
+                <textFieldExpression class="java.lang.String">
+                    <![CDATA[$F{columns}.size() > 6? $F{COLUMN_6}.toString() : ""]]></textFieldExpression>
+            </textField>
+            <textField isStretchWithOverflow="true" evaluationTime="Auto" isBlankWhenNull="true">
+                <reportElement positionType="Float" x="351" y="0" width="50" height="20" isRemoveLineWhenBlank="true"/>
+                <textElement textAlignment="Right"/>
+                <textFieldExpression class="java.lang.String">
+                    <![CDATA[$F{columns}.size() > 7? $F{COLUMN_7}.toString() : ""]]></textFieldExpression>
+            </textField>
+            <textField isStretchWithOverflow="true" evaluationTime="Auto" isBlankWhenNull="true">
+                <reportElement positionType="Float" x="401" y="0" width="50" height="20" isRemoveLineWhenBlank="true"/>
+                <textElement textAlignment="Right"/>
+                <textFieldExpression class="java.lang.String">
+                    <![CDATA[$F{columns}.size() > 8? $F{COLUMN_8}.toString() : ""]]></textFieldExpression>
+            </textField>
+            <textField isStretchWithOverflow="true" evaluationTime="Auto" isBlankWhenNull="true">
+                <reportElement positionType="Float" x="451" y="0" width="50" height="20" isRemoveLineWhenBlank="true"/>
+                <textElement textAlignment="Right"/>
+                <textFieldExpression class="java.lang.String">
+                    <![CDATA[$F{columns}.size() > 9? $F{COLUMN_9}.toString() : ""]]></textFieldExpression>
+            </textField>
+        </band>
+    </detail>
+</jasperReport>

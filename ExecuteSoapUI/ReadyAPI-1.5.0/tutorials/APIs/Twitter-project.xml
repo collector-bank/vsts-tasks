@@ -1,0 +1,625 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project activeEnvironment="Default environment" name="Twitter Sample Project" resourceRoot="" soapui-version="6.0.0" id="29ba2bf4-c235-4e7a-8c4c-fae837c49211" xmlns:con="http://eviware.com/soapui/config">
+    <con:description>Demonstrates the use of the Twitter API.</con:description><con:settings/>
+    <con:interface xsi:type="con:RestService" wadlVersion="http://wadl.dev.java.net/2009/02" name="Twitter" type="rest" basePath="" id="a5622b0c-5df0-4f84-8641-797ae011f30c" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <con:settings/>
+        <con:definitionCache type="TEXT" rootPart=""/>
+        <con:endpoints>
+            <con:endpoint>https://api.twitter.com</con:endpoint>
+        </con:endpoints>
+        <con:resource name="statuses" path="/{version}/statuses" id="a2a6c84f-534d-40fd-952e-449e508f2226">
+            <con:settings/>
+            <con:parameters>
+                <con:parameter required="true">
+                    <con:name>version</con:name>
+                    <con:value>1.1</con:value>
+                    <con:style>TEMPLATE</con:style>
+                    <con:type xmlns:xs="http://www.w3.org/2001/XMLSchema">xs:string</con:type>
+                    <con:default>1.1</con:default>
+                    <con:path xsi:nil="true"/>
+                    <con:option>1.0</con:option>
+                    <con:option>1.1</con:option>
+                    <con:description xsi:nil="true"/>
+                </con:parameter>
+                <con:parameter required="true">
+                    <con:name>format</con:name>
+                    <con:value>json</con:value>
+                    <con:style>TEMPLATE</con:style>
+                    <con:default>json</con:default>
+                    <con:option>json</con:option>
+                </con:parameter>
+            </con:parameters>
+            <con:resource name="mentions_timeline" path="/mentions_timeline.{format}" id="b433495b-02c7-4de7-8426-3f3e4d5c7d08">
+                <con:settings/>
+                <con:parameters>
+                    <con:parameter>
+                        <con:name>count</con:name>
+                        <con:value/>
+                        <con:style>QUERY</con:style>
+                        <con:type xmlns:xs="http://www.w3.org/2001/XMLSchema">xs:string</con:type>
+                        <con:default/>
+                        <con:path xsi:nil="true"/>
+                        <con:description xsi:nil="true"/>
+                    </con:parameter>
+                    <con:parameter>
+                        <con:name>since_id</con:name>
+                        <con:value/>
+                        <con:style>QUERY</con:style>
+                        <con:type xmlns:xs="http://www.w3.org/2001/XMLSchema">xs:string</con:type>
+                        <con:default/>
+                        <con:path xsi:nil="true"/>
+                        <con:description xsi:nil="true"/>
+                    </con:parameter>
+                    <con:parameter>
+                        <con:name>max_id</con:name>
+                        <con:value/>
+                        <con:style>QUERY</con:style>
+                        <con:default/>
+                    </con:parameter>
+                    <con:parameter>
+                        <con:name>trim_user</con:name>
+                        <con:value/>
+                        <con:style>QUERY</con:style>
+                        <con:type xmlns:xs="http://www.w3.org/2001/XMLSchema">xs:boolean</con:type>
+                        <con:default/>
+                    </con:parameter>
+                    <con:parameter>
+                        <con:name>contributor_details</con:name>
+                        <con:value/>
+                        <con:style>QUERY</con:style>
+                        <con:type xmlns:xs="http://www.w3.org/2001/XMLSchema">xs:boolean</con:type>
+                        <con:default/>
+                    </con:parameter>
+                    <con:parameter>
+                        <con:name>include_entities</con:name>
+                        <con:value/>
+                        <con:style>QUERY</con:style>
+                        <con:type xmlns:xs="http://www.w3.org/2001/XMLSchema">xs:boolean</con:type>
+                        <con:default/>
+                    </con:parameter>
+                </con:parameters>
+                <con:method name="GET" method="GET" id="184f7b08-75ed-4a1b-a05f-84d40c8a5af9">
+                    <con:settings/>
+                    <con:parameters/>
+                    <con:representation type="RESPONSE">
+                        <con:mediaType>application/json;charset=utf-8</con:mediaType>
+                        <con:status>200</con:status>
+                        <con:params/>
+                        <con:element>Response</con:element>
+                    </con:representation>
+                    <con:representation type="FAULT">
+                        <con:mediaType>application/xml; charset=utf-8</con:mediaType>
+                        <con:status>404</con:status>
+                        <con:params/>
+                        <con:element>errors</con:element>
+                    </con:representation>
+                    <con:request name="Request 1" mediaType="application/xml" id="3bbc6c19-7aac-4832-8860-58bc678369e4">
+                        <con:settings>
+                            <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+                        </con:settings>
+                        <con:endpoint>https://api.twitter.com</con:endpoint>
+                        <con:request/>
+                        <con:credentials>
+                            <con:authType>Global HTTP Settings</con:authType>
+                        </con:credentials>
+                        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+                        <con:jmsPropertyConfig/>
+                        <con:parameters/>
+                    </con:request>
+                </con:method>
+            </con:resource>
+            <con:resource name="user_timeline" path="/user_timeline.{format}" id="9290b406-2d95-4626-a2c3-40f4a8dda561">
+                <con:settings/>
+                <con:parameters>
+                    <con:parameter>
+                        <con:name>screen_name</con:name>
+                        <con:value/>
+                        <con:style>QUERY</con:style>
+                        <con:type xmlns:xs="http://www.w3.org/2001/XMLSchema">xs:string</con:type>
+                        <con:default/>
+                        <con:path xsi:nil="true"/>
+                        <con:description xsi:nil="true"/>
+                    </con:parameter>
+                    <con:parameter>
+                        <con:name>count</con:name>
+                        <con:value/>
+                        <con:style>QUERY</con:style>
+                        <con:type xmlns:xs="http://www.w3.org/2001/XMLSchema">xs:string</con:type>
+                        <con:default/>
+                        <con:path xsi:nil="true"/>
+                        <con:description xsi:nil="true"/>
+                    </con:parameter>
+                </con:parameters>
+                <con:method name="GET" method="GET" id="903a0aa7-b8f6-465a-810c-2d609b57d379">
+                    <con:settings/>
+                    <con:parameters/>
+                    <con:representation type="RESPONSE">
+                        <con:mediaType>application/json;charset=utf-8</con:mediaType>
+                        <con:status>200</con:status>
+                        <con:params/>
+                        <con:element>Response</con:element>
+                    </con:representation>
+                    <con:request name="Request 1" mediaType="application/xml" id="76a5b022-45d2-46d6-b469-97abeaca0478">
+                        <con:settings>
+                            <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+                        </con:settings>
+                        <con:endpoint>https://api.twitter.com</con:endpoint>
+                        <con:request/>
+                        <con:credentials>
+                            <con:authType>Global HTTP Settings</con:authType>
+                        </con:credentials>
+                        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+                        <con:jmsPropertyConfig/>
+                        <con:parameters/>
+                    </con:request>
+                </con:method>
+            </con:resource>
+            <con:resource name="home_timeline" path="home_timeline.{format}" id="a82db59b-2628-4deb-88fc-a89dfd9751fb">
+                <con:settings/>
+                <con:parameters/>
+                <con:method name="GET" method="GET" id="fe1f066d-50b0-4e20-aee0-19e3ca9b2ec1">
+                    <con:settings/>
+                    <con:parameters/>
+                    <con:representation type="RESPONSE">
+                        <con:mediaType>application/json;charset=utf-8</con:mediaType>
+                        <con:status>200</con:status>
+                        <con:params/>
+                        <con:element>Response</con:element>
+                    </con:representation>
+                    <con:request name="Request 1" mediaType="application/xml" id="6e9990e0-8648-4e9b-b751-2230861b33ab">
+                        <con:settings>
+                            <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+                        </con:settings>
+                        <con:endpoint>https://api.twitter.com</con:endpoint>
+                        <con:request/>
+                        <con:credentials>
+                            <con:authType>Global HTTP Settings</con:authType>
+                        </con:credentials>
+                        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+                        <con:jmsPropertyConfig/>
+                        <con:parameters/>
+                    </con:request>
+                </con:method>
+            </con:resource>
+            <con:resource name="retweets_of_me" path="/retweets_of_me.{format}" id="02334e23-5e2a-4923-a33c-0f63a1511a9e">
+                <con:settings/>
+                <con:parameters>
+                    <con:parameter>
+                        <con:name>count</con:name>
+                        <con:value>50</con:value>
+                        <con:style>QUERY</con:style>
+                        <con:type xmlns:xs="http://www.w3.org/2001/XMLSchema">xs:string</con:type>
+                        <con:default>50</con:default>
+                        <con:path xsi:nil="true"/>
+                        <con:description xsi:nil="true"/>
+                    </con:parameter>
+                    <con:parameter>
+                        <con:name>since_id</con:name>
+                        <con:value/>
+                        <con:style>QUERY</con:style>
+                        <con:type xmlns:xs="http://www.w3.org/2001/XMLSchema">xs:string</con:type>
+                        <con:default/>
+                        <con:path xsi:nil="true"/>
+                        <con:description xsi:nil="true"/>
+                    </con:parameter>
+                    <con:parameter>
+                        <con:name>max_id</con:name>
+                        <con:value/>
+                        <con:style>QUERY</con:style>
+                        <con:type xmlns:xs="http://www.w3.org/2001/XMLSchema">xs:string</con:type>
+                        <con:default/>
+                        <con:path xsi:nil="true"/>
+                        <con:description xsi:nil="true"/>
+                    </con:parameter>
+                </con:parameters>
+                <con:method name="GET" method="GET" id="483be38e-3b74-4759-a19a-0dd758516280">
+                    <con:settings/>
+                    <con:parameters/>
+                    <con:representation type="RESPONSE">
+                        <con:mediaType>application/json; charset=utf-8</con:mediaType>
+                        <con:status>200</con:status>
+                        <con:params/>
+                        <con:element>Response</con:element>
+                    </con:representation>
+                    <con:representation type="RESPONSE">
+                        <con:mediaType>application/json;charset=utf-8</con:mediaType>
+                        <con:status>200</con:status>
+                        <con:params/>
+                        <con:element>Response</con:element>
+                    </con:representation>
+                    <con:representation type="FAULT">
+                        <con:mediaType>application/xml; charset=utf-8</con:mediaType>
+                        <con:status>404</con:status>
+                        <con:params/>
+                        <con:element>errors</con:element>
+                    </con:representation>
+                    <con:request name="Request 1" mediaType="application/xml" id="1187435b-603a-46e6-82c8-86feee40c6a8">
+                        <con:settings>
+                            <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+                        </con:settings>
+                        <con:endpoint>https://api.twitter.com</con:endpoint>
+                        <con:request/>
+                        <con:credentials>
+                            <con:authType>Global HTTP Settings</con:authType>
+                        </con:credentials>
+                        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+                        <con:jmsPropertyConfig/>
+                        <con:parameters/>
+                    </con:request>
+                </con:method>
+            </con:resource>
+        </con:resource>
+        <con:resource name="version" path="/{version}" id="38a53cb6-2fb0-4602-b848-a5a2d6c58c99">
+            <con:settings/>
+            <con:parameters>
+                <con:parameter required="true">
+                    <con:name>version</con:name>
+                    <con:value>1.1</con:value>
+                    <con:style>TEMPLATE</con:style>
+                    <con:type xmlns:xs="http://www.w3.org/2001/XMLSchema">xs:string</con:type>
+                    <con:default>1.1</con:default>
+                    <con:path xsi:nil="true"/>
+                    <con:option>1.1</con:option>
+                    <con:option>1.0</con:option>
+                    <con:description xsi:nil="true"/>
+                </con:parameter>
+                <con:parameter required="true">
+                    <con:name>format</con:name>
+                    <con:value>json</con:value>
+                    <con:style>TEMPLATE</con:style>
+                    <con:default>json</con:default>
+                    <con:option>json</con:option>
+                </con:parameter>
+            </con:parameters>
+            <con:resource name="search" path="/search/tweets.{format}" id="926ffe6f-422b-4d7e-ae29-9a33843c04d5">
+                <con:settings/>
+                <con:parameters>
+                    <con:parameter required="true">
+                        <con:name>q</con:name>
+                        <con:value/>
+                        <con:style>QUERY</con:style>
+                        <con:type xmlns:xs="http://www.w3.org/2001/XMLSchema">xs:string</con:type>
+                        <con:default/>
+                        <con:path xsi:nil="true"/>
+                        <con:description xsi:nil="true"/>
+                    </con:parameter>
+                    <con:parameter>
+                        <con:name>since_id</con:name>
+                        <con:value/>
+                        <con:style>QUERY</con:style>
+                        <con:type xmlns:xs="http://www.w3.org/2001/XMLSchema">xs:string</con:type>
+                        <con:default/>
+                        <con:path xsi:nil="true"/>
+                        <con:description xsi:nil="true"/>
+                    </con:parameter>
+                    <con:parameter>
+                        <con:name>max_id</con:name>
+                        <con:value/>
+                        <con:style>QUERY</con:style>
+                        <con:type xmlns:xs="http://www.w3.org/2001/XMLSchema">xs:string</con:type>
+                        <con:default/>
+                        <con:path xsi:nil="true"/>
+                        <con:description xsi:nil="true"/>
+                    </con:parameter>
+                    <con:parameter>
+                        <con:name>result_type</con:name>
+                        <con:value/>
+                        <con:style>QUERY</con:style>
+                        <con:type xmlns:xs="http://www.w3.org/2001/XMLSchema">xs:string</con:type>
+                        <con:default/>
+                        <con:path xsi:nil="true"/>
+                        <con:option>mixed</con:option>
+                        <con:option>recent</con:option>
+                        <con:option>popular</con:option>
+                        <con:description xsi:nil="true"/>
+                    </con:parameter>
+                    <con:parameter>
+                        <con:name>count</con:name>
+                        <con:value/>
+                        <con:style>QUERY</con:style>
+                        <con:type xmlns:xs="http://www.w3.org/2001/XMLSchema">xs:string</con:type>
+                        <con:default/>
+                        <con:path xsi:nil="true"/>
+                        <con:description xsi:nil="true"/>
+                    </con:parameter>
+                    <con:parameter>
+                        <con:name>geocode</con:name>
+                        <con:value/>
+                        <con:style>QUERY</con:style>
+                        <con:default/>
+                    </con:parameter>
+                    <con:parameter>
+                        <con:name>lang</con:name>
+                        <con:value/>
+                        <con:style>QUERY</con:style>
+                        <con:default/>
+                    </con:parameter>
+                    <con:parameter>
+                        <con:name>locale</con:name>
+                        <con:value/>
+                        <con:style>QUERY</con:style>
+                        <con:default/>
+                    </con:parameter>
+                    <con:parameter>
+                        <con:name>until</con:name>
+                        <con:value/>
+                        <con:style>QUERY</con:style>
+                        <con:default/>
+                    </con:parameter>
+                    <con:parameter>
+                        <con:name>include_entities</con:name>
+                        <con:value/>
+                        <con:style>QUERY</con:style>
+                        <con:type xmlns:xs="http://www.w3.org/2001/XMLSchema">xs:boolean</con:type>
+                        <con:default/>
+                    </con:parameter>
+                    <con:parameter>
+                        <con:name>callback</con:name>
+                        <con:value/>
+                        <con:style>QUERY</con:style>
+                        <con:default/>
+                    </con:parameter>
+                </con:parameters>
+                <con:method name="GET" method="GET" id="0e574322-ce2f-4659-9f25-f30d3e1c603a">
+                    <con:settings/>
+                    <con:parameters/>
+                    <con:representation type="RESPONSE">
+                        <con:mediaType>application/json;charset=utf-8</con:mediaType>
+                        <con:status>200</con:status>
+                        <con:params/>
+                        <con:element xmlns:twe="https://api.twitter.com/1.1/search/tweets.json">twe:Response
+                        </con:element>
+                    </con:representation>
+                    <con:representation type="FAULT">
+                        <con:mediaType>application/json; charset=utf-8</con:mediaType>
+                        <con:status>400</con:status>
+                        <con:params/>
+                        <con:element xmlns:twe="https://api.twitter.com/1.1/search/tweets.json">twe:Fault</con:element>
+                    </con:representation>
+                    <con:request name="Request 1" mediaType="application/xml" id="d438dc05-8e2f-47aa-b60c-fa63d949b64f">
+                        <con:settings>
+                            <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+                        </con:settings>
+                        <con:endpoint>https://api.twitter.com</con:endpoint>
+                        <con:request/>
+                        <con:credentials>
+                            <con:authType>Global HTTP Settings</con:authType>
+                        </con:credentials>
+                        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+                        <con:jmsPropertyConfig/>
+                        <con:parameters>
+                            <entry key="q" value="soapui" xmlns="http://eviware.com/soapui/config"/>
+                        </con:parameters>
+                    </con:request>
+                </con:method>
+            </con:resource>
+            <con:resource name="account" path="account" id="75175817-5242-4a47-885e-3a47bed92ec3">
+                <con:settings/>
+                <con:parameters/>
+                <con:resource name="settings" path="settings.{format}" id="0e88baba-bced-4aa0-8b8e-765b59cfa21b">
+                    <con:settings/>
+                    <con:parameters/>
+                    <con:method name="GET" method="GET" id="18e1bad7-d085-47b7-89d4-2591baa734e9">
+                        <con:settings/>
+                        <con:parameters/>
+                        <con:representation type="RESPONSE">
+                            <con:mediaType>application/json; charset=utf-8</con:mediaType>
+                            <con:status>200</con:status>
+                            <con:params/>
+                            <con:element xmlns:set="https://api.twitter.com/1.1/account/settings.json">set:Response
+                            </con:element>
+                        </con:representation>
+                        <con:request name="Request 1" mediaType="application/xml" id="2ee361bf-0b6a-4954-b68c-30eb43ac3f10">
+                            <con:settings>
+                                <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+                            </con:settings>
+                            <con:endpoint>https://api.twitter.com</con:endpoint>
+                            <con:request/>
+                            <con:credentials>
+                                <con:authType>Global HTTP Settings</con:authType>
+                            </con:credentials>
+                            <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+                            <con:jmsPropertyConfig/>
+                            <con:parameters/>
+                        </con:request>
+                    </con:method>
+                </con:resource>
+            </con:resource>
+        </con:resource>
+    </con:interface>
+    <con:testSuite name="TestSuite" id="edcba0c5-e536-43f0-b9d4-a63e1e98d72b">
+        <con:settings/>
+        <con:runType>SEQUENTIAL</con:runType>
+        <con:testCase failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="TestCase" searchProperties="true" id="d99f0da5-3dc8-4838-89bf-f2f7c163ab21">
+            <con:description>Basic twitter API requests
+                - Search Request : makes sure there are hits when searching for "soapui"
+                - Retweet Request : makes sure there are retweets of our account
+                - Mentions Request : makes sure there are mentions of our account
+                - User Timeline Request : makes sure that our timeline contains at least 3 entries
+
+                see https://dev.twitter.com/docs/api/1.1
+            </con:description>
+            <con:settings/>
+            <con:testStep type="restrequest" name="Search Request" id="612346a4-ddf8-4f75-ae68-dc4cfc942a6e">
+                <con:settings/>
+                <con:config service="Twitter" resourcePath="/{version}/search/tweets.{format}" methodName="GET" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                    <con:restRequest name="Search Request" mediaType="application/xml" id="3755f7f7-2531-48f6-bf53-187b8de8efa7">
+                        <con:settings>
+                            <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+                        </con:settings>
+                        <con:endpoint>https://api.twitter.com</con:endpoint>
+                        <con:request/>
+                        <con:assertion type="XPath Match" name="Match content of [search_metadata]" id="021f7537-6e10-41ef-b7ca-750071ae3f6e">
+                            <con:configuration>
+                                <path>declare namespace ns1='https://api.twitter.com/1.1/search/tweets.json';
+                                    //ns1:Response[1]/ns1:search_metadata[1]
+                                </path>
+                                <content><![CDATA[<search_metadata xmlns="https://api.twitter.com/1.1/search/tweets.json">
+  <completed_in>*</completed_in>
+  <count>*</count>
+  <max_id>*</max_id>
+  <max_id_str>*</max_id_str>
+  <next_results>*</next_results>
+  <query>soapui</query>
+  <refresh_url>*</refresh_url>
+  <since_id>0</since_id>
+  <since_id_str>0</since_id_str>
+</search_metadata>]]></content>
+                                <allowWildcards>true</allowWildcards>
+                                <ignoreNamspaceDifferences>false</ignoreNamspaceDifferences>
+                                <ignoreComments>false</ignoreComments>
+                            </con:configuration>
+                        </con:assertion>
+                        <con:assertion type="XPath Match" name="Check count of [e]" id="f9b51883-bc48-45dc-b8ad-69ac7a089a4d">
+                            <con:configuration>
+                                <path>declare namespace ns1='https://api.twitter.com/1.1/search/tweets.json';
+                                    count( //ns1:Response/ns1:statuses/ns1:e)> 5
+                                </path>
+                                <content>true</content>
+                                <allowWildcards>false</allowWildcards>
+                                <ignoreNamspaceDifferences>false</ignoreNamspaceDifferences>
+                                <ignoreComments>false</ignoreComments>
+                            </con:configuration>
+                        </con:assertion>
+                        <con:credentials>
+                            <con:authType>Global HTTP Settings</con:authType>
+                        </con:credentials>
+                        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+                        <con:jmsPropertyConfig/>
+                        <con:parameters>
+                            <entry key="q" value="soapui" xmlns="http://eviware.com/soapui/config"/>
+                        </con:parameters>
+                    </con:restRequest>
+                </con:config>
+            </con:testStep>
+            <con:testStep type="restrequest" name="Retweet Request" id="44d3b925-9a9c-42a9-9780-4c0361296209">
+                <con:settings/>
+                <con:config service="Twitter" resourcePath="/{version}/statuses/retweets_of_me.{format}" methodName="GET" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                    <con:restRequest name="Retweet Request" mediaType="application/xml" id="ad12f101-e3e7-41a5-96d2-626c31a85749">
+                        <con:settings>
+                            <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+                        </con:settings>
+                        <con:endpoint>https://api.twitter.com</con:endpoint>
+                        <con:request/>
+                        <con:assertion type="XPath Match" name="Check count of [text]" id="55b1333b-7172-40da-8dea-86c1345763e9">
+                            <con:configuration>
+                                <path>count( //Response/e/text) > 0</path>
+                                <content>true</content>
+                                <allowWildcards>false</allowWildcards>
+                                <ignoreNamspaceDifferences>false</ignoreNamspaceDifferences>
+                                <ignoreComments>false</ignoreComments>
+                            </con:configuration>
+                        </con:assertion>
+                        <con:credentials>
+                            <con:authType>Global HTTP Settings</con:authType>
+                        </con:credentials>
+                        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+                        <con:jmsPropertyConfig/>
+                        <con:parameters/>
+                    </con:restRequest>
+                </con:config>
+            </con:testStep>
+            <con:testStep type="restrequest" name="Mentions Request" id="6751cda9-a9ac-4c67-a082-b95f65f54426">
+                <con:settings/>
+                <con:config service="Twitter" resourcePath="/{version}/statuses/mentions_timeline.{format}" methodName="GET" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                    <con:restRequest name="Mentions Request" mediaType="application/xml" id="6880410f-ae0b-4415-aea1-fc354230ddc4">
+                        <con:settings>
+                            <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+                        </con:settings>
+                        <con:endpoint>https://api.twitter.com</con:endpoint>
+                        <con:request/>
+                        <con:assertion type="XPath Match" name="Check for existance of [text]" id="46602d9c-cd94-4a51-9d2f-da88613a6e86">
+                            <con:configuration>
+                                <path>exists( //Response/e/text)</path>
+                                <content>true</content>
+                                <allowWildcards>false</allowWildcards>
+                                <ignoreNamspaceDifferences>false</ignoreNamspaceDifferences>
+                                <ignoreComments>false</ignoreComments>
+                            </con:configuration>
+                        </con:assertion>
+                        <con:credentials>
+                            <con:authType>Global HTTP Settings</con:authType>
+                        </con:credentials>
+                        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+                        <con:jmsPropertyConfig/>
+                        <con:parameters/>
+                    </con:restRequest>
+                </con:config>
+            </con:testStep>
+            <con:testStep type="restrequest" name="User Timeline Request" id="80ccda83-9bfb-4bd8-8f08-e46ca68097ae">
+                <con:settings/>
+                <con:config service="Twitter" resourcePath="/{version}/statuses/user_timeline.{format}" methodName="GET" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                    <con:restRequest name="User Timeline Request" mediaType="application/xml" id="45eff841-4dcb-40e5-b651-08033818d05e">
+                        <con:settings>
+                            <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+                        </con:settings>
+                        <con:endpoint>https://api.twitter.com</con:endpoint>
+                        <con:request/>
+                        <con:assertion type="XPath Match" name="Check count of [text]" id="41489aa5-a551-47a2-9270-55b74c1de842">
+                            <con:configuration>
+                                <path>count( //Response/e/text) > 3</path>
+                                <content>true</content>
+                                <allowWildcards>false</allowWildcards>
+                                <ignoreNamspaceDifferences>false</ignoreNamspaceDifferences>
+                                <ignoreComments>false</ignoreComments>
+                            </con:configuration>
+                        </con:assertion>
+                        <con:credentials>
+                            <con:authType>Global HTTP Settings</con:authType>
+                        </con:credentials>
+                        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+                        <con:jmsPropertyConfig/>
+                        <con:parameters/>
+                    </con:restRequest>
+                </con:config>
+            </con:testStep>
+            <con:properties/>
+            <con:reportParameters/>
+        </con:testCase>
+        <con:properties/>
+        <con:reportParameters/>
+    </con:testSuite>
+    <con:requirements/>
+    <con:properties>
+        <con:property>
+            <con:name>oauth_consumer_key</con:name>
+            <con:value/>
+        </con:property>
+        <con:property>
+            <con:name>oauth_consumer_secret</con:name>
+            <con:value/>
+        </con:property>
+        <con:property>
+            <con:name>oauth_access_token</con:name>
+            <con:value/>
+        </con:property>
+        <con:property>
+            <con:name>oauth_access_token_secret</con:name>
+            <con:value/>
+        </con:property>
+    </con:properties>
+    <con:wssContainer/>
+    <con:databaseConnectionContainer/>
+    <con:oAuth2ProfileContainer/><con:reporting>
+        <con:xmlTemplates/>
+        <con:parameters/>
+    </con:reporting>
+    <con:eventHandlers type="RequestFilter.filterRequest" name="RequestFilter.filterRequest">
+        <con:script>// get project
+            def project = com.eviware.soapui.model.support.ModelSupport.getModelItemProject( request )
+
+            // initialize OAuth consumer
+            def consumer = new oauth.signpost.commonshttp.CommonsHttpOAuthConsumer(
+            project.getPropertyValue( "oauth_consumer_key" ),
+            project.getPropertyValue( "oauth_consumer_secret" ));
+
+            consumer.setTokenWithSecret(
+            project.getPropertyValue( "oauth_access_token" ),
+            project.getPropertyValue( "oauth_access_token_secret" ));
+
+            // sign the request
+            consumer.sign( context.httpMethod )
+        </con:script>
+    </con:eventHandlers>
+    <con:sensitiveInformation/>
+<con:authRepository/></con:soapui-project>

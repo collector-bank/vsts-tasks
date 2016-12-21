@@ -1,0 +1,40 @@
+{
+  "id": "251a0d2b-b178-44f2-ad9a-e4825765068c",
+  "name": "ApplyVersionToNuspec",  
+  "friendlyName": "Apply version to nuspec",
+  "description": "Applies the version found in a version file to a nuspec file.",
+  "category": "Utility",
+  "author": "Klas Persson",
+  "version": {
+    "Major": 1,
+    "Minor": 0,
+    "Patch": 0
+  },
+  "minimumAgentVersion": "1.83.0",
+  "inputs": [
+    {
+        "name": "nuspecFilePath",
+        "type": "filePath",
+        "label": "nuspec file path",
+        "defaultValue": "",
+        "required": true,
+        "helpMarkDown": "The path to the nuspec file to use"
+    },
+    {
+        "name": "versionFilePath",
+        "type": "filePath",
+        "label": "version file path",
+        "defaultValue": "",
+        "required": true,
+        "helpMarkDown": "The path to the version file to use"
+    }
+  ],
+  "instanceNameFormat": "Apply version to nuspec",
+  "execution": {
+    "PowerShell": {
+      "target": "$(currentDirectory)\\ApplyVersionToNuspecFile.ps1",
+      "argumentFormat": "",
+      "workingDirectory": "$(currentDirectory)"
+    }
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "id": "88dba86f-3e25-4483-b7b0-e86dc2f55c10",
+  "name": "TransformConfigs",  
+  "friendlyName": "Transform .config files before build",
+  "description": "Transforms all config files with the specified transform BEFORE build.",
+  "category": "Utility",
+  "author": "Nohm",
+  "version": {
+    "Major": 2,
+    "Minor": 0,
+    "Patch": 0
+  },
+  "minimumAgentVersion": "1.83.0",
+  "inputs": [
+    {
+        "name":"transformationType",
+        "type":"radio",
+        "label":"transformation type",
+        "required":true,
+        "defaultValue":"single",
+        "options": {
+            "single":"Single transform environment (output in original config file)",
+            "all":"All transform environments (output in transform files)"
+        }   
+    },
+    {
+      "name": "transformenvironment",
+      "type": "string",
+      "label": "Environment",
+      "defaultValue": "prod/uat/test",
+      "required": true,
+      "helpMarkDown": "The string that matches a *.*.config pattern. Examples: prod/uat/test/internal/deploy",
+      "visibleRule": "transformationType = single"
+    }
+  ],
+  "instanceNameFormat": "Transforming $(transformenvironment).config files",
+  "execution": {
+    "PowerShell": {
+      "target": "$(currentDirectory)\\Transform.ps1",
+      "argumentFormat": "",
+      "workingDirectory": "$(currentDirectory)"
+    }
+  }
+}

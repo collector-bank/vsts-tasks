@@ -1,0 +1,57 @@
+{
+  "id": "96fc93f7-b0da-40aa-b706-99294d1572d3",
+  "name": "NunitTestRunner",
+  "friendlyName": "Nunit Test Runner",
+  "description": "Runs your unit tests using the Nunit test runner",
+  "category": "Test",
+  "author": "Nohm",
+  "version": {
+    "Major": 1,
+    "Minor": 0,
+    "Patch": 1
+  },
+  "minimumAgentVersion": "1.83.0",
+  "inputs": [
+    {
+      "name": "testAssembly",
+      "type": "filePath",
+      "label": "Test Assembly",
+      "defaultValue": "**\\*unittest.dll;-:**\\obj\\**",
+      "required": true,
+      "helpMarkDown": "Test binaries to run tests on.  Wildcards can be used.  For example, `**\\*unittest*.dll;-:**\\obj\\**` for all dlls with test in name while excluding files in any sub-directory named obj."
+    },
+    {
+      "name": "domain",
+      "type": "pickList",
+      "label": "Domain",
+      "defaultValue": "Multiple",
+      "required": true,
+      "helpMarkDown": "AppDomain Usage for tests: None, Single, Multiple",
+      "options": {
+                "None":"None",
+                "Single":"Single",
+                "Multiple":"Multiple"
+            }
+    },
+    {
+      "name": "process",
+      "type": "pickList",
+      "label": "Process",
+      "defaultValue": "Multiple",
+      "required": true,
+      "helpMarkDown": "Process model for tests: Separate, Multiple",
+      "options": {
+                "Separate":"Separate",
+                "Multiple":"Multiple"
+            }
+    }
+  ],
+  "instanceNameFormat": "Nunit Test Runner $(testAssembly)",
+  "execution": {
+    "PowerShell": {
+      "target": "$(currentDirectory)\\NunitTestRunner.ps1",
+      "argumentFormat": "",
+      "workingDirectory": "$(currentDirectory)"
+    }
+  }
+}

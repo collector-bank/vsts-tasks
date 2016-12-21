@@ -1,0 +1,22 @@
+{
+  "id": "c8d7a858-874a-4288-b93c-1cc295bddf30",
+  "name": "PurgeQueues",  
+  "friendlyName": "Purge private MSMQ queues",
+  "description": "Purge private MSMQ queues",
+    "category": "Utility",
+  "author": "Nohm",
+  "version": {
+    "Major": 0,
+    "Minor": 1,
+    "Patch": 6
+  },
+  "minimumAgentVersion": "1.83.0",
+  "instanceNameFormat": "Purge MSMQ queues",
+  "execution": {
+    "PowerShell": {
+      "target": "$(currentDirectory)\\PurgeMSMQqueues.ps1",
+      "argumentFormat": "",
+      "workingDirectory": "$(currentDirectory)"
+    }
+  }
+}

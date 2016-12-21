@@ -1,0 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<test-run start-time="2016-04-26 09:19:43Z">
+  <command-line><![CDATA[nunit3-console.exe  c:\Edge\Main\Test\Unit\Collector.Edge.Client.UnitTest\bin\Debug\Collector.Edge.Client.UnitTest.dll c:\Edge\Main\Test\Unit\Collector.Edge.Settlement.UnitTest\bin\Debug\Collector.Edge.Settlement.UnitTest.dll c:\Edge\Main\Test\Unit\Collector.Edge.UnitTest\bin\Debug\Collector.Edge.UnitTest.dll c:\Edge\Main\Test\Unit\Collector.Edge.Web.UnitTest\bin\Debug\Collector.Edge.Web.UnitTest.dll /framework=net-4.5 /work=.\TestResults]]></command-line>
+</test-run>
