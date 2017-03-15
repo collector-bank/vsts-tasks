@@ -27,6 +27,8 @@ $nuspecXML.Save($nuspecPath)
 
 Write-Host "Version: $newVersion"
 
+"##vso[task.setvariable variable=NuspecVersion;]$newVersion"
+
 
 # Apply the version to the assembly property files
 $files = gci $Env:BUILD_SOURCESDIRECTORY -recurse -include "*Properties*","My Project" | 
