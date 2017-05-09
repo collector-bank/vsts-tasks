@@ -1,0 +1,32 @@
+{
+  "id": "4E850867-B3B6-46B5-843E-0547E0EEA080",
+  "name": "ApplyVersionToNuspecsAndAssemblies",
+  "friendlyName": "Apply a version to all nuspec files and all assemblies",
+  "description": "Applies the version provided to all nuspec files and all assemblies in the source folder.",
+  "category": "Utility",
+  "author": "Adam Lith",
+  "version": {
+    "Major": 1,
+    "Minor": 0,
+    "Patch": 3
+  },
+  "minimumAgentVersion": "1.83.0",
+  "inputs": [
+    {
+      "name": "version",
+      "type": "string",
+      "label": "Version",
+      "defaultValue": "$(Build.BuildNumber)",
+      "required": true,
+      "helpMarkDown": "The version number to use. Recomended is to use $(Build.BuildNumber), and set the buildnumber (in the general tab) to $(Year:yyyy).$(Month).$(DayOfMonth).$(Rev:r)"
+    }
+  ],
+  "instanceNameFormat": "Apply version to nuspec files and assemblies",
+  "execution": {
+    "PowerShell": {
+      "target": "$(currentDirectory)\\ApplyVersionToNuspecsAndAssemblies.ps1",
+      "argumentFormat": "",
+      "workingDirectory": "$(currentDirectory)"
+    }
+  }
+}
